@@ -1,0 +1,16 @@
+---
+import myImage from "@/assets/logo.webp";
+import { Image } from "astro:assets";
+interface Props {
+  className?: string;
+  loading?: "eager" | "lazy";
+}
+const { className = "w-24", loading = "eager" } = Astro.props;
+---
+
+<Image
+  loading={loading}
+  src={myImage}
+  class={className}
+  alt="Logo. Escrito em volta do círculo Escola de Jiu-Jitsu Azambuja, o logo da Sylvio Behring Association (SBA) e Sylvio Behring. Dentro há um logo triangular formado pela adaptação das letras A e Z, com o escito embaixo: sistema progressivo de jiu-jitsu."
+/>

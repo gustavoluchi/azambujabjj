@@ -1,0 +1,54 @@
+---
+import FotoAula from "@/assets/fotoAula.webp";
+import Horarios from "@/assets/horarios.jpeg";
+import { Image } from "astro:assets";
+---
+
+<section class="max-w-6xl py-16 sm:flex">
+  <div
+    class="container mb-8 flex w-full flex-col items-center justify-center text-center sm:mb-0 sm:w-1/2"
+  >
+    <div class="mx-auto flex flex-col gap-6 p-4">
+      <h1 class="m-2 text-2xl font-extrabold lg:text-4xl">
+        Conheça o Sistema Progressivo de Jiu-Jitsu
+      </h1>
+      <p class="text-balance text-muted-foreground lg:text-lg">
+        Aulas para todas as idades e níveis de experiência. Aprenda defesa
+        pessoal, jiu-jitsu educacional e esportivo.
+      </p>
+    </div>
+    <a
+      id="botao-agendamento"
+      role="button"
+      href="https://api.whatsapp.com/send/?phone=5551991265253&text&type=phone_number&app_absent=0"
+      target="_blank"
+      data-umami-event="botao-agendamento"
+      data-umami-event-url="https://api.whatsapp.com/send/?phone=5551991265253&text&type=phone_number&app_absent=0"
+      class="btn btn-primary mt-10"
+    >
+      Marque uma aula experimental gratuita
+    </a>
+  </div>
+  <div class="w-full sm:w-1/2">
+    <Image src={FotoAula} loading="eager" alt="Foto de uma turma." />
+  </div>
+</section>
+<section class="flex w-4/6 justify-center">
+  <a href={Horarios.src} target="_blank">
+    <Image
+      src={Horarios}
+      loading="eager"
+      alt="Grade de horários da Escola de Jiu-Jitsu Azambuja. Tabela com aulas de Jiu-Jitsu para Mini Kids (5 a 9 anos), Kids (10 a 14 anos), iniciantes e graduados. Horários variam de 08h00 a 20h00, de segunda a sábado."
+    />
+  </a>
+</section>
+<section class="flex h-96 w-full justify-center">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.1069427636658!2d-51.21689218712032!3d-30.033789630681063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95197972651a453b%3A0x1195870ed3ae9c84!2sEscola%20de%20Jiu-Jitsu%20Azambuja-Behring!5e0!3m2!1spt-BR!2sbr!4v1736881101041!5m2!1spt-BR!2sbr"
+    class="h-96 w-full sm:w-3/4 md:w-4/6"
+    allowfullscreen={true}
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="Google maps mostrando o endereço Av. Osvaldo Aranha, 794 - Bom Fim, Porto Alegre - RS, 90035-191."
+  ></iframe>
+</section>
