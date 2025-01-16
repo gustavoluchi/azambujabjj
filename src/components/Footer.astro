@@ -2,8 +2,10 @@
 import Logo from "@/components/Logo.astro";
 ---
 
-<footer class="footer footer-center bg-primary p-10 text-primary-content">
-  <aside>
+<footer
+  class="footer flex items-center justify-evenly bg-base-200 p-10 text-base-content"
+>
+  <aside class="flex flex-col items-center">
     <Logo className="mb-4 h-32 w-32" loading="lazy" />
     <p class="font-bold">Escola de Jiu-Jitsu Azambuja-Behring</p>
     <button id="teste" data-umami-event="teste"
@@ -11,10 +13,23 @@ import Logo from "@/components/Logo.astro";
     >
   </aside>
   <nav>
+    <h6 class="footer-title">Links</h6>
+    <a
+      class="link-hover link"
+      href="https://hotmart.com/pt-br/marketplace/produtos/plataforma-az/Q74306064E"
+      data-umami-event="a-curso-az">Curso AZ</a
+    >
+    <a class="link-hover link" href="https://sbajj.com/"
+      >Sylvio Behring Association (SBA)</a
+    >
+  </nav>
+  <nav>
+    <h6 class="footer-title">Social</h6>
     <div class="grid grid-flow-col gap-4">
       <a
         href="https://www.youtube.com/@azambujabehring8844"
         aria-label="Link para canal no YouTube."
+        data-umami-event="a-youtube"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -31,6 +46,7 @@ import Logo from "@/components/Logo.astro";
       <a
         href="https://www.instagram.com/azambujabehringbjj/"
         aria-label="Link para página no Instagram."
+        data-umami-event="a-instagram"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
