@@ -1,0 +1,36 @@
+---
+import Foto2 from "@/assets/foto2.jpg";
+import Foto3 from "@/assets/foto3.jpg";
+import Foto from "@/assets/g.jpg";
+import { Picture } from "astro:assets";
+---
+
+<div class="w-600 carousel rounded-box">
+  <div id="slide1" class="carousel-item w-full">
+    <Picture
+      src={Foto}
+      loading="lazy"
+      alt="Foto de uma turma."
+      width={600}
+      class="sm:rounded-xl md:rounded-2xl"
+    />
+  </div>
+  <div id="slide2" class="carousel-item w-full">
+    <Picture
+      src={Foto2}
+      loading="lazy"
+      alt="Foto de uma turma."
+      width={600}
+      class="sm:rounded-xl md:rounded-2xl"
+    />
+  </div>
+  <div id="slide3" class="carousel-item w-full">
+    <Picture
+      src={Foto3}
+      loading="lazy"
+      alt="Foto de uma turma."
+      width={600}
+      class="sm:rounded-xl md:rounded-2xl"
+    />
+  </div>
+</div>

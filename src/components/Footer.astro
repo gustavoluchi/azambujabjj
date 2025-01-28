@@ -3,9 +3,9 @@ import Logo from "@/components/Logo.astro";
 ---
 
 <footer
-  class="footer flex items-center justify-evenly bg-base-200 p-10 text-base-content"
+  class="footer flex justify-evenly bg-base-200 p-10 text-base-content sm:items-center"
 >
-  <aside class="flex flex-col items-center">
+  <aside class="flex flex-col items-center text-center">
     <Logo className="mb-4 h-32 w-32" loading="lazy" />
     <p class="font-bold">Escola de Jiu-Jitsu Azambuja-Behring</p>
     <button id="teste" data-umami-event="teste"
@@ -13,7 +13,7 @@ import Logo from "@/components/Logo.astro";
     >
   </aside>
   <nav>
-    <h6 class="footer-title">Links</h6>
+    <h3 class="footer-title text-slate-700 opacity-100">Links</h3>
     <a
       class="link-hover link"
       href="https://hotmart.com/pt-br/marketplace/produtos/plataforma-az/Q74306064E"
@@ -24,7 +24,7 @@ import Logo from "@/components/Logo.astro";
     >
   </nav>
   <nav>
-    <h6 class="footer-title">Social</h6>
+    <h3 class="footer-title text-slate-700 opacity-100">Social</h3>
     <div class="grid grid-flow-col gap-4">
       <a
         href="https://www.youtube.com/@azambujabehring8844"

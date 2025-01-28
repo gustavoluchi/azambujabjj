@@ -8,9 +8,10 @@ interface Props {
 const { className = "w-24", loading = "eager" } = Astro.props;
 ---
 
-<Image
-  loading={loading}
-  src={myImage}
-  class={className}
-  alt="Logo. Escrito em volta do círculo Escola de Jiu-Jitsu Azambuja, o logo da Sylvio Behring Association (SBA) e Sylvio Behring. Dentro há um logo triangular formado pela adaptação das letras A e Z, com o escito embaixo: sistema progressivo de jiu-jitsu."
-/>
+<div class={className}>
+  <Image
+    loading={loading}
+    src={myImage}
+    alt="Logo. Escrito em volta do círculo Escola de Jiu-Jitsu Azambuja, o logo da Sylvio Behring Association (SBA) e Sylvio Behring. Dentro há um logo triangular formado pela adaptação das letras A e Z, com o escito embaixo: sistema progressivo de jiu-jitsu."
+  />
+</div>
