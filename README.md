@@ -16,15 +16,15 @@ complementar
 #738091
 #666056
 
-## 🧞 Commands
+## 🧞 Comandos
 
-All commands are run from the root of the project, from a terminal:
+Todos os comandos são executados a partir da raiz do projeto, em um terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Comando                   | Ação                                                      |
+| :------------------------ | :-------------------------------------------------------- |
+| `pnpm install`            | Instala as dependências                                   |
+| `pnpm dev`                | Inicia o servidor de desenvolvimento local em `localhost:4321` |
+| `pnpm build`              | Compila o site para produção na pasta `./dist/`           |
+| `pnpm preview`            | Visualiza a build localmente, antes de implantar          |
+| `pnpm astro ...`          | Executa comandos da CLI como `astro add`, `astro check`   |
+| `pnpm astro -- --help`    | Obtém ajuda sobre a CLI do Astro                          |
