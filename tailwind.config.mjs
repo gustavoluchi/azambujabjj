@@ -9,6 +9,7 @@ export default {
     themes: [
       {
         light: {
+          // eslint-disable-next-line @typescript-eslint/no-require-imports, no-undef
           ...require("daisyui/src/theming/themes")["light"],
           primary: "#162f4f",
           "primary-content": "white",
