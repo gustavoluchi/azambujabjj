@@ -1,22 +1,22 @@
 ---
-import Foto2 from "@/assets/foto2.jpg";
-import Foto3 from "@/assets/foto3.jpg";
-import Foto from "@/assets/g.jpg";
+import Foto1 from "@/assets/foto1-resized.jpg";
+import Foto2 from "@/assets/foto2-resized.jpg";
+import Foto3 from "@/assets/foto3-resized.jpg";
 import { Picture } from "astro:assets";
 
-const carrosel = [Foto, Foto2, Foto3];
+const carrosel = [Foto1, Foto2, Foto3];
 ---
 
-<div class="carousel rounded-box">
+<div class="carousel">
   {
     carrosel.map((foto, index) => (
       <div id={"foto" + index} class="carousel-item relative w-full">
         <Picture
           src={foto}
           loading={index === 0 ? "eager" : "lazy"}
-          alt="Foto de uma turma."
-          width={600}
-          class="sm:rounded-xl md:rounded-2xl"
+          alt="Foto de alunos treinando Jiu-Jitsu na Escola de Jiu-Jitsu Azambuja-Behring."
+          class="w-full bg-cover"
+          loading="lazy"
         />
         <div class="absolute top-1/2 right-5 left-5 flex -translate-y-1/2 transform justify-between">
           <a
