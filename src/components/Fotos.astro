@@ -1,7 +1,7 @@
 ---
-import Foto1 from "@/assets/foto1-resized.jpg";
-import Foto2 from "@/assets/foto2-resized.jpg";
-import Foto3 from "@/assets/foto3-resized.jpg";
+import Foto1 from "@/assets/foto.jpg";
+import Foto2 from "@/assets/foto2.jpg";
+import Foto3 from "@/assets/foto3.jpg";
 import { Picture } from "astro:assets";
 
 const carrosel = [Foto1, Foto2, Foto3];
@@ -17,6 +17,7 @@ const carrosel = [Foto1, Foto2, Foto3];
           alt="Foto de alunos treinando Jiu-Jitsu na Escola de Jiu-Jitsu Azambuja-Behring."
           class="w-full bg-cover"
           loading="lazy"
+          layout="constrained"
         />
         <div class="absolute top-1/2 right-5 left-5 flex -translate-y-1/2 transform justify-between">
           <a
