@@ -1,0 +1,7 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "azambujabjj",
+  // Update to today's date
+  "compatibility_date": "2025-09-11",
+  "pages_build_output_dir": "./dist",
+}
