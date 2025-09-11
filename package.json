@@ -2,6 +2,7 @@
   "name": "azambujabjj",
   "type": "module",
   "version": "0.0.1",
+  "main": "dist/_worker.js/index.js",
   "license": "UNLICENSED",
   "scripts": {
     "dev": "astro dev",
