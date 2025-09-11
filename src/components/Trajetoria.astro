@@ -13,8 +13,10 @@ import Timeline from "./Timeline.astro";
     <div class="collapse-title font-semibold">
       Conheça a trajetória do professor Rafael Azambuja
     </div>
-    <div class="collapse-content text-md flex items-center">
-      <div class="prose">
+    <div
+      class="collapse-content text-md flex flex-col items-center xl:flex-row"
+    >
+      <div class="prose m-2">
         <blockquote>
           "Comecei no jiu-jitsu no meio de 1997 em uma escola que não possuía
           uma metodologia adequada. Após persistir alguns meses, no início de
@@ -29,9 +31,8 @@ import Timeline from "./Timeline.astro";
           diversas outras escolas."
         </blockquote>
       </div>
-      <div>
-        <Timeline />
-      </div>
+
+      <Timeline />
     </div>
   </div>
 </section>

@@ -27,14 +27,14 @@
         <div
           id="map-loading"
           class="absolute inset-0 flex items-center justify-center bg-gray-100"
-          aria-hidden="false"
+          aria-hidden={false}
         >
           <svg
             class="h-10 w-10 animate-spin text-gray-400"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            aria-hidden="true"
+            aria-hidden={true}
           >
             <circle
               class="opacity-25"
@@ -77,7 +77,7 @@
           const loadingEl = document.getElementById("map-loading");
           if (loadingEl) {
             loadingEl.style.display = "flex";
-            loadingEl.setAttribute("aria-hidden", "false");
+            loadingEl.setAttribute("aria-hidden", false);
           }
 
           const iframe = document.createElement("iframe");
@@ -97,7 +97,7 @@
             () => {
               if (loadingEl) {
                 loadingEl.style.display = "none";
-                loadingEl.setAttribute("aria-hidden", "true");
+                loadingEl.setAttribute("aria-hidden", true);
               }
               iframe.style.opacity = "1";
             },
@@ -114,7 +114,7 @@
           if (iframe) placeholder.removeChild(iframe);
           if (loadingEl) {
             loadingEl.style.display = "flex";
-            loadingEl.setAttribute("aria-hidden", "false");
+            loadingEl.setAttribute("aria-hidden", false);
           }
         }
 
