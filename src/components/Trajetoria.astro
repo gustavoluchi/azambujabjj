@@ -1,0 +1,37 @@
+---
+import Timeline from "./Timeline.astro";
+---
+
+<section class="mb-8 flex w-full justify-center xl:w-4/6">
+  <div class="bg-base-100 border-base-300 collapse-arrow collapse border">
+    <input
+      id="colapsavel-trajetoria"
+      type="checkbox"
+      name="colapsavel-trajetoria"
+      aria-label="Checkbox para abrir colapsável da trajetória do professor Rafael Azambuja"
+    />
+    <div class="collapse-title font-semibold">
+      Conheça a trajetória do professor Rafael Azambuja
+    </div>
+    <div class="collapse-content text-md flex items-center">
+      <div class="prose">
+        <blockquote>
+          "Comecei no jiu-jitsu no meio de 1997 em uma escola que não possuía
+          uma metodologia adequada. Após persistir alguns meses, no início de
+          1998 encontrei a Winner Behring, sob o comando do professor Márcio
+          Corleta, que na época era faixa marrom 2 graus e estava sob a tutela
+          do então professor Sylvio Behring.<br /> Nessa escola conheci o Sistema
+          Progressivo de Jiu-jitsu e nela permaneci por 10 anos. Me formei faixa
+          preta em 2005. Em 2007 determinado a começar uma nova etapa, fundei a Escola
+          Azambuja Behring JJ juntamente com meu primo Gabriel Azambuja na época,
+          faixa marrom e sob a tutela do já então Mestre Sylvio Behring, desde então
+          nossa escola cresceu muito, formando 24 faixas pretas e dando origem a
+          diversas outras escolas."
+        </blockquote>
+      </div>
+      <div>
+        <Timeline />
+      </div>
+    </div>
+  </div>
+</section>
