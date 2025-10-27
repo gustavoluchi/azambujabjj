@@ -185,19 +185,23 @@ const masterBio = [
 const faqs = [
   {
     question: "Preciso ser faixa Preta para entender?",
-    answer: "Não! O conteúdo é progressivo, serve tanto para iniciantes quanto para graduados e professores.",
+    answer:
+      "Não! O conteúdo é progressivo, serve tanto para iniciantes quanto para graduados e professores.",
   },
   {
     question: "Os vídeos tem explicações?",
-    answer: "Sim, os vídeos são muito didáticos, com explicações detalhadas sobre cada situação apresentada.",
+    answer:
+      "Sim, os vídeos são muito didáticos, com explicações detalhadas sobre cada situação apresentada.",
   },
   {
     question: "Até quando terei acesso ao conteúdo?",
-    answer: "Para sempre, o acesso é vitalício. Você pode estudar no seu ritmo, sem pressa.",
+    answer:
+      "Para sempre, o acesso é vitalício. Você pode estudar no seu ritmo, sem pressa.",
   },
   {
     question: "Posso acessar de qualquer dispositivo?",
-    answer: "Sim, a plataforma é 100% online e funciona em celular, tablet e computador.",
+    answer:
+      "Sim, a plataforma é 100% online e funciona em celular, tablet e computador.",
   },
   {
     question: "Quais os benefícios do produto?",
@@ -210,7 +214,8 @@ const faqs = [
   },
   {
     question: "É seguro comprar na Hotmart?",
-    answer: "Sim, a Hotmart oferece um ambiente 100% seguro para sua compra com seus dados protegidos na compra deste produto.",
+    answer:
+      "Sim, a Hotmart oferece um ambiente 100% seguro para sua compra com seus dados protegidos na compra deste produto.",
   },
 ];
 
@@ -238,19 +243,28 @@ const guaranteeDetails = [
 ];
 ---
 
-<div class="flex min-h-svh w-full flex-col items-center bg-base-200">
+<div class="bg-base-200 flex min-h-svh w-full flex-col items-center">
   <Header />
   <main class="flex w-full max-w-6xl flex-1 flex-col gap-16 px-4 pb-16 lg:px-0">
-    <section class="overflow-hidden rounded-2xl bg-primary px-6 py-12 text-primary-content shadow-xl">
+    <section
+      class="bg-primary text-primary-content overflow-hidden rounded-2xl px-6 py-12 shadow-xl"
+    >
       <div class="mx-auto flex max-w-3xl flex-col gap-6 text-center">
-        <h1 class="text-4xl font-extrabold tracking-tight md:text-5xl">A Didática</h1>
-        <p class="text-xl font-semibold uppercase tracking-widest text-secondary">Imersão no Sistema Progressivo de Jiu-Jitsu</p>
+        <h1 class="text-4xl font-extrabold tracking-tight md:text-5xl">
+          A Didática
+        </h1>
+        <p
+          class="text-secondary text-xl font-semibold tracking-widest uppercase"
+        >
+          Imersão no Sistema Progressivo de Jiu-Jitsu
+        </p>
         <p class="text-lg leading-relaxed">
-          118 vídeos exclusivos para Professores, Faixas Pretas, Graduados e Iniciantes, do básico ao avançado, com acesso vitalício!
+          118 vídeos exclusivos para Professores, Faixas Pretas, Graduados e
+          Iniciantes, do básico ao avançado, com acesso vitalício!
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           <a
-            class="btn btn-secondary btn-lg font-bold text-secondary-content"
+            class="btn btn-secondary btn-lg text-secondary-content font-bold"
             href={ctaLink}
             rel="noopener noreferrer"
             target="_blank"
@@ -266,16 +280,28 @@ const guaranteeDetails = [
         <h2>Metodologia Exclusiva</h2>
         <p>No tatame, cada detalhe faz diferença.</p>
         <p>
-          E quando falamos em <strong>ensinar e aprender Jiu-Jitsu de forma progressiva</strong>, estamos falando de transformar a sua prática em algo muito maior: clareza, evolução técnica, metodologia diferenciada e paixão pela arte suave.
+          E quando falamos em <strong
+            >ensinar e aprender Jiu-Jitsu de forma progressiva</strong
+          >, estamos falando de transformar a sua prática em algo muito maior:
+          clareza, evolução técnica, metodologia diferenciada e paixão pela arte
+          suave.
         </p>
         <p>
-          A Sylvio Behring Association (SBA) lança agora <strong>a imersão mais completa já criada sobre o Sistema Progressivo de Jiu-Jitsu</strong>, com a didática que há mais de 30 anos forma professores de excelência e campeões nos tatames e na vida!
+          A Sylvio Behring Association (SBA) lança agora <strong
+            >a imersão mais completa já criada sobre o Sistema Progressivo de
+            Jiu-Jitsu</strong
+          >, com a didática que há mais de 30 anos forma professores de
+          excelência e campeões nos tatames e na vida!
         </p>
       </div>
-      <div class="flex flex-col gap-4 rounded-2xl bg-base-100 p-6 shadow-lg">
-        {methodologyHighlights.map((item) => (
-          <p class="text-lg leading-relaxed" key={item}>{item}</p>
-        ))}
+      <div class="bg-base-100 flex flex-col gap-4 rounded-2xl p-6 shadow-lg">
+        {
+          methodologyHighlights.map((item) => (
+            <p class="text-lg leading-relaxed" id={item}>
+              {item}
+            </p>
+          ))
+        }
         <a
           class="btn btn-primary btn-block"
           href={ctaLink}
@@ -287,7 +313,9 @@ const guaranteeDetails = [
       </div>
     </section>
 
-    <section class="grid gap-6 rounded-2xl bg-base-100 p-8 shadow-lg lg:grid-cols-[1fr_1fr]">
+    <section
+      class="bg-base-100 grid gap-6 rounded-2xl p-8 shadow-lg lg:grid-cols-[1fr_1fr]"
+    >
       <div class="prose max-w-none">
         <h3>Você já se sentiu perdido no tatame?</h3>
         <p class="font-semibold">Aluno:</p>
@@ -298,28 +326,31 @@ const guaranteeDetails = [
         <p>{challenges[3]}</p>
       </div>
       <div class="prose max-w-none">
-        {coursePromises.map((text) => (
-          <p key={text}>{text}</p>
-        ))}
+        {coursePromises.map((text) => <p id={text}>{text}</p>)}
         <a
           class="btn btn-secondary mt-4"
           href={ctaLink}
           rel="noopener noreferrer"
           target="_blank"
+          data-umami-event="botao-comprar-didatica-1"
         >
           Quero comprar A Didática
         </a>
       </div>
     </section>
 
-    <section class="rounded-2xl bg-base-100 p-8 shadow-lg">
+    <section class="bg-base-100 rounded-2xl p-8 shadow-lg">
       <div class="prose mx-auto max-w-none">
         <h2>Conteúdo da plataforma</h2>
       </div>
       <ol class="mt-6 columns-1 gap-4 text-base md:columns-2 lg:columns-3">
-        {modules.map((module) => (
-          <li class="break-inside-avoid py-1" key={module}>{module}</li>
-        ))}
+        {
+          modules.map((module) => (
+            <li class="break-inside-avoid py-1" id={module}>
+              {module}
+            </li>
+          ))
+        }
       </ol>
     </section>
 
@@ -329,84 +360,120 @@ const guaranteeDetails = [
         <p>Conheça um pouco da história dos Professores</p>
       </div>
       <div class="grid gap-6 md:grid-cols-2">
-        {professors.map((professor) => (
-          <article class="flex h-full flex-col gap-4 rounded-2xl bg-base-100 p-6 shadow-lg" key={professor.name}>
-            <header>
-              <h3 class="text-2xl font-bold">{professor.name}</h3>
-              <p class="text-sm uppercase tracking-wide text-secondary">{professor.rank}</p>
-            </header>
-            <div class="space-y-3 text-sm leading-relaxed">
-              {professor.bio.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          </article>
-        ))}
+        {
+          professors.map((professor) => (
+            <article
+              class="bg-base-100 flex h-full flex-col gap-4 rounded-2xl p-6 shadow-lg"
+              id={professor.name}
+            >
+              <header>
+                <h3 class="text-2xl font-bold">{professor.name}</h3>
+                <p class="text-secondary text-sm tracking-wide uppercase">
+                  {professor.rank}
+                </p>
+              </header>
+              <div class="space-y-3 text-sm leading-relaxed">
+                {professor.bio.map((paragraph) => (
+                  <p id={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            </article>
+          ))
+        }
       </div>
     </section>
 
-    <section class="rounded-2xl bg-base-100 p-8 shadow-lg">
+    <section class="bg-base-100 rounded-2xl p-8 shadow-lg">
       <div class="prose max-w-none">
         <h2>O Mestre</h2>
-        <p class="text-lg font-semibold">O criador do Sistema Progressivo de Jiu-Jitsu</p>
+        <p class="text-lg font-semibold">
+          O criador do Sistema Progressivo de Jiu-Jitsu
+        </p>
         <h3 class="mt-2 text-2xl font-bold">Mestre Sylvio Behring</h3>
-        <p class="uppercase tracking-wide text-secondary">Faixa Vermelha e Preta 8º Grau</p>
+        <p class="text-secondary tracking-wide uppercase">
+          Faixa Vermelha e Preta 8º Grau
+        </p>
       </div>
       <div class="mt-6 space-y-3 text-base leading-relaxed">
-        {masterBio.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
+        {masterBio.map((paragraph) => <p id={paragraph}>{paragraph}</p>)}
       </div>
     </section>
 
-    <section class="rounded-2xl bg-base-100 p-8 shadow-lg">
-      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <section class="bg-base-100 rounded-2xl p-8 shadow-lg">
+      <div
+        class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+      >
         <div>
           <h2 class="text-3xl font-bold">Perguntas frequentes</h2>
-          <p>Confira as dúvidas mais frequentes na compra da Imersão no Sistema Progressivo de Jiu-Jitsu:</p>
+          <p>
+            Confira as dúvidas mais frequentes na compra da Imersão no Sistema
+            Progressivo de Jiu-Jitsu:
+          </p>
         </div>
         <a
           class="btn btn-primary"
           href={ctaLink}
           rel="noopener noreferrer"
           target="_blank"
+          data-umami-event="botao-comprar-didatica-2"
         >
           Quero comprar A Didática
         </a>
       </div>
       <div class="mt-6 space-y-4">
-        {faqs.map((faq) => (
-          <details class="group rounded-xl border border-base-300 bg-base-200 p-4" key={faq.question}>
-            <summary class="cursor-pointer text-lg font-semibold">
-              {faq.question}
-            </summary>
-            {Array.isArray(faq.answer) ? (
-              <ul class="mt-2 list-disc space-y-1 pl-5">
-                {faq.answer.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            ) : (
-              <p class="mt-2">{faq.answer}</p>
-            )}
-          </details>
-        ))}
+        {
+          faqs.map((faq) => (
+            <details
+              class="group border-base-300 bg-base-200 rounded-xl border p-4"
+              id={faq.question}
+            >
+              <summary class="cursor-pointer text-lg font-semibold">
+                {faq.question}
+              </summary>
+              {Array.isArray(faq.answer) ? (
+                <ul class="mt-2 list-disc space-y-1 pl-5">
+                  {faq.answer.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="mt-2">{faq.answer}</p>
+              )}
+            </details>
+          ))
+        }
       </div>
     </section>
 
-    <section class="rounded-2xl bg-secondary/20 p-8 shadow-lg">
+    <section class="bg-secondary/20 rounded-2xl p-8 shadow-lg">
       <div class="mx-auto max-w-3xl space-y-6 text-center">
-        <p class="text-sm font-semibold uppercase tracking-wide text-secondary">O investimento</p>
-        <h2 class="text-3xl font-bold">Essa é a chance de investir em si mesmo e no seu Jiu-Jitsu com um método comprovado.</h2>
-        <p>
-          Agora é com você! Você pode continuar treinando no improviso… ou mergulhar em uma imersão que vai transformar a sua forma de aprender, ensinar e viver o Jiu-Jitsu.
+        <p class="text-secondary text-sm font-semibold tracking-wide uppercase">
+          O investimento
         </p>
-        <div class="flex flex-wrap justify-center gap-2 text-sm font-semibold uppercase tracking-wide">
-          {investmentHighlights.map((item) => (
-            <span class="rounded-full bg-secondary px-4 py-1 text-secondary-content" key={item}>{item}</span>
-          ))}
+        <h2 class="text-3xl font-bold">
+          Essa é a chance de investir em si mesmo e no seu Jiu-Jitsu com um
+          método comprovado.
+        </h2>
+        <p>
+          Agora é com você! Você pode continuar treinando no improviso… ou
+          mergulhar em uma imersão que vai transformar a sua forma de aprender,
+          ensinar e viver o Jiu-Jitsu.
+        </p>
+        <div
+          class="flex flex-wrap justify-center gap-2 text-sm font-semibold tracking-wide uppercase"
+        >
+          {
+            investmentHighlights.map((item) => (
+              <span
+                id={item}
+                class="bg-secondary text-secondary-content rounded-full px-4 py-1"
+              >
+                {item}
+              </span>
+            ))
+          }
         </div>
-        <div class="rounded-2xl bg-base-100 p-6 shadow-xl">
+        <div class="bg-base-100 rounded-2xl p-6 shadow-xl">
           <div class="space-y-2 text-lg">
             <p>
               <span class="font-semibold">De </span>
@@ -422,26 +489,31 @@ const guaranteeDetails = [
             </p>
           </div>
           <ul class="mt-4 space-y-2 text-left text-sm">
-            {guaranteeDetails.map((item) => (
-              <li class="flex items-start gap-2" key={item}>
-                <span class="mt-1 h-2 w-2 rounded-full bg-secondary"></span>
-                <span>{item}</span>
-              </li>
-            ))}
+            {
+              guaranteeDetails.map((item) => (
+                <li id={item} class="flex items-start gap-2">
+                  <span class="bg-secondary mt-1 h-2 w-2 rounded-full" />
+                  <span>{item}</span>
+                </li>
+              ))
+            }
           </ul>
           <a
-            class="btn btn-secondary btn-block mt-6 text-secondary-content"
+            class="btn btn-secondary btn-block text-secondary-content mt-6"
             href={ctaLink}
             rel="noopener noreferrer"
             target="_blank"
+            data-umami-event="botao-comprar-didatica-3"
           >
             Quero comprar a Didática
           </a>
-          <p class="mt-4 text-xs text-base-content/70">
+          <p class="text-base-content/70 mt-4 text-xs">
             Você possui um cupom de desconto? Utilize na página de pagamento!
           </p>
-          <p class="text-xs text-base-content/70">
-            *Este produto não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados.
+          <p class="text-base-content/70 text-xs">
+            *Este produto não garante a obtenção de resultados. Qualquer
+            referência ao desempenho de uma estratégia não deve ser interpretada
+            como uma garantia de resultados.
           </p>
         </div>
       </div>
