@@ -9,9 +9,13 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "tsc": "tsc -p tsconfig.json"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.5",
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.5",
     "class-variance-authority": "^0.7.1",
@@ -22,18 +26,23 @@
     "sharp": "^0.34.3",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.12",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.34.0",
     "@tailwindcss/typography": "^0.5.16",
     "daisyui": "5.1.6",
     "eslint": "^9.34.0",
-    "eslint-plugin-react": "^7.37.5",
     "globals": "^16.3.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "typescript-eslint": "^8.42.0",
     "wrangler": "4"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "6.3.6"
+    }
   }
 }
