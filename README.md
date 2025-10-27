@@ -20,11 +20,11 @@ complementar
 
 Todos os comandos são executados a partir da raiz do projeto, em um terminal:
 
-| Comando                   | Ação                                                      |
-| :------------------------ | :-------------------------------------------------------- |
-| `pnpm install`            | Instala as dependências                                   |
-| `pnpm dev`                | Inicia o servidor de desenvolvimento local em `localhost:4321` |
-| `pnpm build`              | Compila o site para produção na pasta `./dist/`           |
-| `pnpm preview`            | Visualiza a build localmente, antes de implantar          |
-| `pnpm astro ...`          | Executa comandos da CLI como `astro add`, `astro check`   |
-| `pnpm astro -- --help`    | Obtém ajuda sobre a CLI do Astro                          |
+| Comando                | Ação                                                           |
+| :--------------------- | :------------------------------------------------------------- |
+| `pnpm install`         | Instala as dependências                                        |
+| `pnpm dev`             | Inicia o servidor de desenvolvimento local em `localhost:4321` |
+| `pnpm build`           | Compila o site para produção na pasta `./dist/`                |
+| `pnpm preview`         | Visualiza a build localmente, antes de implantar               |
+| `pnpm astro ...`       | Executa comandos da CLI como `astro add`, `astro check`        |
+| `pnpm astro -- --help` | Obtém ajuda sobre a CLI do Astro                               |

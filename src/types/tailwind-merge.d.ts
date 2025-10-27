@@ -1,5 +1,12 @@
 declare module "tailwind-merge" {
-  type ClassNameValue = ClassNameArray | string | null | undefined | 0 | 0n | false;
+  type ClassNameValue =
+    | ClassNameArray
+    | string
+    | null
+    | undefined
+    | 0
+    | 0n
+    | false;
   type ClassNameArray = ClassNameValue[];
 
   /**
@@ -15,12 +22,16 @@ declare module "tailwind-merge" {
   /**
    * Create a customized `twMerge` instance.
    */
-  export function createTailwindMerge(...args: unknown[]): (...classLists: ClassNameValue[]) => string;
+  export function createTailwindMerge(
+    ...args: unknown[]
+  ): (...classLists: ClassNameValue[]) => string;
 
   /**
    * Extend the default Tailwind merge configuration.
    */
-  export function extendTailwindMerge(...args: unknown[]): (...classLists: ClassNameValue[]) => string;
+  export function extendTailwindMerge(
+    ...args: unknown[]
+  ): (...classLists: ClassNameValue[]) => string;
 
   export function fromTheme(...args: unknown[]): unknown;
   export function getDefaultConfig(...args: unknown[]): unknown;
