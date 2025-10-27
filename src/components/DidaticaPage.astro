@@ -1,0 +1,452 @@
+---
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+
+const ctaLink = "https://pay.hotmart.com/W102120628U";
+
+const methodologyHighlights = [
+  "Metodologia Exclusiva",
+  "Agora no detalhe, para você!",
+  "Conheça a metodologia de ensino que possibilita qualquer pessoa a aprender Jiu-Jitsu de forma eficiente e segura, independente da idade, tamanho ou condição física.",
+  "PARA TODOS OS NÍVEIS",
+  "Do Aluno iniciante ao Professor, do básico ao avançado: aprenda com clareza, evolução técnica e paixão pela arte suave.",
+];
+
+const challenges = [
+  "Você compreende a lógica por trás das técnicas?",
+  "Já teve dificuldade em organizar suas aulas?",
+  "No Jiu-Jitsu, muitos seguem acumulando posições e golpes… mas sem clareza, sem uma linha progressiva de aprendizado.",
+  "Isso gera confusão, frustração e até desistência. O que falta muitas vezes não é esforço, é didática.",
+];
+
+const coursePromises = [
+  "A Didática – Imersão no Sistema Progressivo de Jiu-Jitsu é muito mais que uma plataforma online.",
+  "É um caminho estruturado, criado para que qualquer pessoa aprenda Jiu-Jitsu de forma eficiente, progressiva e segura.",
+  "Você vai descobrir quando fazer, como fazer e por que fazer cada movimento, desenvolvendo raciocínio estratégico em cada situação.",
+];
+
+const modules = [
+  "0.1 – Introdução para Professores",
+  "0.2 – Introdução para Praticantes",
+  "0.3 – Aula Teórica ‒ Metodologia",
+  "0.4 – Aula Teórica ‒ Didática",
+  "0.5 – Aula Teórica ‒ Metodologia x Didática",
+  "0.6 – Aula Teórica ‒ Oss",
+  "0.7 – Quatro Dicas de Ouro",
+  "1.0 – Tomando Consciência da Base",
+  "1.1 – Base Pés paralelos",
+  "1.2 – Base Perna para trás",
+  "1.3 – Base em movimento",
+  "1.4 – Base Mantendo o eixo",
+  "1.5 – Base Pegando o Kimono",
+  "2.0 – Respiração",
+  "3.0 – Introdução à Defesa Pessoal: Pisão",
+  "4.0 – Introdução à Defesa Pessoal: Escapadas",
+  "5.0 – Amortecimento de Quedas",
+  "6.0 – Rolamentos",
+  "7.0 – Levantada Técnica Parte I",
+  "7.1 – Levantada Técnica Parte II",
+  "8.0 – Como estruturar a primeira aula",
+  "9.0 – Fuga de Quadril Parte I",
+  "9.1 – Fuga de Quadril Parte II",
+  "9.2 – Fuga de Quadril Parte III",
+  "9.3 – Fuga de Quadril Parte IV",
+  "10.0 – Barrigada Parte I",
+  "10.1 – Barrigada Parte II",
+  "10.2 – Barrigada Parte III",
+  "10.3 – Barrigada Parte IV",
+  "11.0 – Saída de Montada Parte I",
+  "11.1 – Saída de Montada Parte II",
+  "11.2 – Saída de Montada Parte III",
+  "11.3 – Saída de Montada Parte IV",
+  "11.4 – Saída de Montada Parte V",
+  "12.0 – Saída de 100Kgs Parte I",
+  "12.1 – Saída de 100Kgs Parte II – Mov. completa",
+  "12.2 – Saída de 100Kgs Parte III – Revisão I",
+  "12.3 – Saída de 100Kgs Parte IV – Revisão II",
+  "12.4 – Saída de 100Kgs Parte V – Revisão III",
+  "13.0 – Saída das Costas Parte I",
+  "13.1 – Saída das Costas Parte II",
+  "13.2 – Saída das Costas Parte III",
+  "13.3 – Saída das Costas Parte IV",
+  "13.4 – Práticas das Posições – Defesa (chão)",
+  "13.5 – Base, Conexão, Estratégia e Respiração",
+  "14.0 – Imersão Defesa Pessoal Parte I",
+  "14.1 – Imersão Defesa Pessoal Parte II",
+  "14.2 – Imersão Defesa Pessoal Parte III",
+  "14.3 – Conexão do quadril",
+  "15.0 – Defesa de Agarrão Parte I",
+  "15.1 – Defesa de Agarrão Parte II",
+  "15.2 – Defesa de Agarrão Parte III",
+  "15.3 – Defesa de Agarrão Parte IV",
+  "15.4 – Defesa de Agarrão Parte V",
+  "16.0 – Defesa de pegadas no pano Parte I",
+  "16.1 – Defesa de pegadas no pano Parte II",
+  "16.2 – Defesa de pegadas no pano Parte III",
+  "16.3 – Defesa de pegadas no pano Parte IV",
+  "16.4 – Defesa de pegadas no pano Parte V",
+  "16.5 – Defesa de pegadas no pano Parte VI",
+  "17.0 – Defesa de pegadas no pescoço Parte I",
+  "17.1 – Defesa de pegadas no pescoço Parte II",
+  "17.2 – Defesa de pegadas no pescoço Parte III",
+  "17.3 – Como praticar as pegadas no pescoço",
+  "18.0 – Defesa pegada no pescoço/costas Parte I",
+  "18.1 – Defesa pegada no pescoço/costas Parte II",
+  "18.2 – Defesa pegada no pescoço/costas Parte III",
+  "19.0 – Defesa de Gravata Parte I",
+  "19.1 – Defesa de Gravata Parte II",
+  "19.2 – Defesa de Gravata Parte III",
+  "19.3 – Praticando os Ataques e Defesas",
+  "20.0 – Gangorra I Parte I",
+  "20.1 – Gangorra I Parte II",
+  "20.2 – Gangorra I Parte III",
+  "20.3 – Gangorra I Parte IV",
+  "20.4 – Gangorra I Parte V",
+  "20.5 – Gangorra I Parte VI",
+  "20.6 – Gangorra I Parte VII",
+  "21.0 – Manutenção da Montada Parte I",
+  "21.1 – Manutenção da Montada Parte II",
+  "21.2 – Manutenção da Montada Parte III",
+  "21.3 – Manutenção da Montada Parte IV",
+  "22.0 – Manutenção das Costas Parte I",
+  "22.1 – Manutenção das Costas Parte II",
+  "22.2 – Manutenção das Costas Parte III",
+  "22.3 – Manutenção das Costas Parte IV",
+  "23.0 – Gangorra II Parte I",
+  "23.1 – Gangorra II Parte II",
+  "23.2 – Gangorra II Parte III",
+  "23.3 – Gangorra II Parte IV",
+  "23.4 – Gangorra II Parte V",
+  "23.5 – Gangorra II Parte VI",
+  "24.0 – Ataques do Nível II de defesa Parte I",
+  "24.1 – Ataques do Nível II de defesa Parte II",
+  "24.2 – Ataques do Nível II de defesa Parte III",
+  "24.3 – Ataques do Nível II de defesa Parte IV",
+  "24.4 – Ataques do Nível II de defesa Parte V",
+  "25.0 – Defesa de Gravata no chão Parte I",
+  "25.1 – Defesa de Gravata no chão Parte II",
+  "25.2 – Defesa de Gravata no chão Parte III",
+  "25.3 – Defesa de Gravata no chão Parte IV",
+  "25.4 – Defesa de Gravata no chão Parte V",
+  "26.0 – Projeções de Queda Parte I",
+  "26.1 – Projeções de Queda Parte II",
+  "26.2 – Projeções de Queda Parte III",
+  "26.3 – Projeções de Queda Parte IV",
+  "26.4 – Projeções de Queda Parte V",
+  "26.5 – Projeções de Queda Parte VI",
+  "26.6 – Projeções de Queda Parte VII",
+  "26.7 – Projeções de Queda Parte VIII",
+  "27.0 – Dicas de Segurança dentro do Tatame",
+  "28.0 – Fundamentos Básicos – aquecimento Parte I",
+  "28.1 – Fundamentos Básicos – aquecimento Parte II",
+  "28.2 – Fundamentos Básicos – aquecimento Parte III",
+  "29.0 – Seguindo o Fluxo da turma Parte I",
+  "29.1 – Seguindo o Fluxo da turma Parte II",
+  "30.0 – Ginástica Natural no aquecimento Parte I",
+  "30.1 – Ginástica Natural no aquecimento Parte II",
+];
+
+const professors = [
+  {
+    name: "Rafael Azambuja",
+    rank: "Faixa Preta 5º Grau",
+    bio: [
+      "Rafael começou no Jiu-Jitsu em meados do ano de 1997, em uma escola que não possuía uma metodologia adequada.",
+      "Após persistir alguns meses, no início de 1998 encontrou a Winner Behring, sob o comando do professor Márcio Corleta, que na época era faixa marrom 2º grau e estava sob a tutela do então Professor Sylvio Behring. Na Winner Behring conheceu o Sistema Progressivo de Jiu-Jitsu e nela permaneceu por 10 anos, formando-se Faixa Preta em 2005.",
+      "Em 2007 determinado a começar uma nova etapa, fundou a Escola Azambuja Behring Jiu-Jitsu, juntamente com seu primo Gabriel Azambuja, na época Faixa Marrom e sob a tutela do então Mestre, Sylvio Behring. Até o presente a sua Escola de Jiu-Jitsu cresceu muito, formando 24 faixas pretas e dando origem a diversas outras escolas.",
+      "O seu currículo esportivo inicia-se em 1999, tendo resultados expressivos em diversos campeonatos tais como: Campeonato Gaúcho da FJJ-RS, Winner Fight Show 2 Submission, Campeonato Gaúcho de Grappling, Pan-Americano de Jiu-Jitsu CBJJE/FBJJ-DF, Campeonato Mundial de Jiu-Jitsu Profissional CBJJE, Copa Sogipa de Judô, Floripa Open com e sem Kimono, Copa prime de Jiu-Jitsu e Tríplice Coroa de Jiu-Jitsu.",
+    ],
+  },
+  {
+    name: "Leonardo Sparta",
+    rank: "Faixa Preta",
+    bio: [
+      "Leonardo tem por objetivo disseminar o Jiu-Jitsu como ferramenta de evolução pessoal, inclusão social e prática desportiva. Utilizar o Sistema Progressivo e o GPCI como ferramentas didáticas para cada aluno.",
+      "Busca expandir a presença como atleta e professor de Jiu-Jitsu, utilizando a experiência nos tatames e a produção de conteúdo para inspirar, ensinar e gerar impacto dentro e fora da comunidade do BJJ.",
+      "Mais de 10 Anos de prática, sendo atualmente Faixa preta sob a batuta do Mestre Sylvio Behring e do Professor Rafael Azambuja, Sparta foi monitor e instrutor desde a sua faixa roxa, ministrando milhares de aulas para crianças, jovens, adultos e pessoas com deficiência.",
+      "Iniciou no esporte mais de 40 alunos deficientes, com cerimônia de graduação para os pais, utilizando a Sogipa e o Clube Social Pertence, Projeto oferecido pelo Pró Esporte. Um projeto social para pessoas carentes iniciarem no esporte.",
+      "Desenvolveu a partir do Sistema Progressivo, um sistema inclusivo de Jiu-Jitsu, para todas as pessoas.",
+      "Criador do projeto Leo Sparta BJJ no Instagram, voltado para Estratégias de luta e análise técnica, Conteúdo motivacional e lifestyle, divulgação do Jiu-Jitsu como ferramenta de disciplina, saúde e superação, desenvolve materiais visuais, vídeos e estratégias digitais para aproximar o público ao esporte, interagindo com a comunidade de BJJ através de dicas, treinos e motivação.",
+      "Participações em inúmeros campeonatos estaduais e nacionais (CBJJ, IBJJF) lutando na categoria e absoluto desde a Faixa Branca.",
+    ],
+  },
+];
+
+const masterBio = [
+  "Por trás desse conteúdo está o Mestre Sylvio Behring, Faixa Coral (8º grau), referência mundial em ensino de Jiu-Jitsu e criador do Sistema Progressivo de Jiu-Jitsu.",
+  "Com mais de 50 anos de experiência nos tatames, Sylvio iniciou sua jornada aos 4 anos de idade, treinando com mestres lendários como João Alberto Barreto, Álvaro Barreto e seu pai, Flavio Behring.",
+  "Recebeu a faixa preta em 1984 e, desde então, se dedicou a ensinar, formar campeões e espalhar o Jiu-Jitsu pelo mundo.",
+  "Instrutor de grandes nomes do MMA, como Anderson Silva, Fabrício Werdum e Ronaldo Jacaré, dentre outros.",
+  "Formador de centenas de faixas pretas, professores e campeões internacionais (Márcio Corleta, Mário Reis, Gabriel Azambuja e vários outros).",
+  "Responsável por levar o Jiu-Jitsu para forças policiais e militares em diversos países.",
+  "Hoje, através da Sylvio Behring Association (SBA), o Mestre continua multiplicando conhecimento e formando gerações com uma metodologia única e reconhecida internacionalmente.",
+];
+
+const faqs = [
+  {
+    question: "Preciso ser faixa Preta para entender?",
+    answer: "Não! O conteúdo é progressivo, serve tanto para iniciantes quanto para graduados e professores.",
+  },
+  {
+    question: "Os vídeos tem explicações?",
+    answer: "Sim, os vídeos são muito didáticos, com explicações detalhadas sobre cada situação apresentada.",
+  },
+  {
+    question: "Até quando terei acesso ao conteúdo?",
+    answer: "Para sempre, o acesso é vitalício. Você pode estudar no seu ritmo, sem pressa.",
+  },
+  {
+    question: "Posso acessar de qualquer dispositivo?",
+    answer: "Sim, a plataforma é 100% online e funciona em celular, tablet e computador.",
+  },
+  {
+    question: "Quais os benefícios do produto?",
+    answer: [
+      "Clareza na Metodologia: Não fique perdido no tatame.",
+      "Evolução do seu entendimento: Do iniciante ao avançado, passo a passo.",
+      "Didática diferenciada: Usada por professores no mundo todo.",
+      "Paixão e pertencimento: Faça parte de um legado do Jiu-Jitsu.",
+    ],
+  },
+  {
+    question: "É seguro comprar na Hotmart?",
+    answer: "Sim, a Hotmart oferece um ambiente 100% seguro para sua compra com seus dados protegidos na compra deste produto.",
+  },
+];
+
+const investmentHighlights = [
+  "118 VÍDEOS",
+  "COM DETALHES EXCLUSIVOS",
+  "Fundamentos Teóricos",
+  "Base e Estrutura",
+  "Respiração e Controle",
+  "Defesa Pessoal – Primeiros Passos",
+  "Estruturação de Aulas",
+  "Fundamentos Essenciais do Jiu-Jitsu",
+  "Defesas e Contra-ataques",
+  "Manutenção de Posições",
+  "Projeções de Queda",
+  "Conceitos-Chave",
+  "Segurança e Preparação.",
+];
+
+const guaranteeDetails = [
+  "Acesso ilimitado aos vídeos!",
+  "Garantia de 7 dias;",
+  "Ambiente Seguro - Seus dados protegidos na hora da compra;",
+  "Acesso 100% online e de qualquer dispositivo conectado à internet;",
+];
+---
+
+<div class="flex min-h-svh w-full flex-col items-center bg-base-200">
+  <Header />
+  <main class="flex w-full max-w-6xl flex-1 flex-col gap-16 px-4 pb-16 lg:px-0">
+    <section class="overflow-hidden rounded-2xl bg-primary px-6 py-12 text-primary-content shadow-xl">
+      <div class="mx-auto flex max-w-3xl flex-col gap-6 text-center">
+        <h1 class="text-4xl font-extrabold tracking-tight md:text-5xl">A Didática</h1>
+        <p class="text-xl font-semibold uppercase tracking-widest text-secondary">Imersão no Sistema Progressivo de Jiu-Jitsu</p>
+        <p class="text-lg leading-relaxed">
+          118 vídeos exclusivos para Professores, Faixas Pretas, Graduados e Iniciantes, do básico ao avançado, com acesso vitalício!
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            class="btn btn-secondary btn-lg font-bold text-secondary-content"
+            href={ctaLink}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Quero começar a imersão
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid gap-8 lg:grid-cols-2">
+      <div class="prose max-w-none">
+        <h2>Metodologia Exclusiva</h2>
+        <p>No tatame, cada detalhe faz diferença.</p>
+        <p>
+          E quando falamos em <strong>ensinar e aprender Jiu-Jitsu de forma progressiva</strong>, estamos falando de transformar a sua prática em algo muito maior: clareza, evolução técnica, metodologia diferenciada e paixão pela arte suave.
+        </p>
+        <p>
+          A Sylvio Behring Association (SBA) lança agora <strong>a imersão mais completa já criada sobre o Sistema Progressivo de Jiu-Jitsu</strong>, com a didática que há mais de 30 anos forma professores de excelência e campeões nos tatames e na vida!
+        </p>
+      </div>
+      <div class="flex flex-col gap-4 rounded-2xl bg-base-100 p-6 shadow-lg">
+        {methodologyHighlights.map((item) => (
+          <p class="text-lg leading-relaxed" key={item}>{item}</p>
+        ))}
+        <a
+          class="btn btn-primary btn-block"
+          href={ctaLink}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Quero começar a imersão
+        </a>
+      </div>
+    </section>
+
+    <section class="grid gap-6 rounded-2xl bg-base-100 p-8 shadow-lg lg:grid-cols-[1fr_1fr]">
+      <div class="prose max-w-none">
+        <h3>Você já se sentiu perdido no tatame?</h3>
+        <p class="font-semibold">Aluno:</p>
+        <p>{challenges[0]}</p>
+        <p class="font-semibold">Professor:</p>
+        <p>{challenges[1]}</p>
+        <p>{challenges[2]}</p>
+        <p>{challenges[3]}</p>
+      </div>
+      <div class="prose max-w-none">
+        {coursePromises.map((text) => (
+          <p key={text}>{text}</p>
+        ))}
+        <a
+          class="btn btn-secondary mt-4"
+          href={ctaLink}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Quero comprar A Didática
+        </a>
+      </div>
+    </section>
+
+    <section class="rounded-2xl bg-base-100 p-8 shadow-lg">
+      <div class="prose mx-auto max-w-none">
+        <h2>Conteúdo da plataforma</h2>
+      </div>
+      <ol class="mt-6 columns-1 gap-4 text-base md:columns-2 lg:columns-3">
+        {modules.map((module) => (
+          <li class="break-inside-avoid py-1" key={module}>{module}</li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="flex flex-col gap-8">
+      <div class="prose max-w-none text-center">
+        <h2>Os Professores</h2>
+        <p>Conheça um pouco da história dos Professores</p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2">
+        {professors.map((professor) => (
+          <article class="flex h-full flex-col gap-4 rounded-2xl bg-base-100 p-6 shadow-lg" key={professor.name}>
+            <header>
+              <h3 class="text-2xl font-bold">{professor.name}</h3>
+              <p class="text-sm uppercase tracking-wide text-secondary">{professor.rank}</p>
+            </header>
+            <div class="space-y-3 text-sm leading-relaxed">
+              {professor.bio.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="rounded-2xl bg-base-100 p-8 shadow-lg">
+      <div class="prose max-w-none">
+        <h2>O Mestre</h2>
+        <p class="text-lg font-semibold">O criador do Sistema Progressivo de Jiu-Jitsu</p>
+        <h3 class="mt-2 text-2xl font-bold">Mestre Sylvio Behring</h3>
+        <p class="uppercase tracking-wide text-secondary">Faixa Vermelha e Preta 8º Grau</p>
+      </div>
+      <div class="mt-6 space-y-3 text-base leading-relaxed">
+        {masterBio.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
+    </section>
+
+    <section class="rounded-2xl bg-base-100 p-8 shadow-lg">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 class="text-3xl font-bold">Perguntas frequentes</h2>
+          <p>Confira as dúvidas mais frequentes na compra da Imersão no Sistema Progressivo de Jiu-Jitsu:</p>
+        </div>
+        <a
+          class="btn btn-primary"
+          href={ctaLink}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Quero comprar A Didática
+        </a>
+      </div>
+      <div class="mt-6 space-y-4">
+        {faqs.map((faq) => (
+          <details class="group rounded-xl border border-base-300 bg-base-200 p-4" key={faq.question}>
+            <summary class="cursor-pointer text-lg font-semibold">
+              {faq.question}
+            </summary>
+            {Array.isArray(faq.answer) ? (
+              <ul class="mt-2 list-disc space-y-1 pl-5">
+                {faq.answer.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            ) : (
+              <p class="mt-2">{faq.answer}</p>
+            )}
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="rounded-2xl bg-secondary/20 p-8 shadow-lg">
+      <div class="mx-auto max-w-3xl space-y-6 text-center">
+        <p class="text-sm font-semibold uppercase tracking-wide text-secondary">O investimento</p>
+        <h2 class="text-3xl font-bold">Essa é a chance de investir em si mesmo e no seu Jiu-Jitsu com um método comprovado.</h2>
+        <p>
+          Agora é com você! Você pode continuar treinando no improviso… ou mergulhar em uma imersão que vai transformar a sua forma de aprender, ensinar e viver o Jiu-Jitsu.
+        </p>
+        <div class="flex flex-wrap justify-center gap-2 text-sm font-semibold uppercase tracking-wide">
+          {investmentHighlights.map((item) => (
+            <span class="rounded-full bg-secondary px-4 py-1 text-secondary-content" key={item}>{item}</span>
+          ))}
+        </div>
+        <div class="rounded-2xl bg-base-100 p-6 shadow-xl">
+          <div class="space-y-2 text-lg">
+            <p>
+              <span class="font-semibold">De </span>
+              <span class="line-through">R$497,00</span>
+            </p>
+            <p>
+              <span class="font-semibold">Por </span>
+              <span class="text-3xl font-extrabold">10x R$35,69</span>
+            </p>
+            <p>
+              <span class="font-semibold">Ou por </span>
+              <span class="text-2xl font-bold">R$297,00 à vista.</span>
+            </p>
+          </div>
+          <ul class="mt-4 space-y-2 text-left text-sm">
+            {guaranteeDetails.map((item) => (
+              <li class="flex items-start gap-2" key={item}>
+                <span class="mt-1 h-2 w-2 rounded-full bg-secondary"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a
+            class="btn btn-secondary btn-block mt-6 text-secondary-content"
+            href={ctaLink}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Quero comprar a Didática
+          </a>
+          <p class="mt-4 text-xs text-base-content/70">
+            Você possui um cupom de desconto? Utilize na página de pagamento!
+          </p>
+          <p class="text-xs text-base-content/70">
+            *Este produto não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</div>
+---
