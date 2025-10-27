@@ -1,6 +1,7 @@
 ---
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import DidaticaCTA from "@/components/DidaticaCTA.astro";
 
 const ctaLink = "https://pay.hotmart.com/W102120628U";
 
@@ -245,36 +246,9 @@ const guaranteeDetails = [
 
 <div class="bg-base-200 flex min-h-svh w-full flex-col items-center">
   <Header />
-  <main class="flex w-full max-w-6xl flex-1 flex-col gap-16 px-4 pb-16 lg:px-0">
-    <section
-      class="bg-primary text-primary-content overflow-hidden rounded-2xl px-6 py-12 shadow-xl"
-    >
-      <div class="mx-auto flex max-w-3xl flex-col gap-6 text-center">
-        <h1 class="text-4xl font-extrabold tracking-tight md:text-5xl">
-          A Didática
-        </h1>
-        <p
-          class="text-secondary text-xl font-semibold tracking-widest uppercase"
-        >
-          Imersão no Sistema Progressivo de Jiu-Jitsu
-        </p>
-        <p class="text-lg leading-relaxed">
-          118 vídeos exclusivos para Professores, Faixas Pretas, Graduados e
-          Iniciantes, do básico ao avançado, com acesso vitalício!
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a
-            class="btn btn-secondary btn-lg text-secondary-content font-bold"
-            href={ctaLink}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Quero começar a imersão
-          </a>
-        </div>
-      </div>
-    </section>
-
+  <main
+    class="mt-8 flex w-full max-w-6xl flex-1 flex-col gap-16 px-4 pb-16 lg:px-0"
+  >
     <section class="grid gap-8 lg:grid-cols-2">
       <div class="prose max-w-none">
         <h2>Metodologia Exclusiva</h2>
@@ -305,6 +279,8 @@ const guaranteeDetails = [
         <a
           class="btn btn-primary btn-block"
           href={ctaLink}
+          data-umami-event="botao-comprar-didatica"
+          data-umami-event-id="2"
           rel="noopener noreferrer"
           target="_blank"
         >
@@ -330,9 +306,10 @@ const guaranteeDetails = [
         <a
           class="btn btn-secondary mt-4"
           href={ctaLink}
+          data-umami-event="botao-comprar-didatica"
+          data-umami-event-id="3"
           rel="noopener noreferrer"
           target="_blank"
-          data-umami-event="botao-comprar-didatica-1"
         >
           Quero comprar A Didática
         </a>
@@ -413,9 +390,10 @@ const guaranteeDetails = [
         <a
           class="btn btn-primary"
           href={ctaLink}
+          data-umami-event="botao-comprar-didatica"
+          data-umami-event-id="4"
           rel="noopener noreferrer"
           target="_blank"
-          data-umami-event="botao-comprar-didatica-2"
         >
           Quero comprar A Didática
         </a>
@@ -501,9 +479,10 @@ const guaranteeDetails = [
           <a
             class="btn btn-secondary btn-block text-secondary-content mt-6"
             href={ctaLink}
+            data-umami-event="botao-comprar-didatica"
+            data-umami-event-id="5"
             rel="noopener noreferrer"
             target="_blank"
-            data-umami-event="botao-comprar-didatica-3"
           >
             Quero comprar a Didática
           </a>
