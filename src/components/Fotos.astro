@@ -11,18 +11,23 @@ const carrosel = [Foto, Foto1, Foto2, Foto3];
 <div class="carousel relative w-full" id="carousel-fotos">
   {
     carrosel.map((foto, index) => (
-      <div 
-        id={"foto" + index} 
+      <div
+        id={"foto" + index}
         class="carousel-item relative w-full"
         data-carousel-item={index}
       >
-        <Picture
-          src={foto}
-          loading={index === 0 ? "eager" : "lazy"}
-          alt="Foto de alunos treinando Jiu-Jitsu na Escola de Jiu-Jitsu Azambuja-Behring."
-          class="w-full bg-cover"
-          layout="constrained"
-        />
+        <div class="w-full">
+          <Picture
+            src={foto}
+            loading={index === 0 ? "eager" : "lazy"}
+            alt="Foto de alunos treinando Jiu-Jitsu na Escola de Jiu-Jitsu Azambuja-Behring."
+            widths={[640, 960, 1280]}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1280px"
+            formats={["avif", "webp", "jpeg"]}
+            class="h-full w-full object-cover"
+            layout="constrained"
+          />
+        </div>
         <div class="absolute top-1/2 right-5 left-5 flex -translate-y-1/2 transform justify-between">
           <button
             type="button"
