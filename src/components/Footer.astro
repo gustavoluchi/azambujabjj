@@ -2,13 +2,13 @@
 import Logo from "@/components/Logo.astro";
 ---
 
-<footer class="w-full bg-base-200 text-base-content">
+<footer class="bg-base-200 text-base-content w-full">
   <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-4">
     <div class="grid gap-4 md:grid-cols-3 md:items-start">
-      <div class="flex flex-col items-center text-center gap-1">
+      <div class="flex flex-col items-center gap-1 text-center">
         <Logo className="h-20 w-20" loading="lazy" />
         <p class="font-bold">Escola de Jiu-Jitsu Azambuja-Behring</p>
-        <p class="text-sm opacity-80">Há 17 anos ensinando a arte suave.</p>
+        <p class="text-sm opacity-80">Desde 2009 ensinando a arte suave.</p>
       </div>
 
       <div class="flex flex-col gap-1 text-center md:text-left">
@@ -39,7 +39,7 @@ import Logo from "@/components/Logo.astro";
             href="https://www.youtube.com/@azambujabehring8844"
             aria-label="Link para canal no YouTube."
             data-umami-event="a-youtube"
-            class="text-base-content/80 transition hover:text-primary"
+            class="text-base-content/80 hover:text-primary transition"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ import Logo from "@/components/Logo.astro";
             href="https://www.instagram.com/azambujabehringbjj/"
             aria-label="Link para página no Instagram."
             data-umami-event="a-instagram"
-            class="text-base-content/80 transition hover:text-primary"
+            class="text-base-content/80 hover:text-primary transition"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,9 +75,10 @@ import Logo from "@/components/Logo.astro";
       </div>
     </div>
 
-    <div class="border-t border-base-300 pt-2 text-center">
+    <div class="border-base-300 border-t pt-2 text-center">
       <p class="text-sm opacity-80">
-        Copyright © 2025 Escola de Jiu-Jitsu Azambuja-Behring – Todos os direitos reservados.
+        Copyright © 2026 Escola de Jiu-Jitsu Azambuja-Behring – Todos os
+        direitos reservados.
       </p>
     </div>
   </div>
@@ -87,15 +88,20 @@ import Logo from "@/components/Logo.astro";
     href="https://api.whatsapp.com/send/?phone=5551980267688"
     target="_blank"
     rel="noreferrer"
-    class="btn btn-success btn-circle fixed bottom-5 right-5 z-50 shadow-lg"
+    class="btn btn-success btn-circle fixed right-5 bottom-5 z-50 shadow-lg"
     aria-label="Atendimento via WhatsApp"
     data-umami-event="btn-whatsapp-flutuante"
   >
     <!-- Ícone WhatsApp -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 32 32" fill="currentColor">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      viewBox="0 0 32 32"
+      fill="currentColor"
+    >
       <path
         d="M16 3C9.4 3 4 8.4 4 15c0 2.5.7 4.8 2 6.8L4 29l7.4-2c1.9 1 4 1.6 6.6 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3Zm0 22c-2.2 0-4.2-.6-5.9-1.7l-.4-.2-4.4 1.2 1.2-4.3-.3-.4C5 18.8 4.5 17 4.5 15 4.5 9.7 9.1 5 16 5c6.4 0 11.5 5.1 11.5 11.5S22.4 25 16 25Zm6.2-6.8c-.3-.1-1.9-.9-2.1-1s-.5-.1-.7.1c-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.6-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.1.2-.3.2-.5s-.1-.3-.1-.4c0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.7.6.7.2 1.3.2 1.8.1.6-.1 1.9-.8 2.1-1.5.2-.7.2-1.3.2-1.4 0-.1-.1-.2-.3-.3Z"
-      />
+      ></path>
     </svg>
   </a>
 </footer>

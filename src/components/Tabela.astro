@@ -1,194 +1,204 @@
+---
+const days = ["Segunda", "Terça", "Quarta NOGI", "Quinta", "Sexta", "Sábado"];
+
+type IconName = "belt" | "child" | "clock" | "female" | "kimono";
+type ClassId =
+  | "adolescentes"
+  | "feminina"
+  | "femininaKimono"
+  | "graduados"
+  | "iniciantes"
+  | "iniciantesGraduados"
+  | "kids"
+  | "miniKids"
+  | "sabadonze";
+
+type ClassInfo = {
+  label: string;
+  detail: string;
+  icon: IconName;
+  style: string;
+};
+
+const rows: Array<{ time: string; classes: Array<ClassId | null> }> = [
+  {
+    time: "07h00",
+    classes: [null, "iniciantes", null, "iniciantes", null, null],
+  },
+  {
+    time: "09h00",
+    classes: ["feminina", null, "femininaKimono", null, null, null],
+  },
+  {
+    time: "10h00",
+    classes: [null, "miniKids", null, "miniKids", null, null],
+  },
+  {
+    time: "11h00",
+    classes: [
+      "iniciantesGraduados",
+      null,
+      "iniciantesGraduados",
+      null,
+      "iniciantesGraduados",
+      "sabadonze",
+    ],
+  },
+  {
+    time: "12h00",
+    classes: [null, "graduados", null, "graduados", null, null],
+  },
+  {
+    time: "17h00",
+    classes: [null, "iniciantes", null, "iniciantes", null, null],
+  },
+  {
+    time: "17h30",
+    classes: ["kids", null, "kids", null, null, null],
+  },
+  {
+    time: "18h15",
+    classes: [null, "miniKids", null, "miniKids", null, null],
+  },
+  {
+    time: "18h30",
+    classes: ["iniciantes", null, "iniciantes", null, "iniciantes", null],
+  },
+  {
+    time: "19h00",
+    classes: [null, "adolescentes", null, "adolescentes", null, null],
+  },
+  {
+    time: "19h30",
+    classes: ["graduados", null, "graduados", null, "graduados", null],
+  },
+  {
+    time: "20h00",
+    classes: [
+      null,
+      "iniciantesGraduados",
+      null,
+      "iniciantesGraduados",
+      null,
+      null,
+    ],
+  },
+];
+
+const classInfo: Record<ClassId, ClassInfo> = {
+  adolescentes: {
+    label: "Adolescentes",
+    detail: "12 a 16 anos",
+    icon: "child",
+    style: "bg-orange-500 text-white",
+  },
+  feminina: {
+    label: "Feminina",
+    detail: "",
+    icon: "female",
+    style: "bg-amber-500 text-white",
+  },
+  femininaKimono: {
+    label: "Feminina",
+    detail: "com kimono",
+    icon: "female",
+    style: "bg-amber-500 text-white",
+  },
+  graduados: {
+    label: "Graduados",
+    detail: "",
+    icon: "belt",
+    style: "bg-neutral text-neutral-content",
+  },
+  iniciantes: {
+    label: "Iniciantes",
+    detail: "",
+    icon: "kimono",
+    style: "bg-blue-600 text-white",
+  },
+  iniciantesGraduados: {
+    label: "Iniciantes /",
+    detail: "Graduados",
+    icon: "kimono",
+    style: "bg-blue-600 text-white",
+  },
+  kids: {
+    label: "Kids",
+    detail: "08 a 12 anos",
+    icon: "child",
+    style: "bg-green-600 text-white",
+  },
+  miniKids: {
+    label: "Mini Kids",
+    detail: "04 a 07 anos",
+    icon: "child",
+    style: "bg-purple-500 text-white",
+  },
+  sabadonze: {
+    label: "Sabadonze",
+    detail: "",
+    icon: "clock",
+    style: "bg-red-600 text-white",
+  },
+};
+
+const icons: Record<IconName, string> = {
+  belt: `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 8 5 5"/><path d="m15 13 5-5"/><path d="m4 16 5-5"/><path d="m15 11 5 5"/><path d="M9 10h6v4H9z"/><path d="M10.5 10v4"/><path d="M13.5 10v4"/></svg>`,
+  child: `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10.5a5 5 0 0 1 10 0v3a5 5 0 0 1-10 0z"/><path d="M6.8 12.2H5.9a1.4 1.4 0 0 0 0 2.8h1"/><path d="M17.2 12.2h.9a1.4 1.4 0 0 1 0 2.8h-1"/><path d="M8.5 10.2c1.9.2 3.5-.3 4.8-1.6.6 1 1.3 1.6 2.2 1.8"/><path d="M10 13h.01"/><path d="M14 13h.01"/><path d="M10 16c1.3.8 2.7.8 4 0"/></svg>`,
+  clock: `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 2"/></svg>`,
+  female: `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 11c-1.2 1.2-2 3.2-2 5.5V20h12v-3.5c0-2.3-.8-4.3-2-5.5"/><path d="M7.5 11.5C8 7 9.8 4.5 12 4.5s4 2.5 4.5 7"/><circle cx="12" cy="10.5" r="3"/><path d="M9.2 9.3c1.6-.2 3-.9 4-2.1.5 1 1.1 1.7 1.8 2.1"/></svg>`,
+  kimono: `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8l4.5 4-2.3 4.2L16 11v9H8v-9l-2.2 1.2L3.5 8z"/><path d="M10 4v5.5l2 2 2-2V4"/><path d="M8 15h8"/><path d="M10 15v2"/><path d="M14 15v2"/></svg>`,
+};
+---
+
 <div
-  class="rounded-box border-base-content/5 bg-base-100 w-full max-w-6xl min-w-4xl border"
+  class="rounded-box border-base-content/5 bg-base-100 w-full max-w-6xl border"
 >
-  <table class="table-zebra table text-center">
-    {/* head */}
+  <table class="table-zebra table table-fixed text-center">
     <thead class="bg-base-300 text-base-content">
-      <tr>
-        <th>Hora</th>
-        <th>Segunda</th>
-        <th>Terça</th>
-        <th>Quarta NOGI</th>
-        <th>Quinta</th>
-        <th>Sexta</th>
-        <th>Sábado</th>
+      <tr class="[&>th]:px-1.5 [&>th]:py-2">
+        <th class="w-[4.25rem] text-xs sm:w-20 sm:text-sm">Hora</th>
+        {
+          days.map((day) => (
+            <th class="text-[0.68rem] leading-tight sm:text-sm">{day}</th>
+          ))
+        }
       </tr>
     </thead>
     <tbody>
-      {/* 09h00 */}
-      <tr>
-        <th>09h00</th>
-        <td><b>Feminina</b></td>
-        <td></td>
-        <td>
-          <b>Feminina</b>
-          <br />
-          <span class="badge">(com kimono)</span>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      {/* 09h30 */}
-      <tr>
-        <th>09h30</th>
-        <td></td>
-        <td>
-          Mini Kids <br />
-          <span class="badge badge-accent"
-            ><div aria-hidden={true} class="status status-secondary"></div>4 a 7
-            anos</span
-          ></td
-        >
-        <td></td>
-        <td>
-          Mini Kids <br />
-          <span class="badge badge-accent"
-            ><div aria-hidden={true} class="status status-secondary"></div>4 a 7
-            anos</span
-          ></td
-        >
-        <td></td>
-        <td></td>
-      </tr>
-      {/* 11h00 */}
-      <tr>
-        <th>11h00</th>
-        <td>
-          <span class="underline">Iniciantes</span> /<br /><b>Graduados</b></td
-        >
-        <td></td>
-        <td>
-          <span class="underline">Iniciantes</span> /<br /><b>Graduados</b></td
-        >
-        <td></td>
-        <td>
-          <span class="underline">Iniciantes</span> /<br /><b>Graduados</b></td
-        >
-        <td><span class="badge badge-outline">Sabadonze</span></td>
-      </tr>
-      {/* 12h00 */}
-      <tr>
-        <th>12h00</th>
-        <td></td>
-        <td><b>Graduados</b></td>
-        <td></td>
-        <td><b>Graduados</b></td>
-        <td></td>
-        <td></td>
-      </tr>
-      {/* 17h00 */}
-      <tr>
-        <th>17h00</th>
-        <td></td>
-        <td class="underline">Iniciantes</td>
-        <td></td>
-        <td class="underline">Iniciantes</td>
-        <td></td>
-        <td></td>
-      </tr>
-      {/* 17h30 */}
-      <tr>
-        <th>17h30</th>
-        <td>
-          Kids <br />
-          <span class="badge bg-accent badge-accent"
-            ><div aria-hidden={true} class="status status-error"></div>8 a 12
-            anos</span
-          ></td
-        >
-        <td></td>
-        <td>
-          Kids <br />
-          <span class="badge bg-accent"
-            ><div aria-hidden={true} class="status status-error"></div>8 a 12
-            anos</span
-          ></td
-        >
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      {/* 18h15 */}
-      <tr>
-        <th>18h15</th>
-        <td></td>
-        <td>
-          Mini Kids
-          <br />
-          <span class="badge bg-accent"
-            ><div aria-hidden={true} class="status status-secondary"></div>
-            4 a 7 anos</span
-          >
-        </td>
-        <td></td>
-        <td>
-          Mini Kids
-          <br />
-          <span class="badge bg-accent"
-            ><div aria-hidden={true} class="status status-secondary"></div>
-            4 a 7 anos</span
-          >
-        </td>
-        <td></td>
-        <td></td>
-      </tr>
-      {/* 18h30 */}
-      <tr>
-        <th>18h30</th>
-        <td class="underline">Iniciantes</td>
-        <td></td>
-        <td class="underline">Iniciantes</td>
-        <td></td>
-        <td class="underline">Iniciantes</td>
-        <td></td>
-      </tr>
-      {/* 19h00 */}
-      <tr>
-        <th>19h00</th>
-        <td></td>
-        <td>
-          Adolescentes <br />
-          <span class="badge bg-accent"
-            ><div aria-hidden={true} class="status status-primary"></div>12 a 16
-            anos</span
-          ></td
-        >
-        <td></td>
-        <td>
-          Adolescentes <br />
-          <span class="badge bg-accent"
-            ><div aria-hidden={true} class="status status-primary"></div>12 a 16
-            anos</span
-          ></td
-        >
-        <td></td>
-        <td></td>
-      </tr>
-      {/* 19h30 */}
-      <tr>
-        <th>19h30</th>
-        <td><b>Graduados</b></td>
-        <td></td>
-        <td><b>Graduados</b></td>
-        <td></td>
-        <td><b>Graduados</b></td>
-        <td></td>
-      </tr>
-      {/* 20h00 */}
-      <tr>
-        <th>20h00</th>
-        <td></td>
-        <td>
-          <span class="underline">Iniciantes</span> /<br /><b>Graduados</b></td
-        >
-        <td></td>
-        <td>
-          <span class="underline">Iniciantes</span> /<br /><b>Graduados</b></td
-        >
-        <td> </td>
-        <td></td>
-      </tr>
+      {
+        rows.map((row) => (
+          <tr class="[&>td]:px-1 [&>td]:py-1.5 [&>th]:px-1.5 [&>th]:py-1.5">
+            <th class="text-xs sm:text-sm">{row.time}</th>
+            {row.classes.map((classId) => {
+              const item = classId ? classInfo[classId] : null;
+
+              return (
+                <td>
+                  {item ? (
+                    <div
+                      class={`mx-auto flex min-h-10 max-w-32 items-center justify-center gap-1 rounded-md px-1 py-1 text-[0.58rem] leading-none font-bold uppercase shadow-sm sm:min-h-11 sm:gap-1.5 sm:text-[0.68rem] lg:text-xs ${item.style}`}
+                    >
+                      <span
+                        class="size-4 shrink-0 sm:size-5"
+                        set:html={icons[item.icon]}
+                      />
+                      <span class="flex min-w-0 flex-col">
+                        <span>{item.label}</span>
+                        {item.detail ? (
+                          <span class="text-[0.5rem] normal-case opacity-90 sm:text-[0.58rem]">
+                            {item.detail}
+                          </span>
+                        ) : null}
+                      </span>
+                    </div>
+                  ) : null}
+                </td>
+              );
+            })}
+          </tr>
+        ))
+      }
     </tbody>
   </table>
 </div>

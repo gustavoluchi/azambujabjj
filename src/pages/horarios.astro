@@ -3,7 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Tabela from "../components/Tabela.astro";
-import GradeHorarios from "@/assets/grade_horarios.jpg";
+
+const gradeHorarios = "/gradehorarios.jpeg";
 ---
 
 <Layout>
@@ -11,16 +12,21 @@ import GradeHorarios from "@/assets/grade_horarios.jpg";
     <Header />
     <main class="flex w-full flex-col items-center py-12">
       <div class="w-full max-w-6xl px-6 xl:w-4/6">
-        <h1 class="mb-8 text-4xl font-bold text-primary">Horários de Aulas</h1>
+        <h1 class="text-primary mb-8 text-4xl font-bold">Horários de Aulas</h1>
         <div class="mb-6 flex flex-wrap gap-3">
           <a
             class="btn btn-primary btn-sm"
-            href={GradeHorarios.src}
-            download
+            href={gradeHorarios}
+            download="grade-horarios-azambuja.jpeg"
           >
             Baixar grade
           </a>
-          <a class="btn btn-ghost btn-sm" href={GradeHorarios.src} target="_blank" rel="noreferrer">
+          <a
+            class="btn btn-ghost btn-sm"
+            href={gradeHorarios}
+            target="_blank"
+            rel="noreferrer"
+          >
             Ver grade (imagem)
           </a>
         </div>
