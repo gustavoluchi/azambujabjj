@@ -20,7 +20,7 @@ const carrosel = [Foto, Foto1, Foto2, Foto3];
           <Picture
             src={foto}
             loading={index === 0 ? "eager" : "lazy"}
-            alt="Foto de alunos treinando Jiu-Jitsu na Escola de Jiu-Jitsu Azambuja-Behring."
+            alt="Foto de alunos treinando Jiu-Jitsu na Escola de Jiu-Jitsu Azambuja."
             widths={[640, 960, 1280]}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1280px"
             formats={["avif", "webp", "jpeg"]}
@@ -150,27 +150,27 @@ const carrosel = [Foto, Foto1, Foto2, Foto3];
     let isScrolling = false;
     carousel.addEventListener('scroll', function() {
       if (isScrolling) return;
-      
+
       // Encontrar qual item está mais visível
       let maxVisible = 0;
       let maxRatio = 0;
-      
+
       items.forEach(function(item, index) {
         const rect = item.getBoundingClientRect();
         const carouselRect = carousel.getBoundingClientRect();
-        
+
         // Calcular quanto do item está visível dentro do carrossel
         const visibleLeft = Math.max(rect.left, carouselRect.left);
         const visibleRight = Math.min(rect.right, carouselRect.right);
         const visibleWidth = Math.max(0, visibleRight - visibleLeft);
         const ratio = visibleWidth / rect.width;
-        
+
         if (ratio > maxRatio) {
           maxRatio = ratio;
           maxVisible = index;
         }
       });
-      
+
       if (maxRatio > 0.5) {
         currentIndex = maxVisible;
       }
