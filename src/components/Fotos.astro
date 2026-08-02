@@ -52,11 +52,11 @@ const carrosel = [Foto, Foto1, Foto2, Foto3];
 </div>
 
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.getElementById('carousel-fotos');
+  document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.getElementById("carousel-fotos");
     if (!carousel) return;
 
-    const items = carousel.querySelectorAll('[data-carousel-item]');
+    const items = carousel.querySelectorAll("[data-carousel-item]");
     const totalItems = items.length;
     if (totalItems === 0) return;
 
@@ -89,7 +89,7 @@ const carrosel = [Foto, Foto1, Foto2, Foto3];
         const scrollPosition = getScrollPosition(currentIndex);
         carousel.scrollTo({
           left: scrollPosition,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       }
     }
@@ -121,11 +121,15 @@ const carrosel = [Foto, Foto1, Foto2, Foto3];
     }
 
     // Event listeners para os botões
-    const prevButtons = carousel.querySelectorAll('[data-carousel-action="prev"]');
-    const nextButtons = carousel.querySelectorAll('[data-carousel-action="next"]');
+    const prevButtons = carousel.querySelectorAll(
+      '[data-carousel-action="prev"]',
+    );
+    const nextButtons = carousel.querySelectorAll(
+      '[data-carousel-action="next"]',
+    );
 
-    prevButtons.forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
+    prevButtons.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
         e.preventDefault();
         stopAutoplay();
         prevSlide();
@@ -133,8 +137,8 @@ const carrosel = [Foto, Foto1, Foto2, Foto3];
       });
     });
 
-    nextButtons.forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
+    nextButtons.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
         e.preventDefault();
         stopAutoplay();
         nextSlide();
@@ -143,19 +147,19 @@ const carrosel = [Foto, Foto1, Foto2, Foto3];
     });
 
     // Pausar autoplay quando o usuário passar o mouse sobre o carrossel
-    carousel.addEventListener('mouseenter', stopAutoplay);
-    carousel.addEventListener('mouseleave', startAutoplay);
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
 
     // Detectar mudanças de slide quando o usuário usar scroll manual
     let isScrolling = false;
-    carousel.addEventListener('scroll', function() {
+    carousel.addEventListener("scroll", function () {
       if (isScrolling) return;
 
       // Encontrar qual item está mais visível
       let maxVisible = 0;
       let maxRatio = 0;
 
-      items.forEach(function(item, index) {
+      items.forEach(function (item, index) {
         const rect = item.getBoundingClientRect();
         const carouselRect = carousel.getBoundingClientRect();
 
