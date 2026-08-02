@@ -56,28 +56,140 @@ const fotosMap: Record<number, typeof foto01 | null> = {
 
 // Dados dos faixas pretas formados
 const faixasPretas = [
-  { sequencia: 1, nome: "Gabriel Azambuja", dataFormacao: "16/05/2009", foto: fotosMap[1] },
-  { sequencia: 2, nome: "Delcia Enricone", dataFormacao: "07/05/2011", foto: fotosMap[2], feminino: true },
-  { sequencia: 3, nome: "Roberto Wosiack", dataFormacao: "18/11/2011", foto: fotosMap[3] },
-  { sequencia: 4, nome: "Brandon Hoffman", dataFormacao: "25/11/2013", foto: fotosMap[4] },
-  { sequencia: 5, nome: "Ramiro Barcos", dataFormacao: "08/03/2018", foto: fotosMap[5] },
-  { sequencia: 6, nome: "Bruno Konzen", dataFormacao: "08/03/2018", foto: fotosMap[6] },
-  { sequencia: 7, nome: "Nenguirú Martins", dataFormacao: "08/03/2018", foto: fotosMap[7] },
-  { sequencia: 8, nome: "Pedro Palermo", dataFormacao: "08/03/2018", foto: fotosMap[8] },
-  { sequencia: 9, nome: "Henrique Aramburu", dataFormacao: "08/03/2018", foto: fotosMap[9] },
-  { sequencia: 10, nome: "Carlos Wainberg", dataFormacao: "19/03/2019", foto: fotosMap[10] },
-  { sequencia: 11, nome: "Josué Antunes", dataFormacao: "08/12/2021", foto: fotosMap[11] },
-  { sequencia: 12, nome: "Raphael Moraes", dataFormacao: "08/12/2021", foto: fotosMap[12] },
-  { sequencia: 13, nome: "Leonardo Antoria", dataFormacao: "12/12/2022", foto: fotosMap[13] },
-  { sequencia: 14, nome: "Bruno Rosa", dataFormacao: "25/07/2023", foto: fotosMap[14] },
-  { sequencia: 15, nome: "Guilherme Rodrigues", dataFormacao: "17/11/2023", foto: fotosMap[15] },
-  { sequencia: 16, nome: "Crisciele Santos", dataFormacao: "22/01/2024", foto: fotosMap[16], feminino: true },
-  { sequencia: 17, nome: "Sergio Freiberg", dataFormacao: "27/07/2024", foto: fotosMap[17] },
-  { sequencia: 18, nome: "Edson Quagliotto", dataFormacao: "07/12/2024", foto: fotosMap[18] },
-  { sequencia: 19, nome: "Guilherme Entrudo", dataFormacao: "07/12/2024", foto: fotosMap[19] },
-  { sequencia: 20, nome: "Leonardo Rocha", dataFormacao: "07/12/2024", foto: fotosMap[20] },
-  { sequencia: 21, nome: "Adryan Carvalho", dataFormacao: "07/12/2024", foto: fotosMap[21] },
-  { sequencia: 22, nome: "Diego Dias", dataFormacao: "30/11/2025", foto: fotosMap[22] },
+  {
+    sequencia: 1,
+    nome: "Gabriel Azambuja",
+    dataFormacao: "16/05/2009",
+    foto: fotosMap[1],
+  },
+  {
+    sequencia: 2,
+    nome: "Delcia Enricone",
+    dataFormacao: "07/05/2011",
+    foto: fotosMap[2],
+    feminino: true,
+  },
+  {
+    sequencia: 3,
+    nome: "Roberto Wosiack",
+    dataFormacao: "18/11/2011",
+    foto: fotosMap[3],
+  },
+  {
+    sequencia: 4,
+    nome: "Brandon Hoffman",
+    dataFormacao: "25/11/2013",
+    foto: fotosMap[4],
+  },
+  {
+    sequencia: 5,
+    nome: "Ramiro Barcos",
+    dataFormacao: "08/03/2018",
+    foto: fotosMap[5],
+  },
+  {
+    sequencia: 6,
+    nome: "Bruno Konzen",
+    dataFormacao: "08/03/2018",
+    foto: fotosMap[6],
+  },
+  {
+    sequencia: 7,
+    nome: "Nenguirú Martins",
+    dataFormacao: "08/03/2018",
+    foto: fotosMap[7],
+  },
+  {
+    sequencia: 8,
+    nome: "Pedro Palermo",
+    dataFormacao: "08/03/2018",
+    foto: fotosMap[8],
+  },
+  {
+    sequencia: 9,
+    nome: "Henrique Aramburu",
+    dataFormacao: "08/03/2018",
+    foto: fotosMap[9],
+  },
+  {
+    sequencia: 10,
+    nome: "Carlos Wainberg",
+    dataFormacao: "19/03/2019",
+    foto: fotosMap[10],
+  },
+  {
+    sequencia: 11,
+    nome: "Josué Antunes",
+    dataFormacao: "08/12/2021",
+    foto: fotosMap[11],
+  },
+  {
+    sequencia: 12,
+    nome: "Raphael Moraes",
+    dataFormacao: "08/12/2021",
+    foto: fotosMap[12],
+  },
+  {
+    sequencia: 13,
+    nome: "Leonardo Antoria",
+    dataFormacao: "12/12/2022",
+    foto: fotosMap[13],
+  },
+  {
+    sequencia: 14,
+    nome: "Bruno Rosa",
+    dataFormacao: "25/07/2023",
+    foto: fotosMap[14],
+  },
+  {
+    sequencia: 15,
+    nome: "Guilherme Rodrigues",
+    dataFormacao: "17/11/2023",
+    foto: fotosMap[15],
+  },
+  {
+    sequencia: 16,
+    nome: "Crisciele Santos",
+    dataFormacao: "22/01/2024",
+    foto: fotosMap[16],
+    feminino: true,
+  },
+  {
+    sequencia: 17,
+    nome: "Sergio Freiberg",
+    dataFormacao: "27/07/2024",
+    foto: fotosMap[17],
+  },
+  {
+    sequencia: 18,
+    nome: "Edson Quagliotto",
+    dataFormacao: "07/12/2024",
+    foto: fotosMap[18],
+  },
+  {
+    sequencia: 19,
+    nome: "Guilherme Entrudo",
+    dataFormacao: "07/12/2024",
+    foto: fotosMap[19],
+  },
+  {
+    sequencia: 20,
+    nome: "Leonardo Rocha",
+    dataFormacao: "07/12/2024",
+    foto: fotosMap[20],
+  },
+  {
+    sequencia: 21,
+    nome: "Adryan Carvalho",
+    dataFormacao: "07/12/2024",
+    foto: fotosMap[21],
+  },
+  {
+    sequencia: 22,
+    nome: "Diego Dias",
+    dataFormacao: "30/11/2025",
+    foto: fotosMap[22],
+  },
 ];
 ---
 
@@ -87,62 +199,70 @@ const faixasPretas = [
     <main class="flex w-full flex-col items-center py-12">
       <div class="w-full max-w-6xl px-6 xl:w-4/6">
         <!-- <h1 class="mb-8 text-4xl font-bold text-primary">Faixas Pretas Formados</h1> -->
-        <div class="prose prose-lg max-w-none mb-8">
+        <div class="prose prose-lg mb-8 max-w-none">
           <p class="text-lg leading-relaxed">
-            A Escola de Jiu-Jitsu Azambuja tem o orgulho de ter formado {faixasPretas.length} faixas pretas
-            desde sua fundação em 2007. Cada um desses graduados representa a dedicação,
-            disciplina e excelência no ensino do Jiu-Jitsu que caracteriza nossa escola.
+            A Escola de Jiu-Jitsu Azambuja tem o orgulho de ter formado {
+              faixasPretas.length
+            } faixas pretas desde sua fundação em 2007. Cada um desses graduados
+            representa a dedicação, disciplina e excelência no ensino do Jiu-Jitsu
+            que caracteriza nossa escola.
           </p>
           <p class="text-lg leading-relaxed">
-            Faixas pretas formados seguem os princípios do Sistema Progressivo de Jiu-Jitsu,
-            desenvolvido pelo Mestre Sylvio Behring, e muitos deles continuam sua jornada
-            como instrutores, compartilhando conhecimento e formando novos praticantes da arte suave.
+            Faixas pretas formados seguem os princípios do Sistema Progressivo
+            de Jiu-Jitsu, desenvolvido pelo Mestre Sylvio Behring, e muitos
+            deles continuam sua jornada como instrutores, compartilhando
+            conhecimento e formando novos praticantes da arte suave.
           </p>
           <p class="text-lg leading-relaxed">
-            A formação de faixas pretas na Escola Azambuja não é apenas sobre técnica,
-            mas também sobre desenvolvimento de caráter, liderança e compromisso com a arte do Jiu-Jitsu.
+            A formação de faixas pretas na Escola Azambuja não é apenas sobre
+            técnica, mas também sobre desenvolvimento de caráter, liderança e
+            compromisso com a arte do Jiu-Jitsu.
           </p>
         </div>
 
         <div class="mb-8">
           <h2 class="mb-6 text-2xl font-semibold">Faixas Pretas Formados</h2>
-          <div class="bg-base-100 border-base-300 border rounded-lg p-6">
+          <div class="bg-base-100 border-base-300 rounded-lg border p-6">
             <div class="flex justify-center">
-              <ul class="timeline timeline-vertical max-w-2xl w-full">
-              {
-                faixasPretas.map((faixa, index) => (
-                  <li class="py-2">
-                    {index > 0 && <hr class="my-2" />}
-                    <div class="timeline-start">
-                      <div class="text-base font-bold text-primary">#{faixa.sequencia}</div>
-                    </div>
-                    <div class="timeline-middle">
-                      <div class="w-32 h-32 rounded-full bg-primary/10 flex items-center justify-center border-2 border-primary/20 overflow-hidden">
-                        {faixa.foto ? (
-                          <Image
-                            src={faixa.foto}
-                            alt={`Foto de ${faixa.nome}`}
-                            width={128}
-                            height={128}
-                            class="w-32 h-32 rounded-full object-cover"
-                            loading={index < 5 ? "eager" : "lazy"}
-                          />
-                        ) : (
-                          <div class="text-5xl">👤</div>
-                        )}
+              <ul class="timeline timeline-vertical w-full max-w-2xl">
+                {
+                  faixasPretas.map((faixa, index) => (
+                    <li class="py-2">
+                      {index > 0 && <hr class="my-2" />}
+                      <div class="timeline-start">
+                        <div class="text-primary text-base font-bold">
+                          #{faixa.sequencia}
+                        </div>
                       </div>
-                    </div>
-                    <div class="timeline-end timeline-box">
-                      <div class="font-semibold text-lg mb-1">{faixa.nome}</div>
-                      <div class="text-sm opacity-70">
-                        {faixa.feminino ? "Formada em " : "Formado em "}
-                        {faixa.dataFormacao}
+                      <div class="timeline-middle">
+                        <div class="bg-primary/10 border-primary/20 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-2">
+                          {faixa.foto ? (
+                            <Image
+                              src={faixa.foto}
+                              alt={`Foto de ${faixa.nome}`}
+                              width={128}
+                              height={128}
+                              class="h-32 w-32 rounded-full object-cover"
+                              loading={index < 5 ? "eager" : "lazy"}
+                            />
+                          ) : (
+                            <div class="text-5xl">👤</div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                    {index < faixasPretas.length - 1 && <hr class="my-2" />}
-                  </li>
-                ))
-              }
+                      <div class="timeline-end timeline-box">
+                        <div class="mb-1 text-lg font-semibold">
+                          {faixa.nome}
+                        </div>
+                        <div class="text-sm opacity-70">
+                          {faixa.feminino ? "Formada em " : "Formado em "}
+                          {faixa.dataFormacao}
+                        </div>
+                      </div>
+                      {index < faixasPretas.length - 1 && <hr class="my-2" />}
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </div>

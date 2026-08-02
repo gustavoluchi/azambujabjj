@@ -12,14 +12,19 @@ import { Image } from "astro:assets";
     <Header />
     <main class="flex w-full flex-col items-center py-12">
       <div class="w-full max-w-6xl px-6 xl:w-4/6">
-        <h1 class="mb-8 text-4xl font-bold text-primary">Conheça a trajetória do professor Rafael Azambuja</h1>
+        <h1 class="text-primary mb-8 text-4xl font-bold">
+          Conheça a trajetória do professor Rafael Azambuja
+        </h1>
         <div class="mb-8">
-          <div class="bg-base-100 border-base-300 border rounded-lg p-6 w-full">
+          <div class="bg-base-100 border-base-300 w-full rounded-lg border p-6">
             <!--<h2 class="mb-6 text-2xl font-semibold">Conheça a trajetória do professor Rafael Azambuja</h2> -->
-            <div class="flex flex-col items-start xl:flex-row gap-6">
+            <div class="flex flex-col items-start gap-6 xl:flex-row">
               <div class="prose prose-lg max-w-none flex-1">
-                <p class="text-lg leading-relaxed mb-4 flex flex-col gap-4">
-                  <span>Rafael Azambuja é Faixa Preta 5º Grau e fundador da Escola de Jiu-Jitsu Azambuja.</span>
+                <p class="mb-4 flex flex-col gap-4 text-lg leading-relaxed">
+                  <span
+                    >Rafael Azambuja é Faixa Preta 5º Grau e fundador da Escola
+                    de Jiu-Jitsu Azambuja.</span
+                  >
                   <Image
                     src={RafaelFoto}
                     alt="Foto do Professor Rafael Azambuja"
@@ -29,21 +34,24 @@ import { Image } from "astro:assets";
                     loading="eager"
                   />
                 </p>
-                <blockquote class="text-lg leading-relaxed italic border-l-4 border-primary/60 pl-4">
-                  Comecei no jiu-jitsu no meio de 1997 em uma escola que não possuía
-                  uma metodologia adequada. Após persistir alguns meses, no início de
-                  1998 encontrei a Winner Behring, sob o comando do professor Márcio
-                  Corleta, que na época era faixa marrom 2 graus e estava sob a tutela
-                  do então professor Sylvio Behring. Nessa escola conheci o Sistema
-                  Progressivo de Jiu-jitsu e nela permaneci por 10 anos. Me formei faixa
-                  preta em 2005. Em 2007 determinado a começar uma nova etapa, fundei a Escola
-                  Azambuja JJ juntamente com meu primo Gabriel Azambuja na época,
-                  faixa marrom e sob a tutela do já então Mestre Sylvio Behring, desde então
-                  nossa escola cresceu muito, formando 24 faixas pretas e dando origem a
-                  diversas outras escolas.
+                <blockquote
+                  class="border-primary/60 border-l-4 pl-4 text-lg leading-relaxed italic"
+                >
+                  Comecei no jiu-jitsu no meio de 1997 em uma escola que não
+                  possuía uma metodologia adequada. Após persistir alguns meses,
+                  no início de 1998 encontrei a Winner Behring, sob o comando do
+                  professor Márcio Corleta, que na época era faixa marrom 2
+                  graus e estava sob a tutela do então professor Sylvio Behring.
+                  Nessa escola conheci o Sistema Progressivo de Jiu-jitsu e nela
+                  permaneci por 10 anos. Me formei faixa preta em 2005. Em 2007
+                  determinado a começar uma nova etapa, fundei a Escola Azambuja
+                  JJ juntamente com meu primo Gabriel Azambuja na época, faixa
+                  marrom e sob a tutela do já então Mestre Sylvio Behring, desde
+                  então nossa escola cresceu muito, formando 24 faixas pretas e
+                  dando origem a diversas outras escolas.
                 </blockquote>
               </div>
-              <div class="flex-1 w-full xl:w-auto">
+              <div class="w-full flex-1 xl:w-auto">
                 <Timeline />
               </div>
             </div>
