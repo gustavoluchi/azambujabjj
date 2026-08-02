@@ -1,4 +1,4 @@
-# Site da Escola de Jiu-Jitsu Azambuja-Behring
+# Site da Escola de Jiu-Jitsu Azambuja
 
 ## Afazeres
 
