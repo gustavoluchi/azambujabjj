@@ -1104,6 +1104,9 @@ a {
   gap: 1rem;
   margin-top: 2rem;
 }
+.detail-actions--center {
+  justify-content: center;
+}
 .media-copy {
   display: grid;
   grid-template-columns: minmax(17rem, 0.72fr) minmax(0, 1.28fr);

@@ -1,6 +1,8 @@
 ---
 import SectionHeading from "@/components/site/SectionHeading.astro";
 import { classes, schedule } from "@/data/site";
+
+const gradeHorarios = "/gradehorarios.jpeg";
 ---
 
 <section class="section section--light" id="turmas">
@@ -52,6 +54,13 @@ import { classes, schedule } from "@/data/site";
           </article>
         ))
       }
+    </div>
+    <div class="detail-actions detail-actions--center" data-reveal>
+      <a
+        class="button button--primary"
+        href={gradeHorarios}
+        download="grade-horarios-azambuja.jpeg">Grade para download</a
+      ><a class="button button--outline" href="/horarios">Ver grade completa</a>
     </div>
     <p class="section-note">
       Quarta-feira é dia de No Gi (sem kimono), exceto a turma feminina das 9h.

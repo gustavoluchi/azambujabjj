@@ -29,6 +29,20 @@ const readGrade = async () => {
   return (time, day) => rows.get(time)?.[days.indexOf(day)] ?? [];
 };
 
+test("given a visitor lands on the homepage, the schedule section signals the downloadable grid", async () => {
+  const home = await readFile(
+    new URL("../dist/index.html", import.meta.url),
+    "utf8",
+  );
+  const section = home.match(
+    /<section[^>]*id="horarios"[\s\S]*?<\/section>/,
+  )?.[0];
+
+  assert.ok(section, "A página inicial deve ter a seção de horários");
+  assert.match(section, /href="\/gradehorarios\.jpeg"[^>]*download/);
+  assert.match(section, /href="\/horarios"/);
+});
+
 test("given the feminine class moved out of Monday, the grid no longer offers it at 9h", async () => {
   const classesAt = await readGrade();
 
