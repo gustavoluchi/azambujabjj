@@ -1,64 +1,70 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Timeline from "../components/Timeline.astro";
-import RafaelFoto from "@/assets/rafael.jpg";
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/site/PageHero.astro";
+import RafaelFoto from "@/assets/reference/rafael-azambuja.jpg";
 import { Image } from "astro:assets";
+import { timeline } from "@/data/site";
 ---
 
-<Layout>
-  <div class="flex min-h-svh w-full flex-col items-center justify-center">
-    <Header />
-    <main class="flex w-full flex-col items-center py-12">
-      <div class="w-full max-w-6xl px-6 xl:w-4/6">
-        <h1 class="text-primary mb-8 text-4xl font-bold">
-          Conheça a trajetória do professor Rafael Azambuja
-        </h1>
-        <div class="mb-8">
-          <div class="bg-base-100 border-base-300 w-full rounded-lg border p-6">
-            <!--<h2 class="mb-6 text-2xl font-semibold">Conheça a trajetória do professor Rafael Azambuja</h2> -->
-            <div class="flex flex-col items-start gap-6 xl:flex-row">
-              <div class="prose prose-lg max-w-none flex-1">
-                <p class="mb-4 flex flex-col gap-4 text-lg leading-relaxed">
-                  <span
-                    >Rafael Azambuja é Faixa Preta 5º Grau e fundador da Escola
-                    de Jiu-Jitsu Azambuja.</span
-                  >
-                  <Image
-                    src={RafaelFoto}
-                    alt="Foto do Professor Rafael Azambuja"
-                    width={480}
-                    height={270}
-                    class="w-full max-w-md rounded-2xl shadow"
-                    loading="eager"
-                  />
-                </p>
-                <blockquote
-                  class="border-primary/60 border-l-4 pl-4 text-lg leading-relaxed italic"
-                >
-                  Comecei no jiu-jitsu no meio de 1997 em uma escola que não
-                  possuía uma metodologia adequada. Após persistir alguns meses,
-                  no início de 1998 encontrei a Winner Behring, sob o comando do
-                  professor Márcio Corleta, que na época era faixa marrom 2
-                  graus e estava sob a tutela do então professor Sylvio Behring.
-                  Nessa escola conheci o Sistema Progressivo de Jiu-jitsu e nela
-                  permaneci por 10 anos. Me formei faixa preta em 2005. Em 2007
-                  determinado a começar uma nova etapa, fundei a Escola Azambuja
-                  JJ juntamente com meu primo Gabriel Azambuja na época, faixa
-                  marrom e sob a tutela do já então Mestre Sylvio Behring, desde
-                  então nossa escola cresceu muito, formando 24 faixas pretas e
-                  dando origem a diversas outras escolas.
-                </blockquote>
-              </div>
-              <div class="w-full flex-1 xl:w-auto">
-                <Timeline />
-              </div>
-            </div>
-          </div>
+<Layout
+  title="Rafael Azambuja"
+  description="Conheça a trajetória do fundador e coordenador técnico Rafael Azambuja."
+  canonicalPath="/rafael-azambuja"
+>
+  <main id="conteudo">
+    <PageHero
+      eyebrow="Fundador e coordenador técnico"
+      title="Rafael Azambuja"
+      description="Faixa preta 5º grau, professor e responsável pela aplicação do Sistema Progressivo em toda a escola."
+    />
+    <section class="content-section">
+      <div class="shell media-copy">
+        <Image
+          src={RafaelFoto}
+          alt="Professor Rafael Azambuja"
+          width={720}
+          height={900}
+          loading="eager"
+        />
+        <div class="prose" data-reveal>
+          <h2>Do primeiro treino à formação de novas escolas</h2>
+          <blockquote>
+            Comecei no jiu-jitsu em 1997. No início de 1998 encontrei a Winner
+            Behring, sob o comando do professor Márcio Corleta, e conheci o
+            Sistema Progressivo de Jiu-Jitsu.
+          </blockquote>
+          <p>
+            Rafael permaneceu dez anos na Winner Behring e recebeu a faixa preta
+            em 2005. Em 2007 iniciou uma nova etapa ao fundar a Escola Azambuja
+            com Gabriel Azambuja, sob a tutela do Mestre Sylvio Behring.
+          </p>
+          <p>
+            Desde então, a escola formou 24 faixas pretas e deu origem a
+            diversas outras escolas, mantendo a avaliação individual e a
+            progressão técnica como pilares do ensino.
+          </p>
         </div>
       </div>
-    </main>
-    <Footer />
-  </div>
+    </section>
+    <section class="content-section content-section--white">
+      <div class="shell">
+        <header class="section-heading">
+          <p class="eyebrow">Trajetória competitiva</p><h2>
+            Resultados construídos ao longo do caminho
+          </h2>
+        </header><ol class="timeline" data-reveal>
+          {
+            timeline.map(([year, achievement]) => (
+              <li>
+                <>
+                  <time>{year}</time>
+                  <p>{achievement}</p>
+                </>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+  </main>
 </Layout>

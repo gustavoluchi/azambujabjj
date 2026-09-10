@@ -1,49 +1,48 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/site/PageHero.astro";
 ---
 
-<Layout>
-  <div class="flex min-h-svh w-full flex-col items-center justify-center">
-    <Header />
-    <main class="flex w-full flex-col items-center py-12">
-      <div class="w-full max-w-6xl px-6 xl:w-4/6">
-        <h1 class="text-primary mb-8 text-4xl font-bold">História da Escola</h1>
-        <div class="prose prose-lg max-w-none">
-          <p class="text-lg leading-relaxed">
-            A Escola de Jiu-Jitsu Azambuja foi fundada em 2007 pelo Professor
-            Rafael Azambuja, faixa preta 5º grau, juntamente com seu primo
-            Gabriel Azambuja, na época faixa marrom, ambos sob a tutela do
-            Mestre Sylvio Behring.
-          </p>
-          <p class="text-lg leading-relaxed">
-            Desde sua fundação, a escola tem se dedicado a ensinar a arte suave
-            utilizando o Sistema Progressivo de Jiu-Jitsu, metodologia
-            desenvolvida pelo Mestre Sylvio Behring que organiza os conteúdos de
-            forma progressiva e didática.
-          </p>
-          <p class="text-lg leading-relaxed">
-            Com mais de 17 anos de história, a Escola Azambuja cresceu
-            significativamente, formando 24 faixas pretas e dando origem a
-            diversas outras escolas ao longo do tempo.
-          </p>
-          <p class="text-lg leading-relaxed">
-            A escola mantém sua sede principal em Porto Alegre/RS, na Av.
-            Osvaldo Aranha, 794 - Bom Fim, e possui diversas filiais espalhadas
-            pelo estado, sempre seguindo os princípios e a metodologia do
-            Sistema Progressivo.
-          </p>
-          <h2 class="mt-8 text-2xl font-semibold">Nossa Missão</h2>
-          <p class="text-lg leading-relaxed">
-            Oferecer um ensino de qualidade do Jiu-Jitsu, utilizando metodologia
-            comprovada que desenvolve não apenas a técnica, mas também valores
-            como disciplina, respeito, perseverança e crescimento pessoal para
-            crianças, jovens e adultos.
-          </p>
+<Layout
+  title="Nossa história"
+  description="A história, a missão e o legado da Escola de Jiu-Jitsu Azambuja."
+  canonicalPath="/historia"
+>
+  <main id="conteudo">
+    <PageHero
+      eyebrow="Desde 2007"
+      title="Uma escola construída sobre método, respeito e evolução"
+      description="A trajetória da Azambuja nasceu do Sistema Progressivo e cresceu formando praticantes, professores e novas escolas."
+    />
+    <section class="content-section">
+      <div class="shell content-narrow prose" data-reveal>
+        <p>
+          A Escola de Jiu-Jitsu Azambuja foi fundada em 2007 pelo professor
+          Rafael Azambuja, faixa preta 5º grau, juntamente com seu primo Gabriel
+          Azambuja, na época faixa marrom, ambos sob a tutela do Mestre Sylvio
+          Behring.
+        </p>
+        <p>
+          Desde sua fundação, a escola se dedica a ensinar a arte suave
+          utilizando o Sistema Progressivo de Jiu-Jitsu, metodologia que
+          organiza os conteúdos de forma segura, progressiva e didática.
+        </p>
+        <p>
+          A escola cresceu, formou 24 faixas pretas e deu origem a outras
+          escolas, mantendo sua matriz no bairro Bom Fim, em Porto Alegre.
+        </p>
+        <h2>Nossa missão</h2>
+        <p>
+          Oferecer ensino de qualidade que desenvolve técnica e valores como
+          disciplina, respeito, perseverança e crescimento pessoal para
+          crianças, jovens e adultos.
+        </p>
+        <div class="detail-actions">
+          <a class="button button--primary" href="/#metodologia"
+            >Conheça a metodologia</a
+          ><a class="text-link" href="/faixa-preta">Veja nosso legado →</a>
         </div>
       </div>
-    </main>
-    <Footer />
-  </div>
+    </section>
+  </main>
 </Layout>

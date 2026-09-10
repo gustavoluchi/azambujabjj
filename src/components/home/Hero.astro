@@ -1,0 +1,45 @@
+---
+import logo from "@/assets/reference/logo-azambuja.png";
+import { Image } from "astro:assets";
+import { bookingUrl } from "@/data/site";
+---
+
+<section class="home-hero" id="top" aria-labelledby="hero-title">
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow eyebrow--light">
+        Sistema Progressivo de Jiu-Jitsu · Filiada à SBA
+      </p>
+      <h1 id="hero-title">
+        Você não precisa estar pronto <span>Só precisa começar</span>
+      </h1>
+      <p class="hero-lead">
+        Ensino técnico, progressivo e acolhedor de jiu jitsu para crianças,
+        adolescentes e adultos, em Porto Alegre. Cada pessoa é recebida a partir
+        da sua realidade e evolui no próprio ritmo.
+      </p>
+      <div class="hero-actions">
+        <a
+          class="button button--primary"
+          href={bookingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-umami-event="agendar-hero">Agendar aula experimental gratuita</a
+        >
+        <a class="button button--outline" href="#metodologia"
+          >Conheça a metodologia</a
+        >
+      </div>
+      <div class="hero-proof" aria-label="Destaques da escola">
+        <span>Mini Kids ao adulto</span><span>Turma feminina</span><span
+          >Filiada à SBA</span
+        ><span>Bom Fim · Porto Alegre</span>
+      </div>
+    </div>
+    <div class="hero-mark" aria-hidden="true">
+      <Image src={logo} alt="" width={500} height={500} loading="eager" />
+      <span class="hero-mark__stripes"></span>
+    </div>
+  </div>
+  <span class="scroll-cue" aria-hidden="true">Role para explorar</span>
+</section>

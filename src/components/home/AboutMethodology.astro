@@ -1,0 +1,104 @@
+---
+import sbaLogo from "@/assets/reference/sba-logo.png";
+import { Image } from "astro:assets";
+import SectionHeading from "@/components/site/SectionHeading.astro";
+---
+
+<section class="section section--light" id="sobre">
+  <div class="shell about-grid">
+    <figure class="principle" data-reveal>
+      <blockquote>
+        Ninguém precisa estar pronto para começar. Cada pessoa é recebida a
+        partir da sua realidade e estimulada a evoluir no próprio ritmo.
+      </blockquote>
+      <figcaption><cite>Princípio-guia da Azambuja</cite></figcaption>
+    </figure>
+    <div class="about-copy" data-reveal>
+      <p class="eyebrow">Quem somos</p>
+      <h2>Jiu jitsu como ferramenta de disciplina, saúde e confiança</h2>
+      <p>
+        A Escola de Jiu Jitsu Azambuja é especializada no ensino de jiu jitsu
+        para crianças, adolescentes e adultos, do iniciante ao praticante
+        avançado, utilizando o Sistema Progressivo de Jiu-Jitsu, escola filiada
+        à SBA. Tratamos o jiu jitsu como ferramenta de disciplina, segurança,
+        saúde, autocontrole, confiança, convivência, superação e qualidade de
+        vida, não apenas como luta.
+      </p>
+      <ul class="check-list">
+        <li>Aulas regulares para adultos</li><li>
+          Turmas infantis e para adolescentes
+        </li><li>Turma feminina</li><li>Aulas particulares</li><li>
+          Treinamento funcional
+        </li><li>Seminários e eventos técnicos</li><li>
+          Preparação para graduações
+        </li><li>Comunidade e integração entre alunos e famílias</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--deep" id="metodologia">
+  <div class="shell">
+    <SectionHeading
+      light
+      eyebrow="Metodologia"
+      title="Sistema Progressivo de Jiu-Jitsu, com coordenação técnica dedicada"
+      description="Todo o ensino segue o Sistema Progressivo de Jiu-Jitsu, com a SBA como referência técnica."
+    />
+    <div class="three-grid" data-reveal>
+      <article class="method-item">
+        <p class="number">01</p><h3>Coordenação técnica</h3><p>
+          Rafael Azambuja coordena a aplicação do Sistema Progressivo, a
+          metodologia de ensino e as graduações de toda a escola.
+        </p>
+      </article>
+      <article class="method-item">
+        <p class="number">02</p><h3>Graduações</h3><p>
+          São realizadas duas graduações por ano, com datas alinhadas ao
+          calendário da escola e da SBA. Os graus são concedidos somente nesses
+          momentos.
+        </p>
+      </article>
+      <article class="method-item">
+        <p class="number">03</p><h3>Avaliação individual</h3><p>
+          A avaliação técnica final de cada aluno é feita pelo Rafael,
+          respeitando o ritmo e a evolução de cada praticante.
+        </p>
+      </article>
+    </div>
+    <p class="method-note">
+      O currículo técnico detalhado por faixa está em fase de documentação pela
+      direção pedagógica. Dúvidas sobre critérios específicos de graduação podem
+      ser encaminhadas diretamente à escola.
+    </p>
+  </div>
+</section>
+
+<aside class="sba-band" id="sba" aria-labelledby="sba-title">
+  <div class="shell sba-band__inner">
+    <div class="sba-band__copy" data-reveal>
+      <Image
+        src={sbaLogo}
+        alt="SBA · Sylvio Behring Association"
+        width={260}
+        height={260}
+        loading="lazy"
+      />
+      <div>
+        <p class="eyebrow eyebrow--light">Filiação</p><h2 id="sba-title">
+          Escola filiada à SBA
+        </h2><p>
+          A Azambuja segue o Sistema Progressivo de Jiu-Jitsu e é filiada à SBA,
+          referência técnica para o calendário de graduações e a metodologia de
+          ensino da escola.
+        </p>
+      </div>
+    </div>
+    <a
+      class="button button--primary"
+      href="https://sbajj.com/"
+      target="_blank"
+      rel="noopener noreferrer">Visitar sbajj.com</a
+    >
+  </div>
+</aside>

@@ -1,0 +1,62 @@
+---
+import SectionHeading from "@/components/site/SectionHeading.astro";
+import { classes, schedule } from "@/data/site";
+---
+
+<section class="section section--light" id="turmas">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="Turmas"
+      title="Uma turma para cada fase e objetivo"
+      description="Do primeiro contato com o tatame à evolução técnica constante, com turmas organizadas por idade, nível e objetivo."
+    />
+    <div class="four-grid" data-reveal>
+      {
+        classes.map((item) => (
+          <article class="class-item">
+            <>
+              <span class="tag">{item.age}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--navy" id="horarios">
+  <div class="shell">
+    <SectionHeading
+      light
+      eyebrow="Grade de horários"
+      title="Treine no horário que encaixa na sua rotina"
+      description="Frequência livre, sem limite de aulas por semana em nenhum plano de jiu jitsu."
+    />
+    <div class="schedule-grid" data-reveal>
+      {
+        schedule.map((item) => (
+          <article class="schedule-day">
+            <>
+              <h3>{item.day}</h3>
+              <dl>
+                {item.slots.map((slot) => (
+                  <div>
+                    <dt>{slot.time}</dt>
+                    <dd>{slot.name}</dd>
+                  </div>
+                ))}
+              </dl>
+            </>
+          </article>
+        ))
+      }
+    </div>
+    <p class="section-note">
+      Quarta-feira é dia de No Gi (sem kimono), exceto a turma feminina das 9h.
+      Um sábado por mês é exclusivo para mulheres, com data divulgada
+      mensalmente.
+    </p>
+  </div>
+</section>

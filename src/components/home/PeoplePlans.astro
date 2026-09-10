@@ -1,0 +1,158 @@
+---
+import rafael from "@/assets/reference/rafael-azambuja.jpg";
+import henrique from "@/assets/reference/henrique-aramburu.jpg";
+import leonardo from "@/assets/reference/leonardo-antoria.jpg";
+import diego from "@/assets/reference/diego-dias.jpg";
+import { Image } from "astro:assets";
+import SectionHeading from "@/components/site/SectionHeading.astro";
+import { bookingUrl, plans, timeline } from "@/data/site";
+
+const instructors = [
+  {
+    name: "Henrique Aramburu",
+    classes: "Graduados · Iniciantes e graduados",
+    image: henrique,
+  },
+  {
+    name: "Leonardo Antoria",
+    classes: "Kids · Mini Kids · Iniciantes · Adolescentes (auxílio)",
+    image: leonardo,
+  },
+  { name: "Diego Dias", classes: "Iniciantes", image: diego },
+];
+---
+
+<section class="section section--light" id="professores">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="Equipe técnica"
+      title="Quem conduz o Sistema Progressivo na Azambuja"
+    />
+    <article class="feature-grid" data-reveal>
+      <div class="feature-photo">
+        <Image
+          src={rafael}
+          alt="Professor Rafael Azambuja"
+          width={720}
+          height={900}
+          loading="lazy"
+        />
+      </div>
+      <div class="feature-copy">
+        <p class="eyebrow">
+          Faixa Preta 5º Grau · Fundador e coordenador técnico
+        </p>
+        <h3>Rafael Azambuja</h3>
+        <div class="stats">
+          <div class="stat"><strong>5º grau</strong>Faixa preta</div><div
+            class="stat"
+          >
+            <strong>2005</strong>Faixa preta desde
+          </div><div class="stat">
+            <strong>2007</strong>Fundador da Azambuja
+          </div><div class="stat">
+            <strong>24</strong>Faixas pretas formados
+          </div>
+        </div>
+        <blockquote>
+          “Comecei no jiu-jitsu no meio de 1997, em uma escola que não tinha uma
+          metodologia adequada. Persisti alguns meses e, no início de 1998,
+          encontrei a Winner Behring, sob o comando do professor Márcio Corleta,
+          na época faixa marrom 2 graus. Foi ali que conheci o Sistema
+          Progressivo de Jiu-Jitsu, onde fiquei por 10 anos. Me formei faixa
+          preta em 2005. Em 2007, decidido a começar uma nova etapa, fundei a
+          Escola Azambuja ao lado do meu primo Gabriel Azambuja, então faixa
+          marrom. Desde então a escola cresceu muito, formando 24 faixas pretas
+          e dando origem a diversas outras escolas.”
+        </blockquote>
+        <details class="rafael-details">
+          <summary>
+            <span class="when-closed">Conheça a trajetória completa</span>
+            <span class="when-open">Ocultar trajetória completa</span>
+          </summary>
+          <div class="achievement-grid">
+            {
+              timeline.map(([year, achievement]) => (
+                <p>
+                  <strong>{year}</strong>
+                  {achievement}
+                </p>
+              ))
+            }
+          </div>
+        </details>
+      </div>
+    </article>
+    <div class="three-grid instructors-row" data-reveal>
+      {
+        instructors.map((person) => (
+          <article class="instructor-item">
+            <>
+              <Image
+                src={person.image}
+                alt={`Professor ${person.name}`}
+                width={120}
+                height={120}
+                loading="lazy"
+              />
+              <div>
+                <>
+                  <h3>{person.name}</h3>
+                  <p class="role">Professor</p>
+                  <p>{person.classes}</p>
+                </>
+              </div>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--deep" id="planos">
+  <div class="shell">
+    <SectionHeading
+      light
+      eyebrow="Planos"
+      title="Sem taxa de matrícula, frequência livre"
+      description="Valores vigentes para os planos de jiu jitsu e funcional. Sujeitos a confirmação, fale com a equipe para o plano mais adequado a você."
+    />
+    <div class="plan-banner" data-reveal>
+      <div>
+        <h3>Treine quantas vezes quiser</h3><p>
+          Todos os planos de jiu jitsu têm frequência livre e não cobramos taxa
+          de matrícula.
+        </p>
+      </div><a
+        class="button button--dark"
+        href={bookingUrl}
+        target="_blank"
+        rel="noopener noreferrer">Primeira aula gratuita</a
+      >
+    </div>
+    <div class="three-grid" data-reveal>
+      {
+        plans.map((plan) => (
+          <article
+            class:list={["plan-card", { "plan-card--featured": plan.featured }]}
+          >
+            {plan.featured && <span class="tag">Mais procurado</span>}
+            <h3>{plan.title}</h3>
+            {plan.prices.map(([label, price]) => (
+              <div class="price-row">
+                <span>{label}</span>
+                <strong>{price}</strong>
+              </div>
+            ))}
+          </article>
+        ))
+      }
+    </div>
+    <div class="benefits">
+      <span>Frequência livre, sem limite de aulas por semana</span><span
+        >Sem taxa de matrícula</span
+      ><span>Mulheres entram nos planos padrão</span>
+    </div>
+  </div>
+</section>

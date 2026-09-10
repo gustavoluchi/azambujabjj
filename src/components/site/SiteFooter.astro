@@ -1,0 +1,51 @@
+---
+import Brand from "./Brand.astro";
+import { contact } from "@/data/site";
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-intro">
+      <Brand href="/#top" />
+      <p>
+        Sistema Progressivo de Jiu-Jitsu, escola filiada à SBA, no bairro Bom
+        Fim, Porto Alegre.
+      </p>
+    </div>
+    <div>
+      <h2>Escola</h2>
+      <a href="/#metodologia">A Escola</a>
+      <a href="/#professores">Equipe técnica</a>
+      <a href="/#planos">Planos</a>
+      <a href="/#cursos">Cursos Online</a>
+      <a href="/#filiais">Filiais</a>
+    </div>
+    <div>
+      <h2>Turmas</h2>
+      <a href="/#turmas">Mini Kids &amp; Kids</a>
+      <a href="/#turmas">Adolescentes &amp; Adultos</a>
+      <a href="/#turmas">Feminina</a>
+    </div>
+    <div>
+      <h2>Contato</h2>
+      <a href={`mailto:${contact.email}`}>{contact.email}</a>
+      <a
+        href="https://wa.me/5551980267688"
+        target="_blank"
+        rel="noopener noreferrer">{contact.phone}</a
+      >
+      <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer"
+        >{contact.instagram}</a
+      >
+      <a href={contact.mapsUrl} target="_blank" rel="noopener noreferrer"
+        >Av. Osvaldo Aranha, 794</a
+      >
+    </div>
+  </div>
+  <div class="shell footer-bottom">
+    <p>
+      © {new Date().getFullYear()} Escola de Jiu Jitsu Azambuja. Sistema Progressivo
+      de Jiu-Jitsu · Filiada à SBA.
+    </p>
+  </div>
+</footer>

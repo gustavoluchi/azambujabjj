@@ -1,0 +1,683 @@
+---
+import logo from "@/assets/reference/logo-azambuja.png";
+import { Image } from "astro:assets";
+import {
+  schedulerConfig,
+  schedulerGrade,
+  schedulerTeachers,
+} from "@/data/scheduler";
+---
+
+<main class="scheduler-page">
+  <section class="scheduler-hero" aria-labelledby="scheduler-title">
+    <Image
+      class="scheduler-logo"
+      src={logo}
+      alt="Azambuja"
+      width={144}
+      height={144}
+      loading="eager"
+    />
+    <h1 id="scheduler-title">
+      Você não precisa estar pronto<br />Só precisa <span>começar</span>
+    </h1>
+    <p>
+      Marque sua aula experimental gratuita de jiu jitsu na Azambuja e conheça o
+      Sistema Progressivo por dentro, no seu ritmo
+    </p>
+    <div class="scheduler-trust" aria-label="Diferenciais da escola">
+      <span>Turmas para adultos, crianças e mulheres</span>
+      <span>Sistema Progressivo · SBA</span>
+      <span>Ambiente acolhedor</span>
+    </div>
+  </section>
+
+  <form
+    class="scheduler-card"
+    id="trial-form"
+    data-submission-url={schedulerConfig.submissionUrl}
+  >
+    <h2>Preencha e continue no WhatsApp</h2>
+
+    <label for="trial-name">Nome completo</label>
+    <input
+      type="text"
+      id="trial-name"
+      name="name"
+      required
+      autocomplete="name"
+      placeholder="Como podemos te chamar"
+    />
+
+    <label for="trial-whatsapp">Seu WhatsApp</label>
+    <input
+      type="tel"
+      id="trial-whatsapp"
+      name="whatsapp"
+      required
+      autocomplete="tel"
+      inputmode="tel"
+      placeholder="(51) 9XXXX-XXXX"
+    />
+
+    <label for="trial-modality">O que você quer conhecer</label>
+    <select id="trial-modality" name="modality" required>
+      <option value="" disabled selected>Escolha uma opção</option>
+      <option>Jiu Jitsu Adulto</option>
+      <option>Jiu Jitsu Infantil</option>
+      <option>Jiu Jitsu Feminino</option>
+      <option>Funcional</option>
+      <option>Aula Particular</option>
+      <option>Ainda não sei, quero orientação</option>
+    </select>
+
+    <div id="child-age-field" hidden>
+      <label for="trial-age">Idade da criança</label>
+      <input
+        type="text"
+        id="trial-age"
+        name="age"
+        inputmode="numeric"
+        placeholder="Ex: 8 anos"
+      />
+      <p class="scheduler-help">
+        Mini Kids é de 4 a 8 anos, Kids de 8 a 12 e Adolescentes de 12 a 16.
+        Isso ajuda a gente a te indicar o horário certo.
+      </p>
+    </div>
+
+    <label for="trial-time">Escolha o horário da turma</label>
+    <select id="trial-time" name="time" required>
+      <option value="" disabled selected>
+        Escolha a modalidade acima primeiro
+      </option>
+    </select>
+    <div class="scheduler-warning" id="graduates-warning" role="status" hidden>
+      Turma só para quem já treina: é preciso ter no mínimo dois graus na faixa
+      branca e autorização do professor Rafael. Se essa vai ser sua primeira
+      aula, escolha um horário de Iniciantes aí em cima. Mesmo assim pode mandar
+      sua mensagem, o Rafael confirma direitinho com você antes de agendar.
+    </div>
+
+    <div id="date-field" hidden>
+      <label for="trial-date">Qual dia você quer vir</label>
+      <select id="trial-date" name="date">
+        <option value="" disabled selected>
+          Escolha o horário acima primeiro
+        </option>
+      </select>
+      <p class="scheduler-help" id="date-help">
+        Essas são as próximas datas dessa turma. Se nenhuma servir, escolha
+        “Outra data” que a gente combina no WhatsApp.
+      </p>
+    </div>
+
+    <label for="trial-origin">Como você conheceu a Azambuja</label>
+    <select id="trial-origin" name="origin">
+      <option>Instagram</option>
+      <option>Indicação de aluno ou amigo</option>
+      <option>Google</option>
+      <option>Passei em frente à escola</option>
+      <option>Outro</option>
+    </select>
+
+    <button type="submit">Quero minha aula experimental</button>
+    <p class="scheduler-fine" id="submission-note">
+      Ao enviar, sua aula já fica agendada. Qualquer dúvida é só chamar no
+      WhatsApp da Azambuja, que abre logo em seguida.
+    </p>
+  </form>
+
+  <section
+    class="scheduler-card scheduler-confirmation"
+    id="confirmation"
+    aria-live="polite"
+    hidden
+  >
+    <h2 id="confirmation-title">Pronto, sua aula está marcada</h2>
+    <div class="confirmation-highlight">
+      <p class="confirmation-date" id="confirmation-when"></p>
+      <p class="confirmation-class" id="confirmation-class"></p>
+    </div>
+    <div class="confirmation-block">
+      <h3>Onde</h3>
+      <p>
+        Av. Osvaldo Aranha, 794 · Bom Fim · Porto Alegre - RS<br />
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Av+Osvaldo+Aranha+794+Porto+Alegre"
+          target="_blank"
+          rel="noopener noreferrer">Ver no mapa</a
+        >
+      </p>
+    </div>
+    <div class="confirmation-block">
+      <h3>Quando chegar</h3>
+      <p id="confirmation-arrival"></p>
+    </div>
+    <div class="confirmation-block">
+      <h3>O que vestir</h3>
+      <p>
+        Não precisa de kimono. Venha de camiseta e bermuda ou legging, sem
+        bolso, zíper ou botão. Treinamos descalços no tatame, então traga um
+        chinelo para andar fora dele.
+      </p>
+      <p id="kimono-note" hidden>
+        Essa turma treina de kimono, mas na sua primeira aula você não precisa
+        levar.
+      </p>
+    </div>
+    <div class="confirmation-block">
+      <h3>Antes de entrar no tatame</h3>
+      <p>
+        Tire brincos, anéis, piercings, colares e relógio. É por segurança, sua
+        e de quem treina com você. Unhas curtas e cabelo comprido preso.
+      </p>
+    </div>
+    <div class="confirmation-block">
+      <h3>O que levar</h3>
+      <p>Garrafa de água.</p>
+    </div>
+    <p class="confirmation-phrase">
+      Você não precisa estar pronto. Só precisa aparecer.
+    </p>
+    <a
+      class="scheduler-whatsapp"
+      id="confirmation-whatsapp"
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer">Abrir conversa no WhatsApp</a
+    >
+    <p class="scheduler-fine" id="confirmation-footer">
+      Seu agendamento já está registrado. A conversa no WhatsApp é para tirar
+      qualquer dúvida.
+    </p>
+  </section>
+
+  <footer>Escola de Jiu Jitsu Azambuja · Sistema Progressivo · SBA</footer>
+</main>
+
+<script
+  is:inline
+  define:vars={{
+    grade: schedulerGrade,
+    teachers: schedulerTeachers,
+    whatsappNumber: schedulerConfig.whatsappNumber,
+  }}
+>
+  const form = document.querySelector("#trial-form");
+  const submissionUrl = form.getAttribute("data-submission-url");
+  const modality = document.querySelector("#trial-modality");
+  const time = document.querySelector("#trial-time");
+  const date = document.querySelector("#trial-date");
+  const dateField = document.querySelector("#date-field");
+  const dateHelp = document.querySelector("#date-help");
+  const ageField = document.querySelector("#child-age-field");
+  const graduatesWarning = document.querySelector("#graduates-warning");
+  const submissionNote = document.querySelector("#submission-note");
+  const weekdays = {
+    Domingo: 0,
+    "Segunda-feira": 1,
+    "Terça-feira": 2,
+    "Quarta-feira": 3,
+    "Quinta-feira": 4,
+    "Sexta-feira": 5,
+    Sábado: 6,
+  };
+
+  const option = (text, value = text) => {
+    const item = document.createElement("option");
+    item.value = value;
+    item.textContent = text;
+    return item;
+  };
+
+  const placeholder = (text) => {
+    const item = option(text, "");
+    item.disabled = true;
+    item.selected = true;
+    return item;
+  };
+
+  const resetDate = () => {
+    date.replaceChildren(placeholder("Escolha o horário acima primeiro"));
+    date.required = false;
+    dateField.hidden = true;
+    updateSubmissionNote();
+  };
+
+  const updateTimes = () => {
+    time.replaceChildren(placeholder("Escolha um horário"));
+    graduatesWarning.hidden = true;
+    for (const group of grade[modality.value] || []) {
+      const options = document.createElement("optgroup");
+      options.label = group.day;
+      for (const className of group.classes) {
+        options.append(option(className, `${group.day} · ${className}`));
+      }
+      time.append(options);
+    }
+    time.append(
+      option(
+        "Tanto faz, quero indicação",
+        "Tanto faz, quero indicação de horário",
+      ),
+    );
+  };
+
+  const startTime = (value) => {
+    const match = value.match(/(\d{1,2})h(\d{2})?/);
+    return match
+      ? { hour: Number(match[1]), minutes: Number(match[2] || 0) }
+      : null;
+  };
+
+  const shortDate = (value) =>
+    `${String(value.getDate()).padStart(2, "0")}/${String(value.getMonth() + 1).padStart(2, "0")}`;
+  const longDate = (value) => `${shortDate(value)}/${value.getFullYear()}`;
+
+  const upcomingDates = (weekday, classTime) => {
+    const result = [];
+    const now = new Date();
+    for (let offset = 0; offset <= 60 && result.length < 4; offset += 1) {
+      const candidate = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate() + offset,
+      );
+      if (candidate.getDay() !== weekday) continue;
+      if (offset === 0) {
+        if (!classTime) continue;
+        const beginning = new Date(
+          candidate.getFullYear(),
+          candidate.getMonth(),
+          candidate.getDate(),
+          classTime.hour,
+          classTime.minutes,
+        );
+        if (beginning.getTime() - now.getTime() < 2 * 60 * 60 * 1000) continue;
+      }
+      result.push(candidate);
+    }
+    return result;
+  };
+
+  const updateDates = () => {
+    date.replaceChildren(placeholder("Escolha o dia"));
+    const [day, className = ""] = time.value.split(" · ");
+    if (weekdays[day] === undefined) {
+      for (const label of [
+        "Esta semana",
+        "Semana que vem",
+        "Daqui a duas semanas",
+        "Ainda não sei, quero combinar",
+      ]) {
+        date.append(option(label));
+      }
+      dateHelp.textContent =
+        "Diz só o período que preferir, a gente acerta o dia exato no WhatsApp.";
+    } else {
+      for (const candidate of upcomingDates(
+        weekdays[day],
+        startTime(className),
+      )) {
+        date.append(
+          option(`${day}, ${shortDate(candidate)}`, longDate(candidate)),
+        );
+      }
+      date.append(option("Outra data, quero combinar"));
+      dateHelp.textContent =
+        'Essas são as próximas datas dessa turma. Se nenhuma servir, escolha "Outra data" que a gente combina no WhatsApp.';
+    }
+    date.required = true;
+    dateField.hidden = false;
+    updateSubmissionNote();
+  };
+
+  const updateSubmissionNote = () => {
+    if (time.value.includes("Somente graduados")) {
+      submissionNote.textContent =
+        "Ao enviar, abre uma conversa no WhatsApp da Azambuja para o Rafael confirmar seu horário.";
+    } else if (/^\d{2}\/\d{2}\/\d{4}$/.test(date.value)) {
+      submissionNote.textContent =
+        "Ao enviar, sua aula já fica agendada. Qualquer dúvida é só chamar no WhatsApp da Azambuja, que abre logo em seguida.";
+    } else {
+      submissionNote.textContent = date.value
+        ? "Ao enviar, abre uma conversa no WhatsApp da Azambuja para a gente fechar o melhor dia com você."
+        : "Ao enviar, sua aula já fica agendada. Qualquer dúvida é só chamar no WhatsApp da Azambuja, que abre logo em seguida.";
+    }
+  };
+
+  modality.addEventListener("change", () => {
+    ageField.hidden = modality.value !== "Jiu Jitsu Infantil";
+    updateTimes();
+    resetDate();
+  });
+
+  time.addEventListener("change", () => {
+    graduatesWarning.hidden = !time.value.includes("Somente graduados");
+    updateDates();
+  });
+  date.addEventListener("change", updateSubmissionNote);
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = document.querySelector("#trial-name").value.trim();
+    const contact = document.querySelector("#trial-whatsapp").value.trim();
+    const age = document.querySelector("#trial-age").value.trim();
+    const origin = document.querySelector("#trial-origin").value;
+    const selectedDate = date.value;
+    const dateText = date.selectedOptions[0]?.textContent || "";
+    const [day, className = ""] = time.value.split(" · ");
+    const hasExactDate = /^\d{2}\/\d{2}\/\d{4}$/.test(selectedDate);
+
+    const submission = {
+      nome: name,
+      whatsapp: contact,
+      modalidade: `${modality.value}${age ? ` (idade: ${age})` : ""}`,
+      horario: time.value,
+      data: selectedDate,
+      origem: origin,
+    };
+    fetch(submissionUrl, {
+      method: "POST",
+      mode: "no-cors",
+      keepalive: true,
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(submission),
+    }).catch(() => {});
+
+    const lines = [
+      "🥋 LEAD SITE, AULA EXPERIMENTAL",
+      "Olá! Vim pelo formulário e quero agendar minha aula experimental gratuita.",
+      `Nome: ${name}`,
+      `Interesse: ${modality.value}`,
+      age ? `Idade da criança: ${age}` : "",
+      `Horário escolhido: ${time.value}`,
+      dateText ? `Dia que quero ir: ${dateText}` : "",
+      time.value.includes("Somente graduados")
+        ? "Obs: pedi um horário de graduados, sei que precisa de autorização do Rafael e já entendo isso"
+        : "",
+      `Como conheci a Azambuja: ${origin}`,
+      `Meu WhatsApp: ${contact}`,
+    ].filter(Boolean);
+    document.querySelector("#confirmation-whatsapp").href =
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
+
+    document.querySelector("#confirmation-title").textContent = hasExactDate
+      ? "Pronto, sua aula está marcada"
+      : "Recebemos seu pedido";
+    const hour = className.match(/^\d{1,2}h\d{0,2}/)?.[0] || "";
+    document.querySelector("#confirmation-when").textContent = hasExactDate
+      ? `${dateText}, às ${hour}`
+      : "Vamos combinar o melhor dia com você";
+    document.querySelector("#confirmation-class").textContent =
+      `${modality.value}${className ? ` · ${className}` : ""}`;
+    const professor =
+      weekdays[day] === undefined ? "" : teachers[className] || "Rafael";
+    const arrival = hasExactDate
+      ? "Chegue uns 10 minutos antes"
+      : "No dia que a gente combinar, chegue uns 10 minutos antes";
+    document.querySelector("#confirmation-arrival").textContent = professor
+      ? `${arrival} e procure o professor ${professor}. É só dizer que você veio para a aula experimental.`
+      : `${arrival} e avise na recepção que você veio para a aula experimental.`;
+    document.querySelector("#kimono-note").hidden = !className
+      .toLowerCase()
+      .includes("kimono");
+    document.querySelector("#confirmation-footer").textContent = hasExactDate
+      ? "Seu agendamento já está registrado. A conversa no WhatsApp é para tirar qualquer dúvida."
+      : "Seu pedido já está registrado. Clique acima para a gente acertar o dia com você.";
+
+    form.hidden = true;
+    const confirmation = document.querySelector("#confirmation");
+    confirmation.hidden = false;
+    confirmation.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+</script>
+
+<style>
+  .scheduler-page {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #fdfdfd;
+    color: #0b1c3d;
+    font-family: "Inter Variable", Inter, system-ui, sans-serif;
+  }
+
+  .scheduler-hero {
+    padding: 3rem 1.25rem 4rem;
+    background: linear-gradient(160deg, #0b1c3d, #071228);
+    color: #fdfdfd;
+    text-align: center;
+  }
+
+  .scheduler-logo {
+    width: 4.5rem;
+    height: 4.5rem;
+    margin: 0 auto 1.25rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: #fdfdfd;
+  }
+
+  h1,
+  h2,
+  h3,
+  button,
+  .scheduler-whatsapp {
+    font-family: "Sora Variable", Sora, system-ui, sans-serif;
+  }
+
+  h1 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.75rem, 4vw, 2.15rem);
+    line-height: 1.25;
+  }
+
+  h1 span {
+    color: #f2c230;
+  }
+
+  .scheduler-hero > p {
+    max-width: 30rem;
+    margin: 0 auto;
+    color: #d7dcea;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .scheduler-trust {
+    display: flex;
+    max-width: 33rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.625rem;
+    margin: 1.5rem auto 0;
+  }
+
+  .scheduler-trust span {
+    padding: 0.35rem 0.75rem;
+    border: 1px solid rgb(255 255 255 / 15%);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 8%);
+    font-size: 0.8rem;
+  }
+
+  .scheduler-card {
+    width: min(calc(100% - 2rem), 30rem);
+    margin: -2.25rem auto 2.5rem;
+    padding: 1.75rem 1.5rem 1.5rem;
+    border-radius: 1rem;
+    background: #fdfdfd;
+    box-shadow: 0 0.75rem 2rem rgb(11 28 61 / 18%);
+  }
+
+  .scheduler-card h2 {
+    margin: 0 0 1.125rem;
+    font-size: 1.125rem;
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin: 0.875rem 0 0.375rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  input,
+  select {
+    width: 100%;
+    min-height: 2.8rem;
+    padding: 0.75rem 0.875rem;
+    border: 1px solid #d8dce6;
+    border-radius: 0.625rem;
+    background: #f8f9fc;
+    color: #0b1c3d;
+    font: inherit;
+    font-size: 0.94rem;
+  }
+
+  input:focus,
+  select:focus {
+    border-color: #0b1c3d;
+    outline: 3px solid rgb(242 194 48 / 35%);
+    background: #fdfdfd;
+  }
+
+  button,
+  .scheduler-whatsapp {
+    display: block;
+    width: 100%;
+    margin-top: 1.375rem;
+    padding: 0.9rem;
+    border: 0;
+    border-radius: 0.625rem;
+    background: #f2c230;
+    color: #071228;
+    font-size: 0.95rem;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      transform 160ms ease,
+      background 160ms ease,
+      box-shadow 160ms ease;
+  }
+
+  button:hover,
+  .scheduler-whatsapp:hover {
+    background: #f7d669;
+    box-shadow: 0 0.6rem 1.5rem rgb(242 194 48 / 25%);
+    transform: translateY(-1px);
+  }
+
+  .scheduler-help,
+  .scheduler-fine {
+    margin: 0.35rem 0 0;
+    color: #6b7280;
+    font-size: 0.73rem;
+    line-height: 1.45;
+  }
+
+  .scheduler-fine {
+    margin-top: 0.75rem;
+    text-align: center;
+  }
+
+  .scheduler-warning {
+    margin-top: 0.5rem;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid #f2c230;
+    border-radius: 0.625rem;
+    background: #fff6e0;
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .scheduler-confirmation {
+    scroll-margin-top: 1.25rem;
+  }
+
+  .confirmation-highlight {
+    padding: 0.875rem 1rem;
+    border: 1px solid #d8dce6;
+    border-radius: 0.75rem;
+    background: #f8f9fc;
+    text-align: center;
+  }
+
+  .confirmation-date {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 800;
+  }
+
+  .confirmation-class {
+    margin: 0.25rem 0 0;
+    color: #6b7280;
+    font-size: 0.8rem;
+  }
+
+  .confirmation-block {
+    margin-top: 1rem;
+  }
+
+  .confirmation-block h3 {
+    margin: 0 0 0.25rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .confirmation-block p {
+    margin: 0;
+    font-size: 0.87rem;
+    line-height: 1.5;
+  }
+
+  .confirmation-block a {
+    color: inherit;
+    font-weight: 700;
+  }
+
+  #kimono-note {
+    margin-top: 0.375rem;
+  }
+
+  .confirmation-phrase {
+    margin: 1.375rem 0 0;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  footer {
+    padding: 0 1.25rem 2rem;
+    color: #6b7280;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  @media (max-width: 32rem) {
+    .scheduler-hero {
+      padding-top: 2.25rem;
+    }
+
+    .scheduler-card {
+      width: min(calc(100% - 1.25rem), 30rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

@@ -1,0 +1,109 @@
+---
+import Brand from "./Brand.astro";
+import { navigation } from "@/data/site";
+
+const isHome = Astro.url.pathname === "/";
+const anchorHref = (href: string) => (isHome ? href : `/${href}`);
+---
+
+<header class="site-header" id="site-header">
+  <div class="shell site-header__inner">
+    <Brand href={isHome ? "#top" : "/"} compact />
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      {
+        navigation.map((item) => (
+          <a href={anchorHref(item.href)}>{item.label}</a>
+        ))
+      }
+    </nav>
+    <button
+      class="menu-toggle"
+      id="menu-toggle"
+      type="button"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav
+  class="mobile-nav"
+  id="mobile-nav"
+  aria-label="Navegação móvel"
+  aria-hidden="true"
+  inert
+>
+  {navigation.map((item) => <a href={anchorHref(item.href)}>{item.label}</a>)}
+</nav>
+
+<script>
+  const header = document.querySelector<HTMLElement>("#site-header");
+  const toggle = document.querySelector<HTMLButtonElement>("#menu-toggle");
+  const menu = document.querySelector<HTMLElement>("#mobile-nav");
+
+  const closeMenu = () => {
+    if (!toggle || !menu) return;
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Abrir menu");
+    menu.setAttribute("aria-hidden", "true");
+    menu.inert = true;
+    document.body.classList.remove("menu-open");
+  };
+
+  const openMenu = () => {
+    if (!toggle || !menu) return;
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "Fechar menu");
+    menu.setAttribute("aria-hidden", "false");
+    menu.inert = false;
+    document.body.classList.add("menu-open");
+    menu.querySelector<HTMLAnchorElement>("a")?.focus();
+  };
+
+  const syncHeader = () =>
+    header?.classList.toggle("is-scrolled", window.scrollY > 32);
+  syncHeader();
+  window.addEventListener("scroll", syncHeader, { passive: true });
+
+  toggle?.addEventListener("click", () => {
+    toggle.getAttribute("aria-expanded") === "true" ? closeMenu() : openMenu();
+  });
+  menu
+    ?.querySelectorAll("a")
+    .forEach((link) => link.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      toggle?.getAttribute("aria-expanded") === "true"
+    ) {
+      closeMenu();
+      toggle.focus();
+    }
+    if (
+      event.key === "Tab" &&
+      toggle?.getAttribute("aria-expanded") === "true" &&
+      menu
+    ) {
+      const links = [...menu.querySelectorAll<HTMLAnchorElement>("a")];
+      const first = links[0];
+      const last = links.at(-1);
+      if (!first || !last) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        toggle.focus();
+      } else if (event.shiftKey && document.activeElement === toggle) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        toggle.focus();
+      } else if (!event.shiftKey && document.activeElement === toggle) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+</script>

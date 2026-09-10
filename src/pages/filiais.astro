@@ -1,120 +1,83 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/site/PageHero.astro";
+
+const branches = [
+  {
+    name: "Azambuja Serra",
+    tag: "Filial",
+    teacher: "Adryan Carvalho",
+    address: "Rua Renânia, 66 · Centro · Nova Petrópolis/RS · CEP 95150-000",
+    phone: "55 99675-9530",
+    whatsapp: "555599675953",
+    map: "https://www.google.com/maps?q=Rua+Renania,+66,+Nova+Petrópolis,+RS,+95150-000&output=embed",
+  },
+  {
+    name: "Lomba do Pinheiro",
+    tag: "Filial",
+    teacher: "Guilherme Rodrigues",
+    address: "Av. João de Oliveira Remião, 3322 · Parada 7 · Porto Alegre/RS",
+    phone: "51 99247-7012",
+    whatsapp: "5551992477012",
+    map: "https://www.google.com/maps?q=Av.+João+de+Oliveira+Remião,+3322,+Lomba+do+Pinheiro,+Porto+Alegre,+RS&output=embed",
+  },
+  {
+    name: "Projeto de Extensão IFSul",
+    tag: "Projeto social",
+    teacher: "Ramiro Barcos",
+    address: "Rua Men de Sá, 800 · Bom Sucesso · Gravataí/RS · CEP 94135-300",
+    phone: "51 99233-8537",
+    whatsapp: "5551992338537",
+    map: "https://www.google.com/maps?q=R.+Men+de+Sá,+800,+Bom+Sucesso,+Gravataí,+RS,+94135-300&output=embed",
+  },
+];
 ---
 
-<Layout>
-  <div class="flex min-h-svh w-full flex-col items-center justify-center">
-    <Header />
-    <main class="flex w-full flex-col items-center py-12">
-      <div class="w-full max-w-6xl px-6 xl:w-4/6">
-        <h1 class="mb-8 text-4xl font-bold text-primary">Filiais</h1>
-        <div class="mb-8">
-          <h2 class="mb-6 text-2xl font-semibold">Conheça as escolas afiliadas</h2>
-          <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1">
-            <article class="bg-base-100 border-base-300 border rounded-lg p-6">
-              <h3 class="mb-4 text-xl font-semibold">
-                Escola de Jiu-jítsu Azambuja Serra
-              </h3>
-              <div class="prose max-w-none mb-4">
-                <p class="text-lg leading-relaxed">
-                  <strong>Professor:</strong> Adryan Carvalho<br />
-                  <strong>Endereço:</strong> Rua Renania, 66, bairro centro<br />
-                  Nova Petrópolis/RS - CEP 95150-000<br />
+<Layout
+  title="Filiais"
+  description="Conheça as filiais e o projeto social ligados à Escola Azambuja."
+  canonicalPath="/filiais"
+>
+  <main id="conteudo">
+    <PageHero
+      eyebrow="Nossa rede"
+      title="O Sistema Progressivo em mais lugares"
+      description="Cada unidade tem sua própria gestão, mantendo o compromisso com ensino técnico, seguro e acolhedor."
+    />
+    <section class="content-section">
+      <div class="shell locations-grid">
+        {
+          branches.map((branch) => (
+            <article class="location-item" data-reveal>
+              <>
+                <span class="tag">{branch.tag}</span>
+                <h2 style="font-size: 1.2rem">{branch.name}</h2>
+                <p class="teacher">Professor {branch.teacher}</p>
+                <address>{branch.address}</address>
+                <div class="detail-actions">
                   <a
-                    id="botao-agendamento-serra"
-                    href="https://api.whatsapp.com/send/?phone=555599675953&type=phone_number&app_absent=0"
+                    class="button button--primary"
+                    href={`https://wa.me/${branch.whatsapp}`}
                     target="_blank"
-                    data-umami-event="botao-agendamento"
-                    data-umami-event-url="https://api.whatsapp.com/send/?phone=555599675953&text&type=phone_number&app_absent=0"
-                    class="link link-primary mt-2 inline-block"
+                    rel="noopener noreferrer"
+                    data-umami-event="contato-filial"
                   >
-                    WhatsApp: 55 99675-9530
+                    WhatsApp {branch.phone}
                   </a>
-                </p>
-              </div>
-              <div class="w-full">
+                </div>
                 <iframe
-                  src="https://www.google.com/maps?q=Rua+Renania,+66,+Nova+Petrópolis,+RS,+95150-000&output=embed"
-                  class="h-64 w-full rounded-lg"
+                  class="map-frame"
+                  src={branch.map}
                   allowfullscreen
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
-                  title="Mapa mostrando o endereço da Escola de Jiu-jítsu Azambuja Serra - Rua Renania, 66, Nova Petrópolis/RS"
-                ></iframe>
-              </div>
+                  title={`Mapa da ${branch.name}`}
+                />
+              </>
             </article>
-
-            <article class="bg-base-100 border-base-300 border rounded-lg p-6">
-              <h3 class="mb-4 text-xl font-semibold">
-                Escola de jiu-jítsu Azambuja Lomba do Pinheiro
-              </h3>
-              <div class="prose max-w-none mb-4">
-                <p class="text-lg leading-relaxed">
-                  <strong>Professor:</strong> Guilherme Rodrigues<br />
-                  <strong>Endereço:</strong> Av. João de Oliveira Remião, 3322 - parada 7<br />
-                  Lomba do Pinheiro - Porto Alegre/RS<br />
-                  <a
-                    id="botao-agendamento-lomba"
-                    href="https://api.whatsapp.com/send/?phone=5551992477012&type=phone_number&app_absent=0"
-                    target="_blank"
-                    data-umami-event="botao-agendamento"
-                    data-umami-event-url="https://api.whatsapp.com/send/?phone=5551992477012&text&type=phone_number&app_absent=0"
-                    class="link link-primary mt-2 inline-block"
-                  >
-                    WhatsApp: 51 99247-7012
-                  </a>
-                </p>
-              </div>
-              <div class="w-full">
-                <iframe
-                  src="https://www.google.com/maps?q=Av.+João+de+Oliveira+Remião,+3322,+Lomba+do+Pinheiro,+Porto+Alegre,+RS&output=embed"
-                  class="h-64 w-full rounded-lg"
-                  allowfullscreen
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  title="Mapa mostrando o endereço da Escola de jiu-jítsu Azambuja Lomba do Pinheiro - Av. João de Oliveira Remião, 3322, Porto Alegre/RS"
-                ></iframe>
-              </div>
-            </article>
-
-            <article class="bg-base-100 border-base-300 border rounded-lg p-6">
-              <h3 class="mb-4 text-xl font-semibold">
-                Escola de Jiu-jitsu Azambuja — Projeto de Extensão (IFSul Gravataí)
-              </h3>
-              <div class="prose max-w-none mb-4">
-                <p class="text-lg leading-relaxed">
-                  <strong>Professor:</strong> Ramiro Barcos<br />
-                  <strong>Endereço:</strong> R. Men de Sá, 800 - Bom Sucesso<br />
-                  Gravataí - RS, CEP 94135-300<br />
-                  <a
-                    id="botao-agendamento-gravatai"
-                    href="https://api.whatsapp.com/send/?phone=5551992338537&type=phone_number&app_absent=0"
-                    target="_blank"
-                    data-umami-event="botao-agendamento"
-                    data-umami-event-url="https://api.whatsapp.com/send/?phone=5551992338537&text&type=phone_number&app_absent=0"
-                    class="link link-primary mt-2 inline-block"
-                  >
-                    WhatsApp: 51 99233-8537
-                  </a>
-                </p>
-              </div>
-              <div class="w-full">
-                <iframe
-                  src="https://www.google.com/maps?q=R.+Men+de+Sá,+800,+Bom+Sucesso,+Gravataí,+RS,+94135-300&output=embed"
-                  class="h-64 w-full rounded-lg"
-                  allowfullscreen
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  title="Mapa mostrando o endereço da Escola de Jiu-jitsu Azambuja — Projeto de Extensão (IFSul Gravataí) - R. Men de Sá, 800, Gravataí/RS"
-                ></iframe>
-              </div>
-            </article>
-          </div>
-        </div>
+          ))
+        }
       </div>
-    </main>
-    <Footer />
-  </div>
+    </section>
+  </main>
 </Layout>

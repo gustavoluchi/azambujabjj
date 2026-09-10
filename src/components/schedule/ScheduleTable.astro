@@ -1,0 +1,47 @@
+---
+import { schedule } from "@/data/site";
+
+const times = [
+  "7h",
+  "9h",
+  "10h",
+  "11h",
+  "12h",
+  "17h",
+  "17h30",
+  "18h15",
+  "18h30",
+  "19h",
+  "19h30",
+  "20h",
+];
+const classAt = (dayIndex: number, time: string) =>
+  schedule[dayIndex]?.slots.find((slot) => slot.time === time)?.name;
+---
+
+<div class="schedule-table-wrap" data-reveal>
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th scope="col">Hora</th>
+        {schedule.map((day) => <th scope="col">{day.day}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        times.map((time) => (
+          <tr>
+            <th scope="row">{time}</th>
+            {schedule.map((_, dayIndex) => (
+              <td>
+                {classAt(dayIndex, time) && (
+                  <span class="class-chip">{classAt(dayIndex, time)}</span>
+                )}
+              </td>
+            ))}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

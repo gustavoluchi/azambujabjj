@@ -1,15 +1,21 @@
 # Site da Escola de Jiu-Jitsu Azambuja
 
-## Afazeres
+Site institucional em Astro para a matriz, filiais, turmas e produtos digitais da Escola Azambuja.
 
-1. Checklist de boas práticas de frontend https://github.com/thedaviddias/Front-End-Checklist
+## Arquitetura
+
+- `src/components/home`: seções da página inicial.
+- `src/components/site`: navegação, rodapé e elementos compartilhados.
+- `src/components/didatica`: conteúdo da página da imersão.
+- `src/data`: horários, planos, cursos e conteúdos estruturados.
+- `src/pages`: rotas públicas estáticas e indexáveis.
 
 ## Cores base
 
 1. #162f4f rgb(22,47,79)
 2. #ffc718 rgb(255,199,24)
 
-complementar
+Complementares:
 
 #A69576
 #E6BA6A
@@ -26,5 +32,10 @@ Todos os comandos são executados a partir da raiz do projeto, em um terminal:
 | `pnpm dev`             | Inicia o servidor de desenvolvimento local em `localhost:4321` |
 | `pnpm build`           | Compila o site para produção na pasta `./dist/`                |
 | `pnpm preview`         | Visualiza a build localmente, antes de implantar               |
+| `pnpm test`            | Gera a build e valida os contratos de comportamento            |
+| `pnpm check`           | Valida os componentes e a integração Astro                     |
+| `pnpm lint`            | Executa as regras estáticas de JavaScript e TypeScript         |
+| `pnpm format`          | Formata o projeto com Prettier                                 |
+| `pnpm tsc`             | Executa a verificação estrita de TypeScript                    |
 | `pnpm astro ...`       | Executa comandos da CLI como `astro add`, `astro check`        |
 | `pnpm astro -- --help` | Obtém ajuda sobre a CLI do Astro                               |

@@ -1,8 +1,20 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import DidaticaPage from "../components/DidaticaPage.astro";
+import Layout from "@/layouts/Layout.astro";
+import DidaticaPage from "@/components/didatica/DidaticaPage.astro";
+import PageHero from "@/components/site/PageHero.astro";
 ---
 
-<Layout>
-  <DidaticaPage />
+<Layout
+  title="A Didática"
+  description="Imersão online no Sistema Progressivo de Jiu-Jitsu, com 118 vídeos e acesso vitalício."
+  canonicalPath="/didatica"
+>
+  <main id="conteudo">
+    <PageHero
+      eyebrow="Imersão online"
+      title="A Didática"
+      description="O Sistema Progressivo explicado do básico ao avançado para praticantes e professores."
+    />
+    <DidaticaPage />
+  </main>
 </Layout>

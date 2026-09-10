@@ -1,0 +1,188 @@
+---
+import logo from "@/assets/reference/logo-azambuja.png";
+import guilherme from "@/assets/reference/guilherme-rodrigues.jpg";
+import ramiro from "@/assets/reference/ramiro-barcos.jpg";
+import { Image } from "astro:assets";
+import SectionHeading from "@/components/site/SectionHeading.astro";
+import { bookingUrl, contact, courses } from "@/data/site";
+---
+
+<section class="section section--light" id="cursos">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="Cursos online"
+      title="Aprofunde o Sistema Progressivo em qualquer lugar"
+      description="Conteúdo oficial da SBA, no seu ritmo, com acesso vitalício e 100% online pela Hotmart."
+    />
+    <div class="three-grid" data-reveal>
+      {
+        courses.map((course) => (
+          <article class="course-item">
+            <>
+              <span class="tag">{course.tag}</span>
+              <h3>{course.title}</h3>
+              <p class="subtitle">{course.subtitle}</p>
+              <p>{course.description}</p>
+              <div class="price">
+                <>
+                  <s>{course.oldPrice}</s>
+                  <strong>{course.price}</strong>
+                  <span>{course.installments}</span>
+                </>
+              </div>
+              <div class="course-actions">
+                <a
+                  class="button button--primary"
+                  href={course.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-umami-event="comprar-curso"
+                >
+                  {course.cta}
+                </a>
+              </div>
+            </>
+          </article>
+        ))
+      }
+    </div>
+    <p style="color: var(--muted); font-size: .78rem; margin: 1.5rem 0 0">
+      Conteúdo produzido pela Sylvio Behring Association (SBA), com pagamento e
+      acesso pela plataforma Hotmart. Preços sujeitos a alteração, confira o
+      valor atualizado na página oficial antes de comprar.
+    </p>
+  </div>
+</section>
+
+<section class="section section--white" id="filiais">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="Unidades"
+      title="Matriz, filial e projeto social"
+      description="Além da matriz no Bom Fim, a Azambuja tem uma filial na Lomba do Pinheiro e um projeto social em parceria com o IFSUL Gravataí."
+    />
+    <div class="locations-grid" data-reveal>
+      <article class="location-item">
+        <span class="tag">Matriz</span><h3>Escola Azambuja</h3><p
+          class="teacher"
+        >
+          Coordenação técnica: Rafael Azambuja
+        </p><p>
+          Turmas de Mini Kids, Kids, Adolescentes, adultos, feminina, funcional
+          e Sabadonze, com a grade completa de horários.
+        </p><address>
+          {contact.address}
+        </address>
+      </article>
+      <article class="location-item">
+        <span class="tag">Filial</span><h3>Filial Lomba do Pinheiro</h3><div
+          class="teacher"
+        >
+          <Image
+            src={guilherme}
+            alt=""
+            width={64}
+            height={64}
+            loading="lazy"
+          />Professor Guilherme Rodrigues
+        </div><p>
+          Unidade com gestão própria, administrada de forma independente pelo
+          Prof. Guilherme, no espaço da Academia Personal World.
+        </p><address>
+          Rua João de Oliveira Remião, 3322 · Lomba do Pinheiro · Porto Alegre -
+          RS
+        </address>
+        <p class="location-link">
+          <a
+            href="https://wa.me/5551992477012"
+            target="_blank"
+            rel="noopener noreferrer">(51) 99247-7012</a
+          >
+        </p>
+        <p class="location-link">
+          <a
+            href="https://instagram.com/azbjiujitsulomba"
+            target="_blank"
+            rel="noopener noreferrer">@azbjiujitsulomba</a
+          >
+        </p>
+      </article>
+      <article class="location-item">
+        <span class="tag">Projeto social</span><h3>
+          Projeto IFSUL Gravataí
+        </h3><div class="teacher">
+          <Image
+            src={ramiro}
+            alt=""
+            width={64}
+            height={64}
+            loading="lazy"
+          />Professor Ramiro Barcos
+        </div><p>
+          Conteúdo em atualização. Em breve mais detalhes sobre o projeto por
+          aqui.
+        </p>
+      </article>
+    </div>
+    <p class="section-note section-note--light">
+      Horários e valores da Filial Lomba do Pinheiro são próprios da unidade.
+      Fale diretamente com o Prof. Guilherme para mais informações sobre turmas
+      e matrículas por lá.
+    </p>
+  </div>
+</section>
+
+<section class="section section--light" id="contato">
+  <div class="shell contact-grid">
+    <div data-reveal>
+      <p class="eyebrow">Localização</p><h2
+        style="font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 1rem"
+      >
+        Venha treinar com a gente
+      </h2><p style="color: var(--muted)">
+        Escola matriz no bairro Bom Fim, Porto Alegre. Primeira aula
+        experimental é gratuita.
+      </p>
+      <div class="contact-list">
+        <a href={contact.mapsUrl} target="_blank" rel="noopener noreferrer"
+          ><strong>Endereço</strong><span>{contact.address}</span></a
+        >
+        <a href={`mailto:${contact.email}`}
+          ><strong>E-mail</strong><span>{contact.email}</span></a
+        >
+        <a
+          href="https://wa.me/5551980267688"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><strong>WhatsApp</strong><span>{contact.phone}</span></a
+        >
+        <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer"
+          ><strong>Instagram</strong><span>{contact.instagram}</span></a
+        >
+      </div>
+      <iframe
+        class="map-frame"
+        src="https://maps.google.com/maps?q=Av.%20Osvaldo%20Aranha%2C%20794%2C%20Porto%20Alegre%20-%20RS&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        loading="lazy"
+        title="Mapa da Escola Azambuja no Bom Fim"></iframe>
+    </div>
+    <aside class="contact-cta" data-reveal>
+      <Image
+        src={logo}
+        alt="Azambuja Jiu Jitsu"
+        width={360}
+        height={360}
+        loading="lazy"
+      /><h2>Sua primeira aula é por nossa conta</h2><p>
+        Agende uma aula experimental gratuita, sem compromisso, para conhecer o
+        tatame, a equipe e a nossa metodologia.
+      </p><a
+        class="button button--primary"
+        href={bookingUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-umami-event="agendar-contato">Agendar aula experimental gratuita</a
+      >
+    </aside>
+  </div>
+</section>
