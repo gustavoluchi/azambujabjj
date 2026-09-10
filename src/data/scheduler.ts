@@ -70,8 +70,9 @@ export const schedulerGrade: Record<string, SchedulerGroup[]> = {
     },
   ],
   "Jiu Jitsu Feminino": [
-    { day: "Segunda-feira", classes: ["9h"] },
+    { day: "Terça-feira", classes: ["19h"] },
     { day: "Quarta-feira", classes: ["9h (com kimono)"] },
+    { day: "Quinta-feira", classes: ["19h"] },
   ],
   Funcional: [
     { day: "Terça-feira", classes: ["12h"] },

@@ -15,8 +15,8 @@ const times = [
   "19h30",
   "20h",
 ];
-const classAt = (dayIndex: number, time: string) =>
-  schedule[dayIndex]?.slots.find((slot) => slot.time === time)?.name;
+const classesAt = (dayIndex: number, time: string) =>
+  schedule[dayIndex]?.slots.filter((slot) => slot.time === time) ?? [];
 ---
 
 <div class="schedule-table-wrap" data-reveal>
@@ -34,9 +34,9 @@ const classAt = (dayIndex: number, time: string) =>
             <th scope="row">{time}</th>
             {schedule.map((_, dayIndex) => (
               <td>
-                {classAt(dayIndex, time) && (
-                  <span class="class-chip">{classAt(dayIndex, time)}</span>
-                )}
+                {classesAt(dayIndex, time).map((slot) => (
+                  <span class="class-chip">{slot.name}</span>
+                ))}
               </td>
             ))}
           </tr>

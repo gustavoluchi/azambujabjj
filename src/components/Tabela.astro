@@ -20,14 +20,17 @@ type ClassInfo = {
   style: string;
 };
 
-const rows: Array<{ time: string; classes: Array<ClassId | null> }> = [
+const rows: Array<{
+  time: string;
+  classes: Array<ClassId | ClassId[] | null>;
+}> = [
   {
     time: "07h00",
     classes: [null, "iniciantes", null, "iniciantes", null, null],
   },
   {
     time: "09h00",
-    classes: ["feminina", null, "femininaKimono", null, null, null],
+    classes: [null, null, "femininaKimono", null, null, null],
   },
   {
     time: "10h00",
@@ -66,7 +69,14 @@ const rows: Array<{ time: string; classes: Array<ClassId | null> }> = [
   },
   {
     time: "19h00",
-    classes: [null, "adolescentes", null, "adolescentes", null, null],
+    classes: [
+      null,
+      ["adolescentes", "feminina"],
+      null,
+      ["adolescentes", "feminina"],
+      null,
+      null,
+    ],
   },
   {
     time: "19h30",
@@ -170,14 +180,16 @@ const icons: Record<IconName, string> = {
         rows.map((row) => (
           <tr class="[&>td]:px-1 [&>td]:py-1.5 [&>th]:px-1.5 [&>th]:py-1.5">
             <th class="text-xs sm:text-sm">{row.time}</th>
-            {row.classes.map((classId) => {
-              const item = classId ? classInfo[classId] : null;
+            {row.classes.map((cell) => {
+              const items = (Array.isArray(cell) ? cell : [cell])
+                .filter((classId) => classId !== null)
+                .map((classId) => classInfo[classId]);
 
               return (
                 <td>
-                  {item ? (
+                  {items.map((item) => (
                     <div
-                      class={`mx-auto flex min-h-10 max-w-32 items-center justify-center gap-1 rounded-md px-1 py-1 text-[0.58rem] leading-none font-bold uppercase shadow-sm sm:min-h-11 sm:gap-1.5 sm:text-[0.68rem] lg:text-xs ${item.style}`}
+                      class={`mx-auto mt-1 flex min-h-10 max-w-32 items-center justify-center gap-1 rounded-md px-1 py-1 text-[0.58rem] leading-none font-bold uppercase shadow-sm first:mt-0 sm:min-h-11 sm:gap-1.5 sm:text-[0.68rem] lg:text-xs ${item.style}`}
                     >
                       <span
                         class="size-4 shrink-0 sm:size-5"
@@ -192,7 +204,7 @@ const icons: Record<IconName, string> = {
                         ) : null}
                       </span>
                     </div>
-                  ) : null}
+                  ))}
                 </td>
               );
             })}

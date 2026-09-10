@@ -71,7 +71,6 @@ export const schedule: ScheduleDay[] = [
   {
     day: "Segunda",
     slots: [
-      { time: "9h", name: "Feminina" },
       { time: "11h", name: "Iniciantes e graduados" },
       { time: "17h30", name: "Kids" },
       { time: "18h30", name: "Iniciantes" },
@@ -87,6 +86,7 @@ export const schedule: ScheduleDay[] = [
       { time: "17h", name: "Iniciantes" },
       { time: "18h15", name: "Mini Kids" },
       { time: "19h", name: "Adolescentes" },
+      { time: "19h", name: "Feminina" },
       { time: "20h", name: "Iniciantes e graduados" },
     ],
   },
@@ -109,6 +109,7 @@ export const schedule: ScheduleDay[] = [
       { time: "17h", name: "Iniciantes" },
       { time: "18h15", name: "Mini Kids" },
       { time: "19h", name: "Adolescentes" },
+      { time: "19h", name: "Feminina" },
       { time: "20h", name: "Iniciantes e graduados" },
     ],
   },

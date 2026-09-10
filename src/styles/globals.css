@@ -1237,7 +1237,9 @@ a {
   font-size: 0.8rem;
 }
 .class-chip {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
+  margin-inline: auto;
   min-height: 2.6rem;
   align-items: center;
   justify-content: center;
@@ -1247,6 +1249,9 @@ a {
   color: var(--navy);
   font-size: 0.7rem;
   font-weight: 750;
+}
+.class-chip + .class-chip {
+  margin-top: 0.35rem;
 }
 .course-module-list {
   columns: 2;
