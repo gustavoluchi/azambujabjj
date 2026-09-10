@@ -1,0 +1,36 @@
+---
+import "@fontsource-variable/inter";
+import "@fontsource-variable/sora";
+import SchedulerPage from "@/components/scheduler/SchedulerPage.astro";
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Agende sua aula experimental gratuita de jiu jitsu na Escola Azambuja, em Porto Alegre."
+    />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <title>Aula Experimental Gratuita - Jiu Jitsu Azambuja</title>
+  </head>
+  <body>
+    <SchedulerPage />
+  </body>
+</html>
+
+<style is:global>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+  }
+</style>

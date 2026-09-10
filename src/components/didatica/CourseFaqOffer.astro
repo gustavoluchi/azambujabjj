@@ -1,0 +1,55 @@
+---
+import { didaticaPurchaseUrl, faqs, guaranteeDetails } from "@/data/didatica";
+---
+
+<section class="course-block" data-reveal>
+  <header class="section-heading">
+    <p class="eyebrow">Perguntas frequentes</p><h2>Antes de começar</h2>
+  </header>
+  <div class="details-list">
+    {
+      faqs.map((faq) => (
+        <details>
+          <>
+            <summary>{faq.question}</summary>
+            <div>
+              {Array.isArray(faq.answer) ? (
+                <ul>
+                  {faq.answer.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>{faq.answer}</p>
+              )}
+            </div>
+          </>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<section class="course-offer" data-reveal>
+  <div>
+    <p class="eyebrow eyebrow--light">O investimento</p><h2>
+      Transforme sua forma de aprender e ensinar Jiu-Jitsu
+    </h2><p>
+      Conteúdo completo, progressivo e disponível para estudar no seu ritmo.
+    </p><ul>{guaranteeDetails.map((item) => <li>{item}</li>)}</ul>
+  </div>
+  <div class="course-price">
+    <p><s>De R$ 497,00</s></p><strong>R$ 297,00 à vista</strong><p>
+      ou 10x de R$ 35,69
+    </p><a
+      class="button button--primary"
+      href={didaticaPurchaseUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-umami-event="comprar-didatica">Quero comprar A Didática</a
+    ><small
+      >Este produto não garante resultados. O desempenho depende da aplicação
+      individual do conteúdo.</small
+    >
+  </div>
+</section>

@@ -1,10 +1,33 @@
 ---
+import "@fontsource-variable/inter";
+import "@fontsource-variable/sora";
 import "../styles/globals.css";
+import SiteHeader from "@/components/site/SiteHeader.astro";
+import SiteFooter from "@/components/site/SiteFooter.astro";
+import { whatsappUrl } from "@/data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title = "Escola de Jiu Jitsu Azambuja · Porto Alegre / RS",
+  description = "Escola de Jiu Jitsu Azambuja. Sistema Progressivo de Jiu-Jitsu, escola filiada à SBA. Turmas para crianças, adolescentes e adultos em Porto Alegre.",
+  canonicalPath,
+} = Astro.props;
+const pageTitle =
+  title === "Escola de Jiu Jitsu Azambuja · Porto Alegre / RS"
+    ? title
+    : `${title} · Azambuja Jiu Jitsu`;
+const canonicalUrl =
+  canonicalPath && Astro.site ? new URL(canonicalPath, Astro.site) : undefined;
 ---
 
 <!doctype html>
 <!-- HTML5 -->
-<html lang="pt-BR" data-theme="light">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,10 +41,48 @@ import "../styles/globals.css";
       data-website-id="ab4e74c3-8ab0-48cc-9587-8ac16b91cf66"></script>
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Escola de Jiu-Jitsu Azambuja" />
-    <title>Escola de Jiu-Jitsu Azambuja</title>
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
+    <meta name="description" content={description} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{pageTitle}</title>
   </head>
   <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <SiteHeader />
     <slot />
+    <SiteFooter />
+    <a
+      class="whatsapp-float"
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Falar com a Azambuja pelo WhatsApp"
+      data-umami-event="whatsapp-flutuante"
+    >
+      <span aria-hidden="true">☎</span>
+    </a>
+    <script>
+      const reveals = document.querySelectorAll<HTMLElement>("[data-reveal]");
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        reveals.forEach((element) => element.classList.add("is-visible"));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.12 },
+        );
+        reveals.forEach((element) => observer.observe(element));
+      }
+    </script>
   </body>
 </html>

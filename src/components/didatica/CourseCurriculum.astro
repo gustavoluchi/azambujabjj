@@ -1,0 +1,20 @@
+---
+import { modules } from "@/data/didatica";
+---
+
+<section class="course-block" data-reveal>
+  <header class="section-heading">
+    <p class="eyebrow">Conteúdo da plataforma</p><h2>
+      118 vídeos para construir uma base completa
+    </h2><p class="section-lead">
+      Fundamentos teóricos, defesa pessoal, movimentação, posições, projeções e
+      estruturação de aulas.
+    </p>
+  </header>
+  <details class="course-curriculum">
+    <summary>Ver programa completo ({modules.length} aulas)</summary>
+    <ol class="course-module-list">
+      {modules.map((module) => <li>{module}</li>)}
+    </ol>
+  </details>
+</section>

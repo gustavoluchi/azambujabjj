@@ -1,7 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/site/PageHero.astro";
 import { Image } from "astro:assets";
 
 // Importar todas as fotos das faixas pretas
@@ -193,82 +192,60 @@ const faixasPretas = [
 ];
 ---
 
-<Layout>
-  <div class="flex min-h-svh w-full flex-col items-center justify-center">
-    <Header />
-    <main class="flex w-full flex-col items-center py-12">
-      <div class="w-full max-w-6xl px-6 xl:w-4/6">
-        <!-- <h1 class="mb-8 text-4xl font-bold text-primary">Faixas Pretas Formados</h1> -->
-        <div class="prose prose-lg mb-8 max-w-none">
-          <p class="text-lg leading-relaxed">
-            A Escola de Jiu-Jitsu Azambuja tem o orgulho de ter formado {
-              faixasPretas.length
-            } faixas pretas desde sua fundação em 2007. Cada um desses graduados
-            representa a dedicação, disciplina e excelência no ensino do Jiu-Jitsu
-            que caracteriza nossa escola.
+<Layout
+  title="Faixas pretas"
+  description="Conheça os faixas pretas formados pela Escola Azambuja desde 2007."
+  canonicalPath="/faixa-preta"
+>
+  <main id="conteudo">
+    <PageHero
+      eyebrow="Nosso legado"
+      title="Faixas pretas formados pela Azambuja"
+      description="Cada graduação representa técnica, disciplina, liderança e compromisso com a arte suave."
+    />
+    <section class="content-section">
+      <div class="shell">
+        <div class="content-narrow prose" data-reveal>
+          <p>
+            A Escola Azambuja registra aqui {faixasPretas.length} faixas pretas com
+            retratos e datas de formação. Muitos seguem sua jornada como professores
+            e multiplicam o Sistema Progressivo.
           </p>
-          <p class="text-lg leading-relaxed">
-            Faixas pretas formados seguem os princípios do Sistema Progressivo
-            de Jiu-Jitsu, desenvolvido pelo Mestre Sylvio Behring, e muitos
-            deles continuam sua jornada como instrutores, compartilhando
-            conhecimento e formando novos praticantes da arte suave.
-          </p>
-          <p class="text-lg leading-relaxed">
-            A formação de faixas pretas na Escola Azambuja não é apenas sobre
-            técnica, mas também sobre desenvolvimento de caráter, liderança e
-            compromisso com a arte do Jiu-Jitsu.
+          <p>
+            A escola já alcançou a marca de 24 faixas pretas formados desde sua
+            fundação em 2007; os registros restantes serão publicados quando
+            suas fotos e datas estiverem disponíveis.
           </p>
         </div>
-
-        <div class="mb-8">
-          <h2 class="mb-6 text-2xl font-semibold">Faixas Pretas Formados</h2>
-          <div class="bg-base-100 border-base-300 rounded-lg border p-6">
-            <div class="flex justify-center">
-              <ul class="timeline timeline-vertical w-full max-w-2xl">
-                {
-                  faixasPretas.map((faixa, index) => (
-                    <li class="py-2">
-                      {index > 0 && <hr class="my-2" />}
-                      <div class="timeline-start">
-                        <div class="text-primary text-base font-bold">
-                          #{faixa.sequencia}
-                        </div>
-                      </div>
-                      <div class="timeline-middle">
-                        <div class="bg-primary/10 border-primary/20 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-2">
-                          {faixa.foto ? (
-                            <Image
-                              src={faixa.foto}
-                              alt={`Foto de ${faixa.nome}`}
-                              width={128}
-                              height={128}
-                              class="h-32 w-32 rounded-full object-cover"
-                              loading={index < 5 ? "eager" : "lazy"}
-                            />
-                          ) : (
-                            <div class="text-5xl">👤</div>
-                          )}
-                        </div>
-                      </div>
-                      <div class="timeline-end timeline-box">
-                        <div class="mb-1 text-lg font-semibold">
-                          {faixa.nome}
-                        </div>
-                        <div class="text-sm opacity-70">
-                          {faixa.feminino ? "Formada em " : "Formado em "}
-                          {faixa.dataFormacao}
-                        </div>
-                      </div>
-                      {index < faixasPretas.length - 1 && <hr class="my-2" />}
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-          </div>
+        <div class="portrait-grid" style="margin-top: 3rem">
+          {
+            faixasPretas.map((faixa, index) => (
+              <article class="portrait" data-reveal>
+                {faixa.foto && (
+                  <Image
+                    src={faixa.foto}
+                    alt={`Foto de ${faixa.nome}`}
+                    width={420}
+                    height={315}
+                    loading={index < 4 ? "eager" : "lazy"}
+                  />
+                )}
+                <div class="portrait__copy">
+                  <>
+                    <h2>
+                      #{faixa.sequencia} · {faixa.nome}
+                    </h2>
+                    <p>
+                      {faixa.feminino ? "Formada" : "Formado"} em{" "}
+                      {faixa.dataFormacao}
+                    </p>
+                  </>
+                </div>
+              </article>
+            ))
+          }
         </div>
       </div>
-    </main>
-    <Footer />
-  </div>
+    </section>
+  </main>
 </Layout>

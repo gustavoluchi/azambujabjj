@@ -1,0 +1,55 @@
+---
+import ProfRafael from "@/assets/Professor-Rafael-Azambuja-SBA.jpg";
+import ProfLeonardo from "@/assets/Professor-Leonardo-Sparta-SBA.jpg";
+import MestreSylvio from "@/assets/Mestre-Sylvio-Behring-SBA.jpg";
+import { Image } from "astro:assets";
+import { masterBio, professors } from "@/data/didatica";
+
+const images = { rafael: ProfRafael, leonardo: ProfLeonardo } as const;
+---
+
+<section class="course-block" data-reveal>
+  <header class="section-heading">
+    <p class="eyebrow">Os professores</p><h2>
+      Experiência de ensino dentro e fora do tatame
+    </h2>
+  </header>
+  <div>
+    {
+      professors.map((professor) => (
+        <article class="profile-row">
+          <>
+            <Image
+              src={images[professor.image]}
+              alt={`Professor ${professor.name}`}
+              width={320}
+              height={320}
+              loading="lazy"
+            />
+            <div>
+              <h3>{professor.name}</h3>
+              {professor.bio.map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </div>
+          </>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<section class="course-block course-master" data-reveal>
+  <Image
+    src={MestreSylvio}
+    alt="Mestre Sylvio Behring"
+    width={520}
+    height={520}
+    loading="lazy"
+  />
+  <div>
+    <p class="eyebrow">Criador do Sistema Progressivo</p><h2>
+      Mestre Sylvio Behring
+    </h2>{masterBio.map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+</section>

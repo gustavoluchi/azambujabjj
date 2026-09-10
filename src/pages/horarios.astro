@@ -1,40 +1,50 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Tabela from "../components/Tabela.astro";
-
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/site/PageHero.astro";
+import ScheduleTable from "@/components/schedule/ScheduleTable.astro";
+import { bookingUrl } from "@/data/site";
 const gradeHorarios = "/gradehorarios.jpeg";
 ---
 
-<Layout>
-  <div class="flex min-h-svh w-full flex-col items-center justify-center">
-    <Header />
-    <main class="flex w-full flex-col items-center py-12">
-      <div class="w-full max-w-6xl px-6 xl:w-4/6">
-        <h1 class="text-primary mb-8 text-4xl font-bold">Horários de Aulas</h1>
-        <div class="mb-6 flex flex-wrap gap-3">
+<Layout
+  title="Horários"
+  description="Confira a grade de horários da Escola Azambuja."
+  canonicalPath="/horarios"
+>
+  <main id="conteudo">
+    <PageHero
+      eyebrow="Grade semanal"
+      title="Encontre seu horário de treino"
+      description="Turmas para diferentes idades e níveis, com frequência livre nos planos de jiu jitsu."
+    />
+    <section class="content-section">
+      <div class="shell">
+        <div class="detail-actions" style="margin: 0 0 2rem">
           <a
-            class="btn btn-primary btn-sm"
+            class="button button--primary"
             href={gradeHorarios}
-            download="grade-horarios-azambuja.jpeg"
-          >
-            Baixar grade
-          </a>
-          <a
-            class="btn btn-ghost btn-sm"
+            download="grade-horarios-azambuja.jpeg">Baixar grade</a
+          ><a
+            class="text-link"
             href={gradeHorarios}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer">Abrir como imagem</a
           >
-            Ver grade (imagem)
-          </a>
         </div>
-        <div class="mb-8">
-          <Tabela />
+        <ScheduleTable />
+        <p style="color: var(--muted); margin: 1.5rem 0 0">
+          Quarta-feira é dia de No Gi, exceto para a turma feminina das 9h.
+          Confirme alterações pontuais diretamente com a equipe.
+        </p>
+        <div class="detail-actions">
+          <a
+            class="button button--primary"
+            href={bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer">Agendar aula experimental</a
+          >
         </div>
       </div>
-    </main>
-    <Footer />
-  </div>
+    </section>
+  </main>
 </Layout>
