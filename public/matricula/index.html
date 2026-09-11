@@ -420,6 +420,20 @@
         <p class="erro-msg" id="erro-experimental">Escolha uma opção.</p>
       </fieldset>
 
+      <div class="grupo" id="blocoProfessor">
+        <fieldset>
+          <legend>Qual professor deu a sua primeira aula?</legend>
+          <div class="opcoes">
+            <label><input type="radio" name="professor" value="Rafael Azambuja"><span>Rafael Azambuja</span></label>
+            <label><input type="radio" name="professor" value="Leonardo Sparta"><span>Leonardo Sparta</span></label>
+            <label><input type="radio" name="professor" value="Henrique Alemão"><span>Henrique Alemão</span></label>
+            <label><input type="radio" name="professor" value="Diego Dias"><span>Diego Dias</span></label>
+            <label><input type="radio" name="professor" value="Não lembro"><span>Não lembro</span></label>
+          </div>
+          <p class="erro-msg" id="erro-professor">Escolha uma opção.</p>
+        </fieldset>
+      </div>
+
       <div class="checks">
         <label class="check">
           <input type="checkbox" id="aptidao">
@@ -659,6 +673,14 @@
     if (!jaTreinou) { $("faixa").value = ""; $("escolaAnterior").value = ""; }
   });
 
+  document.querySelectorAll('input[name="experimental"]').forEach(function (r) {
+    r.addEventListener("change", function () {
+      const fez = radioSelecionado("experimental") === "Sim";
+      $("blocoProfessor").classList.toggle("on", fez);
+      if (!fez) document.querySelectorAll('input[name="professor"]').forEach(function (p) { p.checked = false; });
+    });
+  });
+
   $("origem").addEventListener("change", function () {
     $("blocoIndicacao").classList.toggle("on", $("origem").value === "Indicação de aluno ou amigo");
     $("blocoOutro").classList.toggle("on", $("origem").value === "Outro");
@@ -716,7 +738,10 @@
     const origemOk = marcar("origem", $("origem").value !== "");
     const expOk = radioSelecionado("experimental") !== "";
     $("erro-experimental").style.display = expOk ? "none" : "block";
-    if (!origemOk || !expOk) return;
+    const precisaProfessor = radioSelecionado("experimental") === "Sim";
+    const profOk = !precisaProfessor || radioSelecionado("professor") !== "";
+    $("erro-professor").style.display = profOk ? "none" : "block";
+    if (!origemOk || !expOk || !profOk) return;
 
     const botao = $("enviar");
     botao.disabled = true;
@@ -757,6 +782,7 @@
         : $("origem").value,
       indicadoPor: $("indicadoPor").value.trim(),
       fezExperimental: radioSelecionado("experimental"),
+      professorPrimeiraAula: radioSelecionado("professor"),
       autorizaImagem: $("imagem").checked ? "sim" : "não"
     };
 
