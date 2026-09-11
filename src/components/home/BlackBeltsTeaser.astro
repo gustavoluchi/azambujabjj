@@ -1,0 +1,38 @@
+---
+const totalFaixasPretas = 24;
+---
+
+<section class="section section--navy black-belts-teaser" id="faixas-pretas">
+  <div class="shell black-belts-teaser__inner" data-reveal>
+    <div>
+      <span class="eyebrow eyebrow--light">Nosso legado</span>
+      <h2>{totalFaixasPretas} faixas pretas formados desde 2007</h2>
+      <p>
+        Conheça quem chegou lá pelo Sistema Progressivo da Azambuja, com
+        retratos e datas de cada graduação.
+      </p>
+    </div>
+    <a class="button button--primary" href="/faixa-preta">Ver os faixas pretas</a>
+  </div>
+</section>
+
+<style>
+  .black-belts-teaser__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .black-belts-teaser h2 {
+    max-width: 22ch;
+    margin-top: 0.75rem;
+    font-size: clamp(1.5rem, 3vw, 2.125rem);
+    color: var(--white);
+  }
+  .black-belts-teaser p {
+    max-width: 52ch;
+    margin-top: 0.625rem;
+    color: #c9d1e0;
+  }
+</style>

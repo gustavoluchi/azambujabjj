@@ -7,6 +7,7 @@ export const navigation = [
   { label: "Turmas", href: "#turmas" },
   { label: "Horários", href: "#horarios" },
   { label: "Professores", href: "#professores" },
+  { label: "Faixas Pretas", href: "/faixa-preta" },
   { label: "Planos", href: "#planos" },
   { label: "Cursos Online", href: "#cursos" },
   { label: "Filiais", href: "#filiais" },
