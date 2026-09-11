@@ -1,4 +1,4 @@
-export const bookingUrl = "https://agendar-aula-experimental.vercel.app";
+export const bookingUrl = "/agendar-aula-experimental";
 export const whatsappUrl =
   "https://wa.me/5551980267688?text=Oi!%20Quero%20agendar%20uma%20aula%20experimental%20gratuita%20na%20Azambuja.";
 
