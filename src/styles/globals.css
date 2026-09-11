@@ -632,7 +632,8 @@ a {
   max-width: 47rem;
 }
 .sba-band img {
-  width: 8rem;
+  width: 15rem;
+  height: auto;
   flex: 0 0 auto;
 }
 .sba-band h2 {
@@ -817,6 +818,7 @@ a {
 }
 .instructors-row {
   margin-top: 2rem;
+  align-items: start;
   grid-template-columns: repeat(3, 1fr);
 }
 .instructor-item {
@@ -843,6 +845,39 @@ a {
   font-weight: 750;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+.instructor-bio {
+  grid-column: 1 / -1;
+  margin-top: 0.35rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #e7e3d8;
+}
+.instructor-bio summary {
+  width: fit-content;
+  color: var(--navy);
+  font-family: "Sora Variable", Sora, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+.instructor-bio .when-open,
+.instructor-bio[open] .when-closed {
+  display: none;
+}
+.instructor-bio[open] .when-open {
+  display: inline;
+}
+.instructor-bio__text {
+  margin-top: 0.75rem;
+}
+.instructor-bio__text p {
+  margin: 0 0 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.instructor-bio__text p:last-child {
+  margin-bottom: 0;
 }
 .plan-banner {
   display: flex;
