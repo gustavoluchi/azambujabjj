@@ -17,6 +17,11 @@ const instructors = [
     name: "Leonardo Antoria",
     classes: "Kids · Mini Kids · Iniciantes · Adolescentes (auxílio)",
     image: leonardo,
+    bio: [
+      "Faixa preta formado sob a orientação do Mestre Sylvio Behring e do Professor Rafael Azambuja, com mais de 10 anos de tatame. Monitor e instrutor desde a faixa roxa, já ministrou milhares de aulas para crianças, jovens, adultos e pessoas com deficiência.",
+      "A partir do Sistema Progressivo, desenvolveu um método inclusivo de jiu-jitsu, aberto a todas as pessoas. Iniciou no esporte mais de 40 alunos com deficiência em projetos sociais na Sogipa e no Clube Social Pertence (Pró Esporte), com cerimônia de graduação para as famílias.",
+      "Competidor desde a faixa branca em campeonatos estaduais e nacionais (CBJJ e IBJJF), na categoria e no absoluto. Criador do projeto Leo Sparta BJJ no Instagram, com análise técnica, estratégia de luta e conteúdo sobre disciplina, saúde e superação.",
+    ],
   },
   { name: "Diego Dias", classes: "Iniciantes", image: diego },
 ];
@@ -102,6 +107,19 @@ const instructors = [
                   <p>{person.classes}</p>
                 </>
               </div>
+              {"bio" in person && person.bio && (
+                <details class="instructor-bio">
+                  <summary>
+                    <span class="when-closed">Saiba mais sobre {person.name.split(" ")[0]}</span>
+                    <span class="when-open">Ocultar</span>
+                  </summary>
+                  <div class="instructor-bio__text">
+                    {person.bio.map((paragraph) => (
+                      <p>{paragraph}</p>
+                    ))}
+                  </div>
+                </details>
+              )}
             </>
           </article>
         ))
