@@ -39,7 +39,7 @@ test("given a visitor lands on the homepage, the schedule section signals the do
   )?.[0];
 
   assert.ok(section, "A página inicial deve ter a seção de horários");
-  assert.match(section, /href="\/gradehorarios\.jpeg"[^>]*download/);
+  assert.match(section, /href="\/grade-horarios\.png"[^>]*download/);
   assert.match(section, /href="\/horarios"/);
 });
 
