@@ -1104,6 +1104,9 @@ a {
   gap: 1rem;
   margin-top: 2rem;
 }
+.detail-actions--center {
+  justify-content: center;
+}
 .media-copy {
   display: grid;
   grid-template-columns: minmax(17rem, 0.72fr) minmax(0, 1.28fr);
@@ -1237,7 +1240,9 @@ a {
   font-size: 0.8rem;
 }
 .class-chip {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;
+  margin-inline: auto;
   min-height: 2.6rem;
   align-items: center;
   justify-content: center;
@@ -1247,6 +1252,9 @@ a {
   color: var(--navy);
   font-size: 0.7rem;
   font-weight: 750;
+}
+.class-chip + .class-chip {
+  margin-top: 0.35rem;
 }
 .course-module-list {
   columns: 2;
