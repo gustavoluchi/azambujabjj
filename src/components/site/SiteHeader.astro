@@ -3,7 +3,8 @@ import Brand from "./Brand.astro";
 import { navigation } from "@/data/site";
 
 const isHome = Astro.url.pathname === "/";
-const anchorHref = (href: string) => (isHome ? href : `/${href}`);
+const anchorHref = (href: string) =>
+  href.startsWith("#") && !isHome ? `/${href}` : href;
 ---
 
 <header class="site-header" id="site-header">
