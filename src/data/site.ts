@@ -239,7 +239,7 @@ export const timeline = [
 
 export const contact = {
   address: "Av. Osvaldo Aranha, 794 · Bom Fim · Porto Alegre - RS",
-  email: "contatoazambujabehring@gmail.com",
+  email: "contato@azambujabjj.com.br",
   phone: "(51) 98026-7688",
   instagram: "@azambujabjj",
   instagramUrl: "https://instagram.com/azambujabjj",
