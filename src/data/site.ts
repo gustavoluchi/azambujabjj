@@ -156,12 +156,13 @@ export const plans: Plan[] = [
     ],
   },
   {
-    title: "Particular & Funcional",
+    title: "Particular, Funcional & Avulsa",
     prices: [
-      ["Particular · 4 aulas/mês", "R$ 380"],
-      ["Particular · 8 aulas/mês", "R$ 640"],
-      ["Funcional · 1x/semana", "R$ 160"],
-      ["Funcional · 2x/semana", "R$ 280"],
+      ["Particular · 4 aulas/mês", "R$ 480"],
+      ["Particular · 8 aulas/mês", "R$ 800"],
+      ["Funcional · 1x/semana", "R$ 280"],
+      ["Funcional · 2x/semana", "R$ 380"],
+      ["Aula avulsa · turma regular", "R$ 50"],
     ],
   },
 ] as const;
