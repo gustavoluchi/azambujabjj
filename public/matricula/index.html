@@ -220,6 +220,11 @@
         <input type="text" id="respNome" placeholder="Quem responde legalmente pelo aluno">
         <p class="erro-msg" id="erro-respNome">Informe o nome do responsável.</p>
 
+        <label for="respNascimento">Data de nascimento do responsável</label>
+        <input type="date" id="respNascimento">
+        <p class="ajuda">O cadastro da matrícula sai no nome do responsável, e o sistema da escola pede essa data.</p>
+        <p class="erro-msg" id="erro-respNascimento">Informe a data de nascimento do responsável, que precisa ser maior de 18 anos.</p>
+
         <label for="respParentesco">Parentesco</label>
         <select id="respParentesco">
           <option value="" disabled selected>Escolha uma opção</option>
@@ -594,6 +599,8 @@
     if (n === 2) {
       if (menorDeIdade) {
         ok = marcar("respNome", $("respNome").value.trim().split(/\s+/).length >= 2) && ok;
+        const idadeResp = idadeEm($("respNascimento").value);
+        ok = marcar("respNascimento", idadeResp !== null && idadeResp >= 18) && ok;
         ok = marcar("respWhats", telefoneValido($("respWhats").value)) && ok;
       } else {
         ok = marcar("whats", telefoneValido($("whats").value)) && ok;
@@ -757,6 +764,7 @@
       email: $("email").value.trim(),
       menor: menorDeIdade ? "sim" : "não",
       respNome: $("respNome").value.trim(),
+      respNascimento: menorDeIdade ? formatarData($("respNascimento").value) : "",
       respParentesco: $("respParentesco").value,
       respWhats: $("respWhats").value,
       cpf: $("cpf").value,
@@ -824,6 +832,7 @@
     $("inicio").min = iso;
     $("inicio").value = iso;
     $("nascimento").max = iso;
+    $("respNascimento").max = iso;
   })();
 </script>
 </body>
