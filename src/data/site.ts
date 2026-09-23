@@ -55,7 +55,7 @@ export const classes = [
     age: "Sábados",
     title: "Sabadonze",
     description:
-      "Aula de sábado às 11h, ótima porta de entrada pra quem tem a semana corrida.",
+      "Treino de integração todo sábado às 11h, com iniciantes e graduados no mesmo tatame.",
   },
   {
     age: "Sob agendamento",
