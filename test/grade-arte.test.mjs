@@ -39,13 +39,23 @@ test("given the printed grid separates them, the table shows Graduados and Funci
   }
 });
 
-test("given the monthly women's Saturday, the schedule page explains it like the printed grid", async () => {
-  const page = await readFile(
-    new URL("../dist/horarios/index.html", import.meta.url),
-    "utf8",
+test("given the event has its own page, the weekly grid never announces it", async () => {
+  const pages = await Promise.all(
+    ["", "horarios"].map((route) =>
+      readFile(
+        new URL(
+          `../dist/${route ? `${route}/` : ""}index.html`,
+          import.meta.url,
+        ),
+        "utf8",
+      ),
+    ),
   );
-  const note = page.replace(/\s+/g, " ");
 
-  assert.match(note, /Sabadonze das Gurias/);
-  assert.match(note, /um sábado por mês/i);
+  for (const page of pages) {
+    const text = page.replace(/\s+/g, " ");
+
+    assert.doesNotMatch(text, /Sabadonze das Gurias/);
+    assert.doesNotMatch(text, /sábado por mês/i);
+  }
 });
