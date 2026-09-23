@@ -83,7 +83,8 @@ export const schedule: ScheduleDay[] = [
     slots: [
       { time: "7h", name: "Iniciantes" },
       { time: "10h", name: "Mini Kids" },
-      { time: "12h", name: "Graduados / Funcional" },
+      { time: "12h", name: "Graduados" },
+      { time: "12h", name: "Funcional" },
       { time: "17h", name: "Iniciantes" },
       { time: "18h15", name: "Mini Kids" },
       { time: "19h", name: "Adolescentes" },
@@ -106,7 +107,8 @@ export const schedule: ScheduleDay[] = [
     slots: [
       { time: "7h", name: "Iniciantes" },
       { time: "10h", name: "Mini Kids" },
-      { time: "12h", name: "Graduados / Funcional" },
+      { time: "12h", name: "Graduados" },
+      { time: "12h", name: "Funcional" },
       { time: "17h", name: "Iniciantes" },
       { time: "18h15", name: "Mini Kids" },
       { time: "19h", name: "Adolescentes" },
