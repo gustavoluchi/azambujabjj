@@ -44,7 +44,7 @@ test("given any page, the shared shell exposes accessible navigation and motion 
 
 test("given a booking action, it uses the canonical scheduler", async () => {
   const content = await read("src/data/site.ts");
-  assert.match(content, /https:\/\/agendar-aula-experimental\.vercel\.app/);
+  assert.match(content, /bookingUrl = "\/agendar-aula-experimental"/);
 });
 
 test("given the supplied design, the homepage preserves its canonical content", async () => {

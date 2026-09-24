@@ -21,8 +21,12 @@ const pageTitle =
   title === "Escola de Jiu Jitsu Azambuja · Porto Alegre / RS"
     ? title
     : `${title} · Azambuja Jiu Jitsu`;
-const canonicalUrl =
-  canonicalPath && Astro.site ? new URL(canonicalPath, Astro.site) : undefined;
+const canonicalUrl = Astro.site
+  ? new URL(canonicalPath ?? Astro.url.pathname, Astro.site)
+  : undefined;
+const previewImageUrl = Astro.site
+  ? new URL("/og-azambuja.jpg", Astro.site)
+  : undefined;
 ---
 
 <!doctype html>
@@ -49,6 +53,23 @@ const canonicalUrl =
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Escola de Jiu Jitsu Azambuja" />
+    <meta property="og:locale" content="pt_BR" />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {
+      previewImageUrl && (
+        <>
+          <meta property="og:image" content={previewImageUrl} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta
+            property="og:image:alt"
+            content="Brasão da Escola de Jiu Jitsu Azambuja, Porto Alegre"
+          />
+          <meta name="twitter:card" content="summary_large_image" />
+        </>
+      )
+    }
     <title>{pageTitle}</title>
   </head>
   <body>

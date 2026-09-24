@@ -6,6 +6,7 @@ type ClassId =
   | "adolescentes"
   | "feminina"
   | "femininaKimono"
+  | "funcional"
   | "graduados"
   | "iniciantes"
   | "iniciantesGraduados"
@@ -49,7 +50,14 @@ const rows: Array<{
   },
   {
     time: "12h00",
-    classes: [null, "graduados", null, "graduados", null, null],
+    classes: [
+      null,
+      ["graduados", "funcional"],
+      null,
+      ["graduados", "funcional"],
+      null,
+      null,
+    ],
   },
   {
     time: "17h00",
@@ -113,6 +121,12 @@ const classInfo: Record<ClassId, ClassInfo> = {
     detail: "com kimono",
     icon: "female",
     style: "bg-amber-500 text-white",
+  },
+  funcional: {
+    label: "Funcional",
+    detail: "",
+    icon: "clock",
+    style: "bg-teal-600 text-white",
   },
   graduados: {
     label: "Graduados",
