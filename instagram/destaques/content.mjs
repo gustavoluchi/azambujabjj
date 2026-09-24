@@ -45,14 +45,14 @@ export const highlights = [
           },
           {
             title: "Apareça",
-            text: "Chegue uns minutinhos antes, com roupa confortável. O resto a gente explica na hora.",
+            text: "Chega uns minutos antes, com roupa confortável. O resto a gente resolve no tatame.",
           },
         ],
       },
       {
         type: "cta",
         eyebrow: "Agende agora",
-        title: "Você não precisa estar pronto. <em>Só precisa começar.</em>",
+        title: "Jiu jitsu que cabe <em>na sua vida</em>",
         button: "Agendar aula experimental",
         url: "azambujabjj.com.br/agendar-aula-experimental",
         note: "Ou chame no WhatsApp: (51) 98026-7688",
@@ -67,7 +67,7 @@ export const highlights = [
       {
         type: "title",
         eyebrow: "Escola de Jiu-Jitsu Azambuja · Desde 2007",
-        title: "Você não precisa estar pronto <em>Só precisa começar</em>",
+        title: "Jiu jitsu que cabe <em>na sua vida</em>",
         lead: "Ensino técnico, progressivo e acolhedor de jiu jitsu para crianças, adolescentes e adultos, no Bom Fim, em Porto Alegre.",
         chips: ["Sistema Progressivo", "Filiada à SBA", "Desde 2007"],
       },
@@ -219,12 +219,12 @@ export const highlights = [
       {
         type: "cards",
         eyebrow: "Outros formatos",
-        title: "Pra quem tem a <em>semana corrida</em>",
+        title: "Sábado e <em>aula particular</em>",
         cards: [
           {
             tag: "Sábados · 11h",
             title: "Sabadonze",
-            text: "Aula de sábado às 11h, ótima porta de entrada pra quem tem a semana corrida.",
+            text: "Treino de integração todo sábado às 11h, com iniciantes e graduados no mesmo tatame.",
           },
           {
             tag: "Sob agendamento",
@@ -298,7 +298,8 @@ export const highlights = [
             slots: [
               ["7h", "Iniciantes"],
               ["10h", "Mini Kids"],
-              ["12h", "Graduados / Funcional"],
+              ["12h", "Graduados"],
+              ["12h", "Funcional"],
               ["17h", "Iniciantes"],
               ["18h15", "Mini Kids"],
               ["19h", "Adolescentes"],
@@ -549,9 +550,8 @@ export const highlights = [
       {
         type: "title",
         eyebrow: "Sábados · 11h",
-        title:
-          "<em>Sabadonze:</em> a porta de entrada pra quem tem a semana corrida",
-        lead: "Aula de sábado às 11h na matriz do Bom Fim. Pra quem nunca treinou, pra quem já treina, pra quem tá pensando há meses.",
+        title: "<em>Sabadonze:</em> treino de integração todo sábado às 11h",
+        lead: "Iniciantes e graduados no mesmo tatame, na matriz do Bom Fim. Pra quem nunca treinou, pra quem já treina, pra quem tá pensando há meses.",
       },
       {
         type: "text",
@@ -561,8 +561,9 @@ export const highlights = [
       },
       {
         type: "cta",
-        eyebrow: "Não precisa estar pronta",
-        title: "<em>Só precisa vir.</em>",
+        eyebrow: "Sábado, 11h",
+        title:
+          "Chega uns minutos antes. <em>O resto a gente resolve no tatame.</em>",
         button: "Garantir minha vaga",
         url: "azambujabjj.com.br/sabadonze",
       },
