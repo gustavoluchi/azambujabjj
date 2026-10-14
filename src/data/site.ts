@@ -9,6 +9,7 @@ export const navigation = [
   { label: "Professores", href: "#professores" },
   { label: "Faixas Pretas", href: "/faixa-preta" },
   { label: "Planos", href: "#planos" },
+  { label: "Loja", href: "/loja" },
   { label: "Cursos Online", href: "#cursos" },
   { label: "Filiais", href: "#filiais" },
   { label: "Contato", href: "#contato" },
