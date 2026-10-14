@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Loja Azambuja Jiu-Jitsu</title>
-<meta name="description" content="Loja da Escola de Jiu-Jitsu Azambuja, Porto Alegre: camisetas e moletons.">
+<title>AZ Store | Azambuja Jiu-Jitsu</title>
+<meta name="description" content="AZ Store, a loja da Escola de Jiu-Jitsu Azambuja, Porto Alegre: camisetas e moletons.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -109,8 +109,8 @@ input:focus,textarea:focus{outline:2px solid var(--amarelo);border-color:var(--a
 
 <section class="hero">
   <div class="wrap">
-    <h1>Loja <span>Azambuja</span></h1>
-    <p>Camisetas e moletons da Escola de Jiu-Jitsu Azambuja, de Porto Alegre.</p>
+    <h1>AZ <span>Store</span></h1>
+    <p><b style="color:#fff">Vista a sua escola.</b> Camisetas e moletons da Escola de Jiu-Jitsu Azambuja, de Porto Alegre.</p>
   </div>
 </section>
 
@@ -305,7 +305,7 @@ document.getElementById("finalizar").onclick = ()=>{
   const n=nome.value.trim(), t=tel.value.replace(/\D/g,"");
   if(n.length<2 || t.length<10){ erro.textContent="Preencha seu nome e seu WhatsApp com DDD."; erro.style.display="block"; return; }
   const linhas = sacola.map(i=>`• ${i.q}x ${i.nome}, tamanho ${i.tam}`).join("\n");
-  const msg = `Olá! Quero fazer um pedido na loja da Azambuja.\n\n${linhas}\n\nTotal: ${brl(total())}\nRecebimento: ${entrega==="retirada"?"retirar na academia":"envio (combinar frete)"}\nPagamento: ${pagamento==="pix"?"Pix":"cartão"}\nNome: ${n}\nWhatsApp: ${tel.value}`+(obs.value.trim()?`\nObs.: ${obs.value.trim()}`:"");
+  const msg = `Olá! Quero fazer um pedido na AZ Store.\n\n${linhas}\n\nTotal: ${brl(total())}\nRecebimento: ${entrega==="retirada"?"retirar na academia":"envio (combinar frete)"}\nPagamento: ${pagamento==="pix"?"Pix":"cartão"}\nNome: ${n}\nWhatsApp: ${tel.value}`+(obs.value.trim()?`\nObs.: ${obs.value.trim()}`:"");
   window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`,"_blank");
 };
 
