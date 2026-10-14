@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Loja Azambuja Jiu-Jitsu</title>
-<meta name="description" content="Camiseta Código Samurai da Escola de Jiu-Jitsu Azambuja, Porto Alegre. Branca e azul-marinho.">
+<meta name="description" content="Loja da Escola de Jiu-Jitsu Azambuja, Porto Alegre: camisetas e moletons.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -27,7 +27,15 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 .hero h1 span{color:var(--amarelo)}
 .hero p{max-width:560px;margin-top:14px;color:#cfd8e8;font-size:17px}
 .kanji{font-size:20px;letter-spacing:.3em;color:var(--amarelo);margin-bottom:12px}
-.produtos{display:grid;gap:22px;margin:-28px auto 40px;grid-template-columns:1fr}
+.secoes{position:sticky;top:60px;z-index:15;display:flex;gap:8px;overflow-x:auto;padding:12px 16px;margin:0 -16px 8px;background:var(--fundo);scrollbar-width:none}
+.secoes::-webkit-scrollbar{display:none}
+.secoes a{white-space:nowrap;padding:9px 16px;border-radius:999px;background:#fff;border:1.5px solid var(--linha);color:var(--texto);text-decoration:none;font:600 14px 'Archivo'}
+.secoes a:hover,.secoes a.on{background:var(--azul);border-color:var(--azul);color:#fff}
+.secao{scroll-margin-top:130px;margin-bottom:34px}
+.secao>h2{font-family:'Anton',sans-serif;font-weight:400;font-size:30px;text-transform:uppercase;letter-spacing:.03em;margin:18px 0 14px}
+.embreve{background:#fff;border:1.5px dashed #b6c3d9;border-radius:14px;padding:26px 18px;text-align:center;color:var(--suave)}
+.embreve b{display:block;color:var(--texto);font-size:17px;margin-bottom:2px}
+.produtos{display:grid;gap:22px;margin:0 auto;grid-template-columns:1fr}
 @media(min-width:820px){.produtos{grid-template-columns:1fr 1fr}}
 .card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(20,33,58,.1)}
 .galeria{position:relative;background:#e9ecf1;aspect-ratio:4/5}
@@ -101,19 +109,19 @@ input:focus,textarea:focus{outline:2px solid var(--amarelo);border-color:var(--a
 
 <section class="hero">
   <div class="wrap">
-    <div class="kanji">武士道</div>
-    <h1>Código <span>Samurai</span></h1>
-    <p>A camiseta da Escola de Jiu-Jitsu Azambuja, de Porto Alegre. Duas cores, a mesma frase nas costas.</p>
+    <h1>Loja <span>Azambuja</span></h1>
+    <p>Camisetas e moletons da Escola de Jiu-Jitsu Azambuja, de Porto Alegre.</p>
   </div>
 </section>
 
 <main class="wrap">
-  <div class="produtos" id="produtos"></div>
+  <nav class="secoes" id="secoes" aria-label="Seções da loja"></nav>
+  <div id="vitrine"></div>
 
   <div class="info">
     <div><b>Retirada na academia</b><span>Avise no pedido e combinamos o dia com você, no treino.</span></div>
     <div><b>Pix ou cartão</b><span>Pix com o valor já certo, ou link de cartão enviado pelo WhatsApp.</span></div>
-    <div><b>Tamanhos P ao GG</b><span>Modelagem unissex. Na dúvida, escolha o tamanho acima do que você usa.</span></div>
+    <div><b>Tamanhos</b><span>Cada produto mostra os tamanhos disponíveis. Na dúvida, escolha o tamanho acima do que você usa.</span></div>
   </div>
 </main>
 
@@ -137,47 +145,71 @@ const CONFIG = {
   whatsapp: "5551980267688",          // WhatsApp oficial da escola (o mesmo do site)
   pixChave: "31934836000197",            // CNPJ da escola, chave Pix
   pixNome:  "Escola de Jiu-Jitsu Azambuja",
-  // COLAR AQUI os links de pagamento da Stone, um por quantidade de camisetas (R$ 80, 160, 240, 320).
-  // Quantidade sem link (ou link vazio) = enviamos o link do cartão pelo WhatsApp.
-  linksCartao: {1:"https://payment-link-v3.stone.com.br/pl_mOaqn8KpJR7Vrz8hx8fKVB5GvbePN6zW", 2:"https://payment-link-v3.stone.com.br/pl_8J4GxboanX0lqAJUpOczkeMONrWRmE1j", 3:"https://payment-link-v3.stone.com.br/pl_ZljYE964R7wqkGg4UACvkOXy0vaWLJ3r", 4:"https://payment-link-v3.stone.com.br/pl_eKpv04G8kZP1qg3NUMSGqOW9VRgMDaw5"},
-  preco: 80.00
+  // Links de pagamento da Stone, pelo VALOR TOTAL da sacola em reais.
+  // Total sem link = enviamos o link do cartão pelo WhatsApp.
+  linksCartao: {
+    80:  "https://payment-link-v3.stone.com.br/pl_mOaqn8KpJR7Vrz8hx8fKVB5GvbePN6zW",
+    160: "https://payment-link-v3.stone.com.br/pl_8J4GxboanX0lqAJUpOczkeMONrWRmE1j",
+    240: "https://payment-link-v3.stone.com.br/pl_ZljYE964R7wqkGg4UACvkOXy0vaWLJ3r",
+    320: "https://payment-link-v3.stone.com.br/pl_eKpv04G8kZP1qg3NUMSGqOW9VRgMDaw5"
+  }
 };
+
+/* Seções da loja, na ordem em que aparecem */
+const CATEGORIAS = [
+  {id:"camisetas",         nome:"Camisetas"},
+  {id:"moletons",          nome:"Moletons"},
+  {id:"camiseta-infantil", nome:"Camiseta Infantil"},
+  {id:"moletom-infantil",  nome:"Moletom Infantil"}
+];
+
+/* Produtos. Para incluir um: copiar um bloco, trocar categoria, nome, preço, tamanhos e fotos.
+   fotos: função que devolve o arquivo da foto. modelos/lados só aparecem se o produto tiver essas fotos. */
+const TAMANHOS_ADULTO = ["P","M","G","GG"];
+const PRODUTOS = [
+  {id:"samurai-branca", categoria:"camisetas", nome:"Camiseta Código Samurai · Branca",
+   sub:"Estampa azul, selo no peito e frase nas costas", preco:80.00, tamanhos:TAMANHOS_ADULTO,
+   fotos:(m,l)=>`/loja/branca-${m}-${l}.jpg`, modelos:true},
+  {id:"samurai-marinho", categoria:"camisetas", nome:"Camiseta Código Samurai · Azul-marinho",
+   sub:"Estampa branca, selo no peito e frase nas costas", preco:80.00, tamanhos:TAMANHOS_ADULTO,
+   fotos:(m,l)=>`/loja/marinho-${m}-${l}.jpg`, modelos:true}
+];
 /* ======================================================= */
 
-const PRODUTOS = [
-  {id:"branca",  nome:"Código Samurai · Branca",       sub:"Estampa azul, selo no peito e frase nas costas"},
-  {id:"marinho", nome:"Código Samurai · Azul-marinho", sub:"Estampa branca, selo no peito e frase nas costas"}
-];
-const TAMANHOS = ["P","M","G","GG"];
 const brl = v => v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 let sacola = [];
-try{ sacola = JSON.parse(localStorage.getItem("az_sacola")||"[]"); }catch(e){}
-const salvar = () => { try{ localStorage.setItem("az_sacola",JSON.stringify(sacola)); }catch(e){} };
+try{ sacola = JSON.parse(localStorage.getItem("az_sacola2")||"[]"); }catch(e){}
+const salvar = () => { try{ localStorage.setItem("az_sacola2",JSON.stringify(sacola)); }catch(e){} };
 const estado = {};
 
 function montarProdutos(){
-  const el = document.getElementById("produtos");
-  el.innerHTML = PRODUTOS.map(p=>{
-    estado[p.id] = {modelo:"masc", lado:"frente", tam:null};
-    return `<article class="card" id="p-${p.id}">
-      <div class="galeria"><img alt="${p.nome}" src="/loja/${p.id}-masc-frente.jpg">
-        <div class="toggles">
+  document.getElementById("secoes").innerHTML = CATEGORIAS.map(c=>`<a href="#${c.id}">${c.nome}</a>`).join("");
+  document.getElementById("vitrine").innerHTML = CATEGORIAS.map(c=>{
+    const lista = PRODUTOS.filter(p=>p.categoria===c.id);
+    const corpo = lista.length ? `<div class="produtos">${lista.map(p=>{
+      estado[p.id] = {modelo:"masc", lado:"frente", tam:null};
+      const toggles = p.modelos ? `<div class="toggles">
           <div class="grupo" data-g="modelo"><button data-v="masc" class="on">Masculino</button><button data-v="fem">Feminino</button></div>
           <div class="grupo" data-g="lado"><button data-v="frente" class="on">Frente</button><button data-v="costas">Costas</button></div>
-        </div></div>
+        </div>` : "";
+      return `<article class="card" id="p-${p.id}">
+      <div class="galeria"><img alt="${p.nome}" src="${p.fotos("masc","frente")}">${toggles}</div>
       <div class="corpo">
         <h2>${p.nome}</h2><div class="sub">${p.sub}</div>
-        <div class="preco">${brl(CONFIG.preco)}</div>
+        <div class="preco">${brl(p.preco)}</div>
         <div class="pix">Pix ou cartão</div>
         <div class="rotulo">Tamanho</div>
-        <div class="tamanhos">${TAMANHOS.map(t=>`<button data-t="${t}">${t}</button>`).join("")}</div>
+        <div class="tamanhos">${p.tamanhos.map(t=>`<button data-t="${t}">${t}</button>`).join("")}</div>
         <button class="add">Adicionar à sacola</button>
         <div class="erro" id="e-${p.id}">Escolha um tamanho.</div>
-      </div></article>`;
+      </div></article>`;}).join("")}</div>`
+      : `<div class="embreve"><b>Em breve</b>Estamos preparando os produtos desta seção.</div>`;
+    return `<section class="secao" id="${c.id}"><h2>${c.nome}</h2>${corpo}</section>`;
   }).join("");
+
   PRODUTOS.forEach(p=>{
     const card = document.getElementById("p-"+p.id), img = card.querySelector(".galeria img");
-    const atualiza = () => img.src = `/loja/${p.id}-${estado[p.id].modelo}-${estado[p.id].lado}.jpg`;
+    const atualiza = () => img.src = p.fotos(estado[p.id].modelo, estado[p.id].lado);
     card.querySelectorAll(".grupo").forEach(g=>g.addEventListener("click",e=>{
       const b=e.target.closest("button"); if(!b) return;
       g.querySelectorAll("button").forEach(x=>x.classList.remove("on")); b.classList.add("on");
@@ -191,7 +223,7 @@ function montarProdutos(){
     card.querySelector(".add").addEventListener("click",()=>{
       if(!estado[p.id].tam){ document.getElementById("e-"+p.id).style.display="block"; return; }
       const ex = sacola.find(i=>i.id===p.id && i.tam===estado[p.id].tam);
-      if(ex) ex.q++; else sacola.push({id:p.id,nome:p.nome,tam:estado[p.id].tam,q:1});
+      if(ex) ex.q++; else sacola.push({id:p.id,nome:p.nome,tam:estado[p.id].tam,q:1,preco:p.preco,foto:p.fotos("masc","frente")});
       salvar(); desenhar(); abrir();
     });
   });
@@ -204,7 +236,7 @@ document.getElementById("abrir").onclick=abrir;
 document.getElementById("fechar").onclick=fechar; fundo.onclick=fechar;
 
 let entrega="retirada", pagamento="pix";
-const total = () => sacola.reduce((s,i)=>s+i.q*CONFIG.preco,0);
+const total = () => sacola.reduce((s,i)=>s+i.q*i.preco,0);
 
 function desenhar(){
   const n = sacola.reduce((s,i)=>s+i.q,0);
@@ -215,8 +247,8 @@ function desenhar(){
   const form = document.getElementById("nome") ? {
     nome:nome.value, tel:tel.value, obs:obs.value } : {nome:"",tel:"",obs:""};
   c.innerHTML = sacola.map((i,ix)=>`<div class="item">
-      <img src="/loja/${i.id}-masc-frente.jpg" alt="">
-      <div class="d"><b>${i.nome}</b>Tamanho ${i.tam} · ${brl(CONFIG.preco)}
+      <img src="${i.foto}" alt="">
+      <div class="d"><b>${i.nome}</b>Tamanho ${i.tam} · ${brl(i.preco)}
         <div class="qtd"><button data-a="-" data-i="${ix}">−</button><span>${i.q}</span><button data-a="+" data-i="${ix}">+</button>
         <button class="remover" data-a="x" data-i="${ix}">remover</button></div></div></div>`).join("")
   + `<label for="nome">Seu nome</label><input type="text" id="nome" autocomplete="name" value="${form.nome}">
@@ -247,7 +279,7 @@ function pagInfo(){
       try{ await navigator.clipboard.writeText(CONFIG.pixChave); e.target.textContent="Chave copiada"; }catch(_){ e.target.textContent="Copie manualmente"; }
     };
   } else {
-    const qtd = sacola.reduce((s,i)=>s+i.q,0), link = CONFIG.linksCartao[qtd];
+    const link = CONFIG.linksCartao[Math.round(total())];
     el.innerHTML = link
       ? `<div class="pixbox">Pague <b>${brl(total())}</b> no cartão pelo link da escola e depois envie o pedido.
          <div style="margin-top:8px"><button onclick="window.open('${link}','_blank')">Abrir link de pagamento</button></div></div>`
