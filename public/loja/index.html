@@ -32,6 +32,9 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 .secoes a{white-space:nowrap;padding:9px 16px;border-radius:999px;background:#fff;border:1.5px solid var(--linha);color:var(--texto);text-decoration:none;font:600 14px 'Archivo'}
 .secoes a:hover,.secoes a.on{background:var(--azul);border-color:var(--azul);color:#fff}
 .secao{scroll-margin-top:130px;margin-bottom:34px}
+.galeria img.peca{object-fit:contain;background:#eef0f4}
+.toggles{flex-wrap:wrap;justify-content:flex-start}
+.aviso{position:absolute;left:10px;right:10px;bottom:56px;background:rgba(20,33,58,.78);color:#fff;font-size:12px;padding:6px 10px;border-radius:8px;display:none}
 .faixa{position:absolute;top:12px;left:12px;background:#b3261e;color:#fff;font:700 12px 'Archivo';letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
 .card.esgotado .galeria img{filter:grayscale(.35) brightness(.9)}
 .preco.esg{color:#b3261e;font-size:22px;text-transform:uppercase;letter-spacing:.04em}
@@ -106,7 +109,7 @@ input:focus,textarea:focus{outline:2px solid var(--amarelo);border-color:var(--a
 
 <header>
   <div class="wrap">
-    <div class="marca"><img src="/loja/logo.png?v=2" alt="">Azambuja Jiu-Jitsu</div>
+    <div class="marca"><img src="/loja/logo.png?v=4" alt="">Azambuja Jiu-Jitsu</div>
     <button class="btn-carrinho" id="abrir">Sacola (<span id="qtdTotal">0</span>)</button>
   </div>
 </header>
@@ -175,20 +178,20 @@ const TAMANHOS_ADULTO = ["P","M","G","GG"];
 const PRODUTOS = [
   {id:"samurai-branca", categoria:"camisetas", nome:"Camiseta Código Samurai · Branca",
    sub:"Coleção retrô redesenhada. Estampa azul, selo no peito e frase nas costas", preco:80.00, tamanhos:TAMANHOS_ADULTO,
-   fotos:(m,l)=>`/loja/branca-${m}-${l}.jpg?v=2`, modelos:true, lados:true},
+   peca:"/loja/peca-samurai-branca.jpg?v=4", fotos:(m,l)=>`/loja/branca-${m}-${l}.jpg?v=4`, modelos:true, lados:true},
   {id:"samurai-marinho", categoria:"camisetas", nome:"Camiseta Código Samurai · Azul-marinho",
    sub:"Coleção retrô redesenhada. Estampa branca, selo no peito e frase nas costas", preco:80.00, tamanhos:TAMANHOS_ADULTO,
-   fotos:(m,l)=>`/loja/marinho-${m}-${l}.jpg?v=2`, modelos:true, lados:true},
+   peca:"/loja/peca-samurai-marinho.jpg?v=4", fotos:(m,l)=>`/loja/marinho-${m}-${l}.jpg?v=4`, modelos:true, lados:true},
   {id:"lasbrabas-camiseta", categoria:"camisetas", nome:"Camiseta Las Brabas", sub:"Coleção Las Brabas",
-   esgotado:true, fotos:(m,l)=>`/loja/lasbrabas-camiseta-${l}.jpg?v=2`, lados:true},
+   esgotado:true, fotos:(m,l)=>`/loja/lasbrabas-camiseta-${l}.jpg?v=4`, lados:true},
   {id:"lasbrabas-moletom", categoria:"moletons", nome:"Moletom Las Brabas", sub:"Coleção Las Brabas",
-   esgotado:true, fotos:(m,l)=>`/loja/lasbrabas-moletom-${l}.jpg?v=2`, lados:true},
+   esgotado:true, fotos:(m,l)=>`/loja/lasbrabas-moletom-${l}.jpg?v=4`, lados:true},
   {id:"lasbrabas-rashlonga", categoria:"rashguards", nome:"Rashguard Manga Longa Las Brabas", sub:"Coleção Las Brabas",
-   esgotado:true, fotos:(m,l)=>`/loja/lasbrabas-rashlonga-${l}.jpg?v=2`, lados:true},
+   esgotado:true, peca:"/loja/peca-rashlonga.jpg?v=4", fotos:(m,l)=>`/loja/lasbrabas-rashlonga-${l}.jpg?v=4`},
   {id:"lasbrabas-rashcurta", categoria:"rashguards", nome:"Rashguard Manga Curta Las Brabas", sub:"Coleção Las Brabas",
-   esgotado:true, fotos:(m,l)=>`/loja/lasbrabas-rashcurta-${l}.jpg?v=2`, lados:true},
+   esgotado:true, peca:"/loja/peca-rashcurta.jpg?v=4", fotos:(m,l)=>`/loja/lasbrabas-rashcurta-${l}.jpg?v=4`},
   {id:"legging", categoria:"leggings", nome:"Legging Las Brabas", sub:"Coleção Las Brabas",
-   esgotado:true, fotos:(m,l)=>`/loja/legging-${l}.jpg?v=2`, lados:true}
+   esgotado:true, peca:"/loja/peca-legging.jpg?v=4", fotos:(m,l)=>`/loja/legging-${l}.jpg?v=4`}
 ];
 /* ======================================================= */
 
@@ -203,9 +206,11 @@ function montarProdutos(){
   document.getElementById("vitrine").innerHTML = CATEGORIAS.map(c=>{
     const lista = PRODUTOS.filter(p=>p.categoria===c.id);
     const corpo = lista.length ? `<div class="produtos">${lista.map(p=>{
-      estado[p.id] = {modelo:"masc", lado:"frente", tam:null};
-      const grupos = (p.modelos ? `<div class="grupo" data-g="modelo"><button data-v="masc" class="on">Masculino</button><button data-v="fem">Feminino</button></div>` : "")
-        + (p.lados ? `<div class="grupo" data-g="lado"><button data-v="frente" class="on">Frente</button><button data-v="costas">Costas</button></div>` : "");
+      estado[p.id] = {vista:p.peca?"peca":"modelo", modelo:"masc", lado:"frente", tam:null};
+      const oculto = p.peca ? ' style="display:none"' : "";
+      const grupos = (p.peca ? `<div class="grupo" data-g="vista"><button data-v="peca" class="on">Peça</button><button data-v="modelo">Modelo</button></div>` : "")
+        + (p.modelos ? `<div class="grupo" data-g="modelo"${oculto}><button data-v="masc" class="on">Masculino</button><button data-v="fem">Feminino</button></div>` : "")
+        + (p.lados ? `<div class="grupo" data-g="lado"${oculto}><button data-v="frente" class="on">Frente</button><button data-v="costas">Costas</button></div>` : "");
       const toggles = grupos ? `<div class="toggles">${grupos}</div>` : "";
       const faixa = p.esgotado ? `<span class="faixa">Esgotado</span>` : "";
       const compra = p.esgotado
@@ -217,7 +222,7 @@ function montarProdutos(){
         <button class="add">Adicionar à sacola</button>
         <div class="erro" id="e-${p.id}">Escolha um tamanho.</div>`;
       return `<article class="card${p.esgotado?" esgotado":""}" id="p-${p.id}">
-      <div class="galeria"><img alt="${p.nome}" src="${p.fotos("masc","frente")}">${faixa}${toggles}</div>
+      <div class="galeria"><img alt="${p.nome}" class="${p.peca?"peca":""}" src="${p.peca||p.fotos("masc","frente")}">${faixa}<div class="aviso">Fotos com modelo são ilustrativas. A estampa pode variar um pouco da peça.</div>${toggles}</div>
       <div class="corpo">
         <h2>${p.nome}</h2><div class="sub">${p.sub}</div>
         ${compra}
@@ -228,7 +233,14 @@ function montarProdutos(){
 
   PRODUTOS.forEach(p=>{
     const card = document.getElementById("p-"+p.id), img = card.querySelector(".galeria img");
-    const atualiza = () => img.src = p.fotos(estado[p.id].modelo, estado[p.id].lado);
+    const aviso = card.querySelector(".aviso");
+    const atualiza = () => {
+      const st = estado[p.id], peca = p.peca && st.vista==="peca";
+      img.classList.toggle("peca", !!peca);
+      img.src = peca ? p.peca : p.fotos(st.modelo, st.lado);
+      card.querySelectorAll('.grupo[data-g="modelo"],.grupo[data-g="lado"]').forEach(g=>g.style.display = peca ? "none" : "flex");
+      if(aviso) aviso.style.display = peca ? "none" : "block";
+    };
     card.querySelectorAll(".grupo").forEach(g=>g.addEventListener("click",e=>{
       const b=e.target.closest("button"); if(!b) return;
       g.querySelectorAll("button").forEach(x=>x.classList.remove("on")); b.classList.add("on");
@@ -243,7 +255,7 @@ function montarProdutos(){
     card.querySelector(".add").addEventListener("click",()=>{
       if(!estado[p.id].tam){ document.getElementById("e-"+p.id).style.display="block"; return; }
       const ex = sacola.find(i=>i.id===p.id && i.tam===estado[p.id].tam);
-      if(ex) ex.q++; else sacola.push({id:p.id,nome:p.nome,tam:estado[p.id].tam,q:1,preco:p.preco,foto:p.fotos("masc","frente")});
+      if(ex) ex.q++; else sacola.push({id:p.id,nome:p.nome,tam:estado[p.id].tam,q:1,preco:p.preco,foto:p.peca||p.fotos("masc","frente")});
       salvar(); desenhar(); abrir();
     });
   });
