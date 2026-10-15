@@ -38,6 +38,8 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 .faixa{position:absolute;top:12px;left:12px;background:#b3261e;color:#fff;font:700 12px 'Archivo';letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
 .card.esgotado .galeria img{filter:grayscale(.35) brightness(.9)}
 .preco.esg{color:#b3261e;font-size:22px;text-transform:uppercase;letter-spacing:.04em}
+.tamanhos button.sem{opacity:.45;text-decoration:line-through;cursor:not-allowed}
+.resta{margin-top:10px;font-size:13px;color:#b3261e;font-weight:600}
 .add[disabled]{background:#e4e7ee;color:#7d8798;cursor:not-allowed;filter:none}
 .secao>h2{font-family:'Anton',sans-serif;font-weight:400;font-size:30px;text-transform:uppercase;letter-spacing:.03em;margin:18px 0 14px}
 .embreve{background:#fff;border:1.5px dashed #b6c3d9;border-radius:14px;padding:26px 18px;text-align:center;color:var(--suave)}
@@ -154,6 +156,8 @@ const CONFIG = {
   pixNome:  "Escola de Jiu-Jitsu Azambuja",
   // Links de pagamento da Stone, pelo VALOR TOTAL da sacola em reais.
   // Total sem link = enviamos o link do cartão pelo WhatsApp.
+  // Endereço do script da planilha de estoque (Apps Script). Vazio = loja sem controle de estoque.
+  estoqueUrl: "https://script.google.com/macros/s/AKfycbyVt8kzTgqKuc81iG0mwnmMv7yoG4GJREY7LzGz5zxn8XXVa2H3EHqw23VmGEooIvLA/exec",
   linksCartao: {
     80:  "https://payment-link-v3.stone.com.br/pl_mOaqn8KpJR7Vrz8hx8fKVB5GvbePN6zW",
     160: "https://payment-link-v3.stone.com.br/pl_8J4GxboanX0lqAJUpOczkeMONrWRmE1j",
@@ -200,6 +204,39 @@ let sacola = [];
 try{ sacola = JSON.parse(localStorage.getItem("az_sacola2")||"[]"); }catch(e){}
 const salvar = () => { try{ localStorage.setItem("az_sacola2",JSON.stringify(sacola)); }catch(e){} };
 const estado = {};
+
+let estoque = null;   // { codigo: { P:n, M:n, G:n, GG:n } } vindo da planilha
+const disponivel = (id,tam) => (estoque && estoque[id] && estoque[id][tam]!==undefined) ? estoque[id][tam] : Infinity;
+const noCarrinho = (id,tam) => sacola.filter(i=>i.id===id && i.tam===tam).reduce((s,i)=>s+i.q,0);
+
+async function carregarEstoque(){
+  if(!CONFIG.estoqueUrl) return;
+  try{
+    const r = await fetch(CONFIG.estoqueUrl+(CONFIG.estoqueUrl.includes("?")?"&":"?")+"acao=estoque&t="+Date.now());
+    estoque = await r.json();
+  }catch(e){ estoque = null; }
+  aplicarEstoque();
+}
+
+function aplicarEstoque(){
+  PRODUTOS.forEach(p=>{
+    if(p.esgotado || !estoque || !estoque[p.id]) return;
+    const card = document.getElementById("p-"+p.id); if(!card) return;
+    let poucos = [], total = 0;
+    p.tamanhos.forEach(t=>{
+      const n = disponivel(p.id,t), b = card.querySelector(`.tamanhos button[data-t="${t}"]`);
+      total += (n===Infinity?0:n);
+      b.classList.toggle("sem", n<=0); b.disabled = n<=0;
+      if(n<=0 && estado[p.id].tam===t){ estado[p.id].tam=null; b.classList.remove("on"); }
+      if(n>0 && n<=3) poucos.push(`${t} (${n})`);
+    });
+    let aviso = card.querySelector(".resta");
+    if(!aviso){ aviso = document.createElement("div"); aviso.className="resta"; card.querySelector(".tamanhos").after(aviso); }
+    aviso.textContent = total===0 ? "Esgotado" : (poucos.length ? "Últimas unidades: "+poucos.join(", ") : "");
+    card.querySelector(".add").disabled = (total===0);
+  });
+  desenhar();
+}
 
 function montarProdutos(){
   document.getElementById("secoes").innerHTML = CATEGORIAS.map(c=>`<a href="#${c.id}">${c.nome}</a>`).join("");
@@ -254,6 +291,9 @@ function montarProdutos(){
     });
     card.querySelector(".add").addEventListener("click",()=>{
       if(!estado[p.id].tam){ document.getElementById("e-"+p.id).style.display="block"; return; }
+      if(noCarrinho(p.id,estado[p.id].tam)+1 > disponivel(p.id,estado[p.id].tam)){
+        const e=document.getElementById("e-"+p.id); e.textContent="Só restam "+disponivel(p.id,estado[p.id].tam)+" desse tamanho."; e.style.display="block"; return;
+      }
       const ex = sacola.find(i=>i.id===p.id && i.tam===estado[p.id].tam);
       if(ex) ex.q++; else sacola.push({id:p.id,nome:p.nome,tam:estado[p.id].tam,q:1,preco:p.preco,foto:p.peca||p.fotos("masc","frente")});
       salvar(); desenhar(); abrir();
@@ -322,7 +362,7 @@ function pagInfo(){
 document.getElementById("conteudo").addEventListener("click",e=>{
   const b=e.target.closest("button[data-a]"); if(!b) return;
   const it=sacola[+b.dataset.i];
-  if(b.dataset.a==="+") it.q++;
+  if(b.dataset.a==="+"){ if(noCarrinho(it.id,it.tam)+1 <= disponivel(it.id,it.tam)) it.q++; }
   if(b.dataset.a==="-") it.q=Math.max(1,it.q-1);
   if(b.dataset.a==="x") sacola.splice(+b.dataset.i,1);
   salvar(); desenhar();
@@ -332,16 +372,32 @@ document.getElementById("conteudo").addEventListener("change",e=>{
   if(e.target.name==="pag"){ pagamento=e.target.value; desenhar(); }
 });
 
-document.getElementById("finalizar").onclick = ()=>{
-  const erro=document.getElementById("erro"); erro.style.display="none";
+async function registrarPedido(payload){
+  if(!CONFIG.estoqueUrl) return {ok:true, semRegistro:true};
+  try{
+    const r = await fetch(CONFIG.estoqueUrl,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
+    return await r.json();
+  }catch(e){ return {ok:true, semRegistro:true}; }   // se a planilha falhar, o pedido segue pelo WhatsApp
+}
+
+document.getElementById("finalizar").onclick = async ()=>{
+  const btn=document.getElementById("finalizar"), erro=document.getElementById("erro"); erro.style.display="none";
   const n=nome.value.trim(), t=tel.value.replace(/\D/g,"");
   if(n.length<2 || t.length<10){ erro.textContent="Preencha seu nome e seu WhatsApp com DDD."; erro.style.display="block"; return; }
+  const rotulo=btn.textContent; btn.disabled=true; btn.textContent="Enviando...";
+  const rec = entrega==="retirada"?"retirar na academia":"envio (combinar frete)", pag = pagamento==="pix"?"Pix":"cartão";
+  const res = await registrarPedido({nome:n, whatsapp:tel.value, recebimento:rec, pagamento:pag, total:total(),
+                                      itens:sacola.map(i=>({id:i.id,nome:i.nome,tam:i.tam,q:i.q}))});
+  btn.disabled=false; btn.textContent=rotulo;
+  if(res.ok===false){ erro.textContent=res.erro||"Não foi possível enviar o pedido."; erro.style.display="block"; await carregarEstoque(); return; }
   const linhas = sacola.map(i=>`• ${i.q}x ${i.nome}, tamanho ${i.tam}`).join("\n");
-  const msg = `Olá! Quero fazer um pedido na AZ Store.\n\n${linhas}\n\nTotal: ${brl(total())}\nRecebimento: ${entrega==="retirada"?"retirar na academia":"envio (combinar frete)"}\nPagamento: ${pagamento==="pix"?"Pix":"cartão"}\nNome: ${n}\nWhatsApp: ${tel.value}`+(obs.value.trim()?`\nObs.: ${obs.value.trim()}`:"");
-  window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`,"_blank");
+  const msg = `Olá! Quero fazer um pedido na AZ Store.`+(res.pedido?` (pedido nº ${res.pedido})`:"")+`\n\n${linhas}\n\nTotal: ${brl(total())}\nRecebimento: ${rec}\nPagamento: ${pag}\nNome: ${n}\nWhatsApp: ${tel.value}`+(obs.value.trim()?`\nObs.: ${obs.value.trim()}`:"");
+  const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+  if(!res.semRegistro){ sacola=[]; salvar(); desenhar(); }
+  location.href = url;
 };
 
-montarProdutos(); desenhar();
+montarProdutos(); desenhar(); carregarEstoque();
 </script>
 </body>
 </html>
