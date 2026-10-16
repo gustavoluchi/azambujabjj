@@ -111,7 +111,7 @@ input:focus,textarea:focus{outline:2px solid var(--amarelo);border-color:var(--a
 
 <header>
   <div class="wrap">
-    <div class="marca"><img src="/loja/logo.png?v=5" alt="">Azambuja Jiu-Jitsu</div>
+    <div class="marca"><img src="/loja/logo.png?v=6" alt="">Azambuja Jiu-Jitsu</div>
     <button class="btn-carrinho" id="abrir">Sacola (<span id="qtdTotal">0</span>)</button>
   </div>
 </header>
@@ -180,25 +180,25 @@ const CATEGORIAS = [
    fotos: função que devolve o arquivo da foto. modelos/lados só aparecem se o produto tiver essas fotos. */
 const TAMANHOS_ADULTO = ["P","M","G","GG"];
 const PRODUTOS = [
-  {id:"samurai-branca", categoria:"camisetas", nome:"Camiseta Código Samurai · Branca",
+  {id:"samurai-branca", categoria:"camisetas", nome:"Camiseta Código Samurai · Off-white",
    sub:"Coleção retrô redesenhada. Estampa azul, selo no peito e frase nas costas", preco:80.00, tamanhos:TAMANHOS_ADULTO,
-   peca:"/loja/peca-samurai-branca.jpg?v=5", fotos:(m,l)=>`/loja/branca-${m}-${l}.jpg?v=5`, modelos:true, lados:true},
+   peca:"/loja/peca-offwhite.jpg?v=6", fotos:(m,l)=>`/loja/offwhite-${m}-${l}.jpg?v=6`, modelos:true, lados:true},
   {id:"samurai-preta", categoria:"camisetas", nome:"Camiseta Código Samurai · Preta",
    sub:"Coleção retrô redesenhada. Estampa branca, selo no peito e frase nas costas", preco:80.00, tamanhos:TAMANHOS_ADULTO,
-   peca:"/loja/peca-samurai-preta.jpg?v=5", fotos:(m,l)=>`/loja/preta-${m}-${l}.jpg?v=5`, modelos:true, lados:true},
-  {id:"samurai-azul", categoria:"camisetas", nome:"Camiseta Código Samurai · Azul",
-   sub:"Coleção retrô redesenhada. Foto em breve", preco:80.00, tamanhos:TAMANHOS_ADULTO,
-   fotos:()=>`/loja/azul-em-breve.jpg?v=5`},
+   peca:"/loja/peca-preta2.jpg?v=6", fotos:(m,l)=>`/loja/preta2-${m}-${l}.jpg?v=6`, modelos:true, lados:true},
+  {id:"samurai-azul", categoria:"camisetas", nome:"Camiseta Código Samurai · Azul-marinho",
+   sub:"Coleção retrô redesenhada. Azul-marinho destonado, estampa branca", preco:80.00, tamanhos:TAMANHOS_ADULTO,
+   peca:"/loja/peca-azulmarinho.jpg?v=6", fotos:(m,l)=>`/loja/azulmarinho-${m}-${l}.jpg?v=6`, modelos:true, lados:true},
   {id:"lasbrabas-camiseta", categoria:"camisetas", nome:"Camiseta Las Brabas", sub:"Coleção Las Brabas",
-   esgotado:true, fotos:(m,l)=>`/loja/lasbrabas-camiseta-${l}.jpg?v=5`, lados:true},
+   esgotado:true, fotos:(m,l)=>`/loja/lasbrabas-camiseta-${l}.jpg?v=6`, lados:true},
   {id:"lasbrabas-moletom", categoria:"moletons", nome:"Moletom Las Brabas", sub:"Coleção Las Brabas",
-   esgotado:true, fotos:(m,l)=>`/loja/lasbrabas-moletom-${l}.jpg?v=5`, lados:true},
+   esgotado:true, fotos:(m,l)=>`/loja/lasbrabas-moletom-${l}.jpg?v=6`, lados:true},
   {id:"lasbrabas-rashlonga", categoria:"rashguards", nome:"Rashguard Manga Longa Las Brabas", sub:"Coleção Las Brabas",
-   esgotado:true, peca:"/loja/peca-rashlonga.jpg?v=5", fotos:(m,l)=>`/loja/lasbrabas-rashlonga-${l}.jpg?v=5`},
+   esgotado:true, peca:"/loja/peca-rashlonga.jpg?v=6", fotos:(m,l)=>`/loja/lasbrabas-rashlonga-${l}.jpg?v=6`},
   {id:"lasbrabas-rashcurta", categoria:"rashguards", nome:"Rashguard Manga Curta Las Brabas", sub:"Coleção Las Brabas",
-   esgotado:true, peca:"/loja/peca-rashcurta.jpg?v=5", fotos:(m,l)=>`/loja/lasbrabas-rashcurta-${l}.jpg?v=5`},
+   esgotado:true, peca:"/loja/peca-rashcurta.jpg?v=6", fotos:(m,l)=>`/loja/lasbrabas-rashcurta-${l}.jpg?v=6`},
   {id:"legging", categoria:"leggings", nome:"Legging Las Brabas", sub:"Coleção Las Brabas",
-   esgotado:true, peca:"/loja/peca-legging.jpg?v=5", fotos:(m,l)=>`/loja/legging-${l}.jpg?v=5`}
+   esgotado:true, peca:"/loja/peca-legging.jpg?v=6", fotos:(m,l)=>`/loja/legging-${l}.jpg?v=6`}
 ];
 /* ======================================================= */
 
