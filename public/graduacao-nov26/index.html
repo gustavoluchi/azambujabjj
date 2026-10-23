@@ -95,8 +95,7 @@
       <label><input type="radio" name="unidade" value="Azambuja Matriz"><span>Azambuja Matriz</span></label>
       <label><input type="radio" name="unidade" value="Filial IFSUL"><span>Filial IFSUL</span></label>
       <label><input type="radio" name="unidade" value="Filial Lomba do Pinheiro"><span>Filial Lomba do Pinheiro</span></label>
-      <label><input type="radio" name="unidade" value="Filial Nova Petrópolis"><span>Filial Nova Petrópolis</span></label>
-    </div>
+        </div>
     <p class="erro-msg" id="erro-unidade">Escolha a unidade.</p>
   </fieldset>
 
@@ -141,6 +140,8 @@
 
   <label class="aceite"><input type="checkbox" id="aceite"><span>Autorizo o uso destes dados para organizar a graduação e enviar a lista de graduandos à SBA.</span></label>
   <p class="erro-msg" id="erro-aceite">Para concluir, é preciso marcar a autorização.</p>
+
+  <label class="aceite"><input type="checkbox" id="imagem"><span>Autorizo o uso da imagem do aluno (fotos e vídeos da graduação) na divulgação da escola. Se o aluno for menor, autorizo como responsável. <span class="opc">(opcional)</span></span></label>
 
   <button type="submit" id="botaoEnviar">Enviar inscrição</button>
   <p class="fine">Depois de enviar, você faz o PIX e manda o comprovante no WhatsApp da escola.</p>
@@ -288,7 +289,8 @@
       responsavel: menor ? $("responsavel").value.trim() : "",
       whatsapp: $("whatsapp").value.trim(),
       email: $("email").value.trim(),
-      observacoes: $("observacoes").value.trim()
+      observacoes: $("observacoes").value.trim(),
+      imagem: $("imagem").checked ? "Sim, autorizo" : "Não autorizo"
     };
     const botao = $("botaoEnviar");
     botao.disabled = true; botao.textContent = "Enviando...";
