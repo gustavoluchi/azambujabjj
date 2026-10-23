@@ -17,6 +17,8 @@
   .dias { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:520px; margin:22px auto 0; }
   .dias span { font-size:13px; background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.16); padding:8px 14px; border-radius:12px; color:#eef1f8; line-height:1.4; }
   .dias b { color:var(--yellow); display:block; font-size:14px; }
+  .local { font-size:13.5px; color:#d7dcea; margin:16px auto 0; max-width:460px; line-height:1.5; }
+  .local a { color:var(--yellow); }
   .card { background:var(--white); max-width:560px; margin:-36px auto 32px; padding:26px 22px 28px; border-radius:16px; box-shadow:0 12px 32px rgba(11,28,61,.14); border:1px solid #eceff5; }
   h2 { font-size:20px; margin:0 0 6px; }
   .sub { font-size:14px; color:var(--gray); margin:0 0 18px; line-height:1.5; }
@@ -62,6 +64,7 @@
     <span><b>Sábado, 21/11 às 10h</b>Crianças e adolescentes</span>
     <span><b>Domingo, 22/11 às 10h</b>Adultos</span>
   </div>
+  <p class="local">Na escola: Av. Osvaldo Aranha, 794 · Bom Fim · Porto Alegre<br><a href="https://www.google.com/maps/search/?api=1&query=Av+Osvaldo+Aranha+794+Porto+Alegre" target="_blank" rel="noopener">Ver no mapa</a></p>
 </div>
 
 <form class="card" id="formInscricao" novalidate>
@@ -146,6 +149,7 @@
 <div class="card" id="confirmacao">
   <h2>Inscrição recebida</h2>
   <p class="sub" id="confQuando"></p>
+  <p class="sub">Onde: na escola, Av. Osvaldo Aranha, 794 · Bom Fim · Porto Alegre. <a href="https://www.google.com/maps/search/?api=1&query=Av+Osvaldo+Aranha+794+Porto+Alegre" target="_blank" rel="noopener">Ver no mapa</a></p>
   <div class="passo"><i>1</i><span>Faça o PIX no CNPJ abaixo<br><span class="opc" id="confValor"></span></span></div>
   <div class="pix"><small>PIX, CNPJ da escola</small><strong id="pixTexto">31.934.836/0001-97</strong>
     <button type="button" id="botaoCopiar">Copiar o CNPJ</button></div>
