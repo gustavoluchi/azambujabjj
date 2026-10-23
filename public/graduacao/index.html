@@ -100,6 +100,7 @@
   <label for="faixa">Faixa atual</label>
   <select id="faixa"><option value="" disabled selected>Escolha o dia primeiro</option></select>
   <p class="erro-msg" id="erro-faixa">Escolha a faixa.</p>
+  <div class="info" id="valorFaixa"></div>
 
   <label for="graus">Quantos graus tem na faixa atual</label>
   <select id="graus">
@@ -168,7 +169,8 @@
   const EVENTO = "Graduação AZ Novembro 2026";
   const WHATSAPP_ESCOLA = "555180267688";
   const PIX = "31.934.836/0001-97";
-  const VALOR_TEXTO = ""; // ex: "Valor: R$ 100" (deixar vazio enquanto a escola nao confirmar)
+  // Valores da tabela da SBA. Branca: R$ 90 ate 15 anos, R$ 100 acima disso.
+  const VALORES = { "Cinza": 90, "Amarela": 90, "Laranja": 90, "Verde": 90, "Azul": 120, "Roxa": 120, "Marrom": 120, "Preta": 150 };
   const REFERENCIA = new Date(2026, 10, 22); // dia da graduacao, para calcular a idade
 
   const FAIXAS = {
@@ -207,11 +209,25 @@
     atualizarMenor();
   }
 
+  function valorGraduacao() {
+    const f = $("faixa").value;
+    if (!f) return null;
+    if (f === "Branca") { const a = idade($("nascimento").value); return a === null ? null : (a <= 15 ? 90 : 100); }
+    return VALORES[f] || null;
+  }
+
+  function atualizarValor() {
+    const v = valorGraduacao(), box = $("valorFaixa");
+    box.classList.toggle("on", v !== null);
+    box.innerHTML = v === null ? "" : "<b>Valor da graduação: R$ " + v + "</b>";
+  }
+
   function atualizarMenor() {
     const a = idade($("nascimento").value);
     const menor = a !== null && a < 18;
     $("blocoResponsavel").classList.toggle("oculto", !menor);
     $("labelWhats").textContent = menor ? "WhatsApp do responsável" : "WhatsApp";
+    atualizarValor();
   }
 
   $("nascimento").addEventListener("change", function () {
@@ -222,6 +238,7 @@
     }
     atualizarMenor();
   });
+  $("faixa").addEventListener("change", atualizarValor);
   document.querySelectorAll('input[name="categoria"]').forEach(function (r) { r.addEventListener("change", atualizarCategoria); });
 
   $("whatsapp").addEventListener("input", function () {
@@ -275,7 +292,7 @@
     function concluir() {
       $("formInscricao").style.display = "none";
       $("confQuando").textContent = QUANDO[dados.categoria];
-      $("confValor").textContent = VALOR_TEXTO;
+      { const v = valorGraduacao(); $("confValor").textContent = v === null ? "" : "Valor: R$ " + v; }
       $("confEmail").textContent = "Mandamos um e-mail de confirmação para " + dados.email + ". Se não encontrar, olhe o spam.";
       const msg = "Olá! Segue o comprovante da inscrição na Graduação AZ de novembro. Aluno: " + dados.nome + " (" + dados.unidade + ").";
       $("botaoWhats").href = "https://wa.me/" + WHATSAPP_ESCOLA + "?text=" + encodeURIComponent(msg);
