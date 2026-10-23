@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Inscrição Graduação AZ - Jiu Jitsu Azambuja</title>
+<style>
+  :root { --navy:#0b1c3d; --navy-dark:#071228; --yellow:#f2c230; --white:#fdfdfd; --gray:#6b7280; --linha:#d8dce6; --campo:#f8f9fc; --erro:#b42318; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--white); color:var(--navy); }
+  .hero { background:linear-gradient(160deg,var(--navy) 0%,var(--navy-dark) 100%); color:var(--white); padding:40px 20px 56px; text-align:center; }
+  .logo { width:72px; height:72px; border-radius:50%; background:var(--white); padding:8px; margin-bottom:18px; }
+  .hero h1 { font-size:26px; line-height:1.3; margin:0 0 12px; font-weight:800; }
+  .hero h1 span { color:var(--yellow); }
+  .hero p { font-size:15px; color:#d7dcea; max-width:460px; margin:0 auto; line-height:1.5; }
+  .dias { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:520px; margin:22px auto 0; }
+  .dias span { font-size:13px; background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.16); padding:8px 14px; border-radius:12px; color:#eef1f8; line-height:1.4; }
+  .dias b { color:var(--yellow); display:block; font-size:14px; }
+  .card { background:var(--white); max-width:560px; margin:-36px auto 32px; padding:26px 22px 28px; border-radius:16px; box-shadow:0 12px 32px rgba(11,28,61,.14); border:1px solid #eceff5; }
+  h2 { font-size:20px; margin:0 0 6px; }
+  .sub { font-size:14px; color:var(--gray); margin:0 0 18px; line-height:1.5; }
+  label, legend { display:block; font-size:14px; font-weight:600; margin:16px 0 6px; padding:0; }
+  .opc { font-weight:400; color:var(--gray); }
+  input[type=text], input[type=tel], input[type=email], input[type=date], select, textarea { width:100%; font:inherit; font-size:16px; padding:12px; border:1px solid var(--linha); border-radius:10px; background:var(--campo); color:var(--navy); }
+  textarea { min-height:80px; resize:vertical; }
+  input:focus, select:focus, textarea:focus { outline:2px solid var(--yellow); border-color:var(--yellow); }
+  fieldset { border:0; padding:0; margin:0; min-width:0; }
+  .opcoes { display:flex; flex-direction:column; gap:8px; }
+  .opcoes label { margin:0; font-weight:500; display:flex; align-items:center; gap:10px; border:1px solid var(--linha); border-radius:10px; padding:12px; background:var(--campo); cursor:pointer; }
+  .opcoes input { width:18px; height:18px; accent-color:var(--navy); }
+  .opcoes label:has(input:checked) { border-color:var(--navy); background:#eef1f8; }
+  .ajuda { font-size:12.5px; color:var(--gray); margin:6px 0 0; line-height:1.45; }
+  .info { display:none; background:#fff8e1; border:1px solid var(--yellow); border-radius:10px; padding:12px; font-size:14px; margin-top:12px; line-height:1.5; }
+  .info.on { display:block; }
+  .oculto { display:none; }
+  .erro-msg { color:var(--erro); font-size:13px; margin:6px 0 0; display:none; }
+  .erro-msg.on { display:block; }
+  .aceite { display:flex; gap:10px; align-items:flex-start; margin-top:20px; font-size:13.5px; line-height:1.5; font-weight:400; }
+  .aceite input { width:20px; height:20px; margin-top:2px; flex:none; accent-color:var(--navy); }
+  button, .botao { width:100%; margin-top:22px; font:inherit; font-size:16px; font-weight:700; padding:15px; border:0; border-radius:12px; background:var(--yellow); color:var(--navy); cursor:pointer; text-align:center; text-decoration:none; display:block; }
+  button:disabled { opacity:.6; cursor:wait; }
+  .botao.sec { background:var(--navy); color:var(--white); }
+  .fine { font-size:12.5px; color:var(--gray); text-align:center; margin:12px 0 0; line-height:1.5; }
+  #confirmacao, #encerrado { display:none; }
+  .pix { background:var(--campo); border:1px dashed var(--navy); border-radius:12px; padding:14px; margin:14px 0; text-align:center; }
+  .pix small { display:block; color:var(--gray); font-size:12px; }
+  .pix strong { font-size:20px; letter-spacing:.5px; }
+  .pix button { margin-top:10px; padding:10px; font-size:14px; background:var(--navy); color:var(--white); }
+  .passo { display:flex; gap:12px; margin:14px 0; font-size:14.5px; line-height:1.5; }
+  .passo i { flex:none; width:26px; height:26px; border-radius:50%; background:var(--navy); color:var(--white); font-style:normal; font-weight:700; display:flex; align-items:center; justify-content:center; font-size:13px; }
+  footer { text-align:center; font-size:12px; color:var(--gray); padding:0 20px 32px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img class="logo" src="data:image/png;base64,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" alt="Escola de Jiu Jitsu Azambuja">
+  <h1>Graduação <span>AZ</span><br>Novembro 2026</h1>
+  <p>Um momento de reconhecer a dedicação, a disciplina e a evolução de cada aluno no tatame, no Sistema Progressivo do Mestre Sylvio Behring</p>
+  <div class="dias">
+    <span><b>Sábado, 21/11 às 10h</b>Crianças e adolescentes</span>
+    <span><b>Domingo, 22/11 às 10h</b>Adultos</span>
+  </div>
+</div>
+
+<form class="card" id="formInscricao" novalidate>
+  <h2>Inscrição</h2>
+  <p class="sub">Leva uns dois minutos. A inscrição só é confirmada depois do pagamento, que explicamos no fim.</p>
+
+  <label for="nome">Nome completo do aluno <span class="opc">(como vai no certificado)</span></label>
+  <input type="text" id="nome" autocomplete="name" placeholder="Nome e sobrenome">
+  <p class="erro-msg" id="erro-nome">Escreva o nome completo.</p>
+
+  <label for="nascimento">Data de nascimento do aluno</label>
+  <input type="date" id="nascimento">
+  <p class="erro-msg" id="erro-nascimento">Informe uma data de nascimento válida.</p>
+
+  <fieldset>
+    <legend>Em qual dia o aluno vai graduar</legend>
+    <div class="opcoes">
+      <label><input type="radio" name="categoria" value="Infantil/Juvenil"><span>Sábado, 21/11 às 10h · Crianças e adolescentes</span></label>
+      <label><input type="radio" name="categoria" value="Adulto"><span>Domingo, 22/11 às 10h · Adultos</span></label>
+    </div>
+    <p class="ajuda" id="ajudaCategoria">Marcamos pela idade assim que você preenche o nascimento. Se for diferente, é só trocar.</p>
+    <p class="erro-msg" id="erro-categoria">Escolha o dia.</p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Em qual unidade o aluno treina</legend>
+    <div class="opcoes">
+      <label><input type="radio" name="unidade" value="Azambuja Matriz"><span>Azambuja Matriz</span></label>
+      <label><input type="radio" name="unidade" value="Filial IFSUL"><span>Filial IFSUL</span></label>
+      <label><input type="radio" name="unidade" value="Filial Lomba do Pinheiro"><span>Filial Lomba do Pinheiro</span></label>
+      <label><input type="radio" name="unidade" value="Filial Nova Petrópolis"><span>Filial Nova Petrópolis</span></label>
+    </div>
+    <p class="erro-msg" id="erro-unidade">Escolha a unidade.</p>
+  </fieldset>
+
+  <label for="faixa">Faixa atual</label>
+  <select id="faixa"><option value="" disabled selected>Escolha o dia primeiro</option></select>
+  <p class="erro-msg" id="erro-faixa">Escolha a faixa.</p>
+
+  <label for="graus">Quantos graus tem na faixa atual</label>
+  <select id="graus">
+    <option value="" disabled selected>Escolha uma opção</option>
+    <option value="Nenhum">Nenhum</option><option>1</option><option>2</option><option>3</option><option>4</option>
+  </select>
+  <p class="erro-msg" id="erro-graus">Escolha os graus.</p>
+
+  <fieldset>
+    <legend>O professor avisou que o aluno troca de faixa nesta graduação</legend>
+    <div class="opcoes">
+      <label><input type="radio" name="troca" value="Sim"><span>Sim</span></label>
+      <label><input type="radio" name="troca" value="Não"><span>Não</span></label>
+    </div>
+    <p class="erro-msg" id="erro-troca">Responda se troca de faixa.</p>
+  </fieldset>
+
+  <div id="blocoResponsavel" class="oculto">
+    <div class="info on"><b>Aluno menor de 18 anos.</b> Precisamos do nome de quem responde por ele.</div>
+    <label for="responsavel">Nome do responsável</label>
+    <input type="text" id="responsavel" placeholder="Nome completo do responsável">
+    <p class="erro-msg" id="erro-responsavel">Informe o nome do responsável.</p>
+  </div>
+
+  <label for="whatsapp" id="labelWhats">WhatsApp</label>
+  <input type="tel" id="whatsapp" inputmode="numeric" placeholder="(51) 9XXXX-XXXX" autocomplete="tel">
+  <p class="erro-msg" id="erro-whatsapp">Informe um WhatsApp com DDD.</p>
+
+  <label for="email">E-mail</label>
+  <input type="email" id="email" autocomplete="email" placeholder="nome@email.com">
+  <p class="erro-msg" id="erro-email">Confira o e-mail, parece que falta alguma coisa.</p>
+
+  <label for="observacoes">Observações <span class="opc">(opcional)</span></label>
+  <textarea id="observacoes" placeholder="Dúvidas, nome diferente no certificado, outras informações"></textarea>
+
+  <label class="aceite"><input type="checkbox" id="aceite"><span>Autorizo o uso destes dados para organizar a graduação e enviar a lista de graduandos à SBA.</span></label>
+  <p class="erro-msg" id="erro-aceite">Para concluir, é preciso marcar a autorização.</p>
+
+  <button type="submit" id="botaoEnviar">Enviar inscrição</button>
+  <p class="fine">Depois de enviar, você faz o PIX e manda o comprovante no WhatsApp da escola.</p>
+</form>
+
+<div class="card" id="confirmacao">
+  <h2>Inscrição recebida</h2>
+  <p class="sub" id="confQuando"></p>
+  <div class="passo"><i>1</i><span>Faça o PIX no CNPJ abaixo<br><span class="opc" id="confValor"></span></span></div>
+  <div class="pix"><small>PIX, CNPJ da escola</small><strong id="pixTexto">31.934.836/0001-97</strong>
+    <button type="button" id="botaoCopiar">Copiar o CNPJ</button></div>
+  <div class="passo"><i>2</i><span>Envie o comprovante no WhatsApp da escola, com o nome do aluno</span></div>
+  <a class="botao sec" id="botaoWhats" href="#" target="_blank" rel="noopener">Enviar comprovante no WhatsApp</a>
+  <p class="fine" id="confEmail"></p>
+  <p class="fine"><b>A inscrição só é confirmada com o comprovante.</b> Só entram na lista da SBA os alunos com pagamento conferido.</p>
+</div>
+
+<div class="card" id="encerrado">
+  <h2>Inscrições encerradas</h2>
+  <p class="sub">As inscrições para a Graduação AZ de novembro foram encerradas. Se ficou alguma dúvida, chame a escola no WhatsApp.</p>
+  <a class="botao sec" href="https://wa.me/555180267688" target="_blank" rel="noopener">Falar com a escola</a>
+</div>
+
+<footer>Escola de Jiu Jitsu Azambuja · Sistema Progressivo · SBA</footer>
+
+<script>
+(function () {
+  const appsScriptURL = "https://script.google.com/macros/s/AKfycbxYw9KU0Y2K2kLyDvW5DR5X2lJOgu9rpVtL7nR67aMnO2lluWWZXHspy-AvKiC-Jkhwyg/exec";
+  const EVENTO = "Graduação AZ Novembro 2026";
+  const WHATSAPP_ESCOLA = "555180267688";
+  const PIX = "31.934.836/0001-97";
+  const VALOR_TEXTO = ""; // ex: "Valor: R$ 100" (deixar vazio enquanto a escola nao confirmar)
+  const REFERENCIA = new Date(2026, 10, 22); // dia da graduacao, para calcular a idade
+
+  const FAIXAS = {
+    "Infantil/Juvenil": ["Branca", "Cinza", "Amarela", "Laranja", "Verde", "Azul"],
+    "Adulto": ["Branca", "Azul", "Roxa", "Marrom", "Preta"]
+  };
+  const QUANDO = {
+    "Infantil/Juvenil": "Graduação no sábado, 21/11, às 10h, turma de crianças e adolescentes.",
+    "Adulto": "Graduação no domingo, 22/11, às 10h, turma de adultos."
+  };
+
+  const $ = function (id) { return document.getElementById(id); };
+  const radio = function (n) { const e = document.querySelector('input[name="' + n + '"]:checked'); return e ? e.value : ""; };
+  const setRadio = function (n, v) { document.querySelectorAll('input[name="' + n + '"]').forEach(function (r) { r.checked = r.value === v; }); };
+
+  function idade(iso) {
+    const p = String(iso).split("-"); if (p.length !== 3) return null;
+    const n = new Date(+p[0], +p[1] - 1, +p[2]);
+    if (isNaN(n) || +p[0] < 1930 || n > REFERENCIA) return null;
+    let a = REFERENCIA.getFullYear() - n.getFullYear();
+    const aniv = new Date(REFERENCIA.getFullYear(), n.getMonth(), n.getDate());
+    if (REFERENCIA < aniv) a--;
+    return a;
+  }
+
+  function atualizarCategoria() {
+    const cat = radio("categoria");
+    const sel = $("faixa"), atual = sel.value;
+    sel.innerHTML = "";
+    if (!cat) { sel.innerHTML = '<option value="" disabled selected>Escolha o dia primeiro</option>'; }
+    else {
+      sel.innerHTML = '<option value="" disabled selected>Escolha uma opção</option>' +
+        FAIXAS[cat].map(function (f) { return "<option>" + f + "</option>"; }).join("");
+      if (FAIXAS[cat].indexOf(atual) >= 0) sel.value = atual;
+    }
+    atualizarMenor();
+  }
+
+  function atualizarMenor() {
+    const a = idade($("nascimento").value);
+    const menor = a !== null && a < 18;
+    $("blocoResponsavel").classList.toggle("oculto", !menor);
+    $("labelWhats").textContent = menor ? "WhatsApp do responsável" : "WhatsApp";
+  }
+
+  $("nascimento").addEventListener("change", function () {
+    const a = idade(this.value);
+    if (a !== null) {
+      setRadio("categoria", a < 18 ? "Infantil/Juvenil" : "Adulto");
+      atualizarCategoria();
+    }
+    atualizarMenor();
+  });
+  document.querySelectorAll('input[name="categoria"]').forEach(function (r) { r.addEventListener("change", atualizarCategoria); });
+
+  $("whatsapp").addEventListener("input", function () {
+    let v = this.value.replace(/\D/g, "").slice(0, 11), s = v;
+    if (v.length > 6) s = "(" + v.slice(0, 2) + ") " + v.slice(2, v.length - 4) + "-" + v.slice(-4);
+    else if (v.length > 2) s = "(" + v.slice(0, 2) + ") " + v.slice(2);
+    this.value = s;
+  });
+
+  function erro(id, mostrar) { $("erro-" + id).classList.toggle("on", !!mostrar); return !!mostrar; }
+
+  function validar() {
+    let ruim = false, primeiro = null;
+    function marca(id, cond) { if (erro(id, cond)) { ruim = true; if (!primeiro) primeiro = $("erro-" + id); } }
+    marca("nome", $("nome").value.trim().split(/\s+/).length < 2);
+    marca("nascimento", idade($("nascimento").value) === null);
+    marca("categoria", !radio("categoria"));
+    marca("unidade", !radio("unidade"));
+    marca("faixa", !$("faixa").value);
+    marca("graus", !$("graus").value);
+    marca("troca", !radio("troca"));
+    marca("responsavel", !$("blocoResponsavel").classList.contains("oculto") && $("responsavel").value.trim().length < 3);
+    marca("whatsapp", $("whatsapp").value.replace(/\D/g, "").length < 10);
+    marca("email", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($("email").value.trim()));
+    marca("aceite", !$("aceite").checked);
+    if (primeiro) primeiro.scrollIntoView({ behavior: "smooth", block: "center" });
+    return !ruim;
+  }
+
+  $("formInscricao").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!validar()) return;
+    const menor = !$("blocoResponsavel").classList.contains("oculto");
+    const dados = {
+      evento: EVENTO,
+      nome: $("nome").value.trim(),
+      nascimento: $("nascimento").value,
+      categoria: radio("categoria"),
+      unidade: radio("unidade"),
+      faixa: $("faixa").value,
+      graus: $("graus").value,
+      troca: radio("troca"),
+      responsavel: menor ? $("responsavel").value.trim() : "",
+      whatsapp: $("whatsapp").value.trim(),
+      email: $("email").value.trim(),
+      observacoes: $("observacoes").value.trim()
+    };
+    const botao = $("botaoEnviar");
+    botao.disabled = true; botao.textContent = "Enviando...";
+
+    function concluir() {
+      $("formInscricao").style.display = "none";
+      $("confQuando").textContent = QUANDO[dados.categoria];
+      $("confValor").textContent = VALOR_TEXTO;
+      $("confEmail").textContent = "Mandamos um e-mail de confirmação para " + dados.email + ". Se não encontrar, olhe o spam.";
+      const msg = "Olá! Segue o comprovante da inscrição na Graduação AZ de novembro. Aluno: " + dados.nome + " (" + dados.unidade + ").";
+      $("botaoWhats").href = "https://wa.me/" + WHATSAPP_ESCOLA + "?text=" + encodeURIComponent(msg);
+      $("confirmacao").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    if (!appsScriptURL) { concluir(); return; }
+    fetch(appsScriptURL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(dados) })
+      .then(function (r) { return r.json(); })
+      .then(function (r) {
+        if (r.status === "ok") concluir();
+        else throw new Error(r.mensagem || "erro");
+      })
+      .catch(function () {
+        botao.disabled = false; botao.textContent = "Enviar inscrição";
+        alert("Não conseguimos enviar agora. Tente de novo em instantes ou chame a escola no WhatsApp.");
+      });
+  });
+
+  $("botaoCopiar").addEventListener("click", function () {
+    const b = this;
+    (navigator.clipboard ? navigator.clipboard.writeText(PIX) : Promise.reject()).then(function () { b.textContent = "CNPJ copiado"; }, function () { b.textContent = PIX; });
+  });
+
+  if (appsScriptURL) {
+    fetch(appsScriptURL).then(function (r) { return r.json(); }).then(function (r) {
+      if (r.encerrado) { $("formInscricao").style.display = "none"; $("encerrado").style.display = "block"; }
+    }).catch(function () {});
+  }
+})();
+</script>
+</body>
+</html>
