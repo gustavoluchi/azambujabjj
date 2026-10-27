@@ -16,7 +16,7 @@ export const schedulerGrade: Record<string, SchedulerGroup[]> = {
     {
       day: "Terça-feira",
       classes: [
-        "7h - Iniciantes",
+        "7h30 - Iniciantes",
         "12h - Somente graduados",
         "17h - Iniciantes",
         "20h - Iniciantes e graduados",
@@ -33,7 +33,7 @@ export const schedulerGrade: Record<string, SchedulerGroup[]> = {
     {
       day: "Quinta-feira",
       classes: [
-        "7h - Iniciantes",
+        "7h30 - Iniciantes",
         "12h - Somente graduados",
         "17h - Iniciantes",
         "20h - Iniciantes e graduados",
@@ -93,7 +93,7 @@ export const schedulerTeachers: Record<string, string> = {
   "19h30 - Somente graduados": "Henrique",
   "12h - Somente graduados": "Henrique",
   "20h - Iniciantes e graduados": "Henrique",
-  "7h - Iniciantes": "Diego",
+  "7h30 - Iniciantes": "Diego",
   "17h - Iniciantes": "Leonardo",
   "17h30 - Kids (8 a 12 anos)": "Leonardo",
   "18h15 - Mini Kids (4 a 8 anos)": "Leonardo",
