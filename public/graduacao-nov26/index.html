@@ -69,7 +69,7 @@
 
 <form class="card" id="formInscricao" novalidate>
   <h2>Inscrição</h2>
-  <p class="sub">Leva uns dois minutos, o valor da graduação aparece assim que você escolher a faixa e a inscrição só é confirmada depois do pagamento, que explicamos no fim</p>
+  <p class="sub">Leva uns dois minutos, o valor da graduação aparece assim que você informar a faixa e se há troca de faixa, e a inscrição só é confirmada depois do pagamento, que explicamos no fim</p>
 
   <label for="nome">Nome completo do aluno <span class="opc">(como vai no certificado)</span></label>
   <input type="text" id="nome" autocomplete="name" placeholder="Nome e sobrenome">
@@ -102,7 +102,6 @@
   <label for="faixa">Faixa atual</label>
   <select id="faixa"><option value="" disabled selected>Escolha o dia primeiro</option></select>
   <p class="erro-msg" id="erro-faixa">Escolha a faixa.</p>
-  <div class="info" id="valorFaixa"></div>
 
   <label for="graus">Quantos graus tem na faixa atual</label>
   <select id="graus">
@@ -119,6 +118,7 @@
     </div>
     <p class="erro-msg" id="erro-troca">Responda se troca de faixa.</p>
   </fieldset>
+  <div class="info" id="valorFaixa"></div>
 
   <div id="blocoResponsavel" class="oculto">
     <div class="info on"><b>Aluno menor de 18 anos.</b> Precisamos do nome de quem responde por ele.</div>
@@ -175,7 +175,9 @@
   const WHATSAPP_ESCOLA = "555180267688";
   const PIX = "31.934.836/0001-97";
   // Valores da tabela da SBA. Branca: R$ 90 ate 15 anos, R$ 100 acima disso.
+  // Quem troca de faixa paga o valor da faixa nova (Fabiana, 04/11/2026).
   const VALORES = { "Cinza": 90, "Amarela": 90, "Laranja": 90, "Verde": 90, "Azul": 120, "Roxa": 120, "Marrom": 120, "Preta": 150 };
+  const PROXIMA = { "Azul": "Roxa", "Roxa": "Marrom", "Marrom": "Preta" };
   const REFERENCIA = new Date(2026, 10, 22); // dia da graduacao, para calcular a idade
 
   const FAIXAS = {
@@ -214,17 +216,29 @@
     atualizarMenor();
   }
 
+  // Faixa nova de quem troca, quando ela muda o valor de referencia. Branca ate 15 anos
+  // segue para faixa infantil (mesmo valor), por isso fica de fora.
+  function faixaNova() {
+    const f = $("faixa").value;
+    if (!f || radio("troca") !== "Sim") return "";
+    if (f === "Branca") { const a = idade($("nascimento").value); return a !== null && a > 15 ? "Azul" : ""; }
+    return PROXIMA[f] || "";
+  }
+
   function valorGraduacao() {
     const f = $("faixa").value;
-    if (!f) return null;
+    if (!f || !radio("troca")) return null;
+    const nova = faixaNova();
+    if (nova) return VALORES[nova] || null;
     if (f === "Branca") { const a = idade($("nascimento").value); return a === null ? null : (a <= 15 ? 90 : 100); }
     return VALORES[f] || null;
   }
 
   function atualizarValor() {
-    const v = valorGraduacao(), box = $("valorFaixa");
+    const v = valorGraduacao(), box = $("valorFaixa"), nova = faixaNova();
     box.classList.toggle("on", v !== null);
-    box.innerHTML = v === null ? "" : "<b>Valor da graduação: R$ " + v + "</b>";
+    box.innerHTML = v === null ? "" : "<b>Valor da graduação: R$ " + v + "</b>" +
+      (nova ? "<br>Quem troca de faixa paga o valor da faixa nova, " + nova : "");
   }
 
   function atualizarMenor() {
@@ -244,6 +258,7 @@
     atualizarMenor();
   });
   $("faixa").addEventListener("change", atualizarValor);
+  document.querySelectorAll('input[name="troca"]').forEach(function (r) { r.addEventListener("change", atualizarValor); });
   document.querySelectorAll('input[name="categoria"]').forEach(function (r) { r.addEventListener("change", atualizarCategoria); });
 
   $("whatsapp").addEventListener("input", function () {
