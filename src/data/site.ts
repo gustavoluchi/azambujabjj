@@ -139,22 +139,23 @@ export const plans: Plan[] = [
     title: "Jiu Jitsu Adulto",
     featured: true,
     prices: [
-      ["Mensal", "R$ 250/mês"],
+      ["Mensal", "R$ 270/mês"],
       [
         "Recorrente · mais escolhido · permanência mínima de 3 meses",
-        "R$ 205/mês · economize R$ 45/mês",
+        "R$ 220/mês · economize R$ 50/mês",
       ],
-      ["Semestral à vista", "R$ 1.160 · ≈ R$ 193/mês"],
-      ["Anual à vista · melhor valor", "R$ 2.220 · ≈ R$ 185/mês"],
+      ["Trimestral à vista", "R$ 630 · ≈ R$ 210/mês"],
+      ["Semestral à vista", "R$ 1.275 · ≈ R$ 213/mês"],
+      ["Anual à vista · melhor valor", "R$ 2.440 · ≈ R$ 203/mês"],
     ],
   },
   {
     title: "Jiu Jitsu Infantil",
     prices: [
-      ["Mensal", "R$ 220/mês"],
+      ["Mensal", "R$ 240/mês"],
       [
         "Recorrente · permanência mínima de 3 meses",
-        "R$ 205/mês · economize R$ 15/mês",
+        "R$ 220/mês · economize R$ 20/mês",
       ],
     ],
   },
