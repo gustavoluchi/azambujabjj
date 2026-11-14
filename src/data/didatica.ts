@@ -133,7 +133,7 @@ export const professors = [
     ],
   },
   {
-    name: "Leonardo Sparta",
+    name: "Leonardo Antoria",
     rank: "Faixa Preta",
     image: "leonardo",
     bio: [
