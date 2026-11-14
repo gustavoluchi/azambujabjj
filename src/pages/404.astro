@@ -1,0 +1,22 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import PageHero from "@/components/site/PageHero.astro";
+---
+
+<Layout
+  title="Página não encontrada"
+  description="Esta página não existe no site da Escola de Jiu Jitsu Azambuja."
+>
+  <main id="conteudo">
+    <PageHero
+      eyebrow="Erro 404"
+      title="Essa página não existe"
+      description="O endereço pode ter mudado. Volte para o início ou fale com a gente pelo WhatsApp."
+    />
+    <section class="content-section">
+      <div class="shell">
+        <a class="button button--primary" href="/">Voltar para o início</a>
+      </div>
+    </section>
+  </main>
+</Layout>

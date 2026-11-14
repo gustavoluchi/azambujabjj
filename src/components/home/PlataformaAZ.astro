@@ -1,0 +1,45 @@
+---
+import SectionHeading from "@/components/site/SectionHeading.astro";
+import { plataformaAZ } from "@/data/site";
+---
+
+<section class="section section--white" id="plataforma-az">
+  <div class="shell">
+    <SectionHeading
+      eyebrow="Treino online"
+      title="Plataforma AZ de Treinos"
+      description="Condicionamento físico para quem pratica jiu jitsu, criado pelo professor Rafael Azambuja para você treinar em casa."
+    />
+    <article class="course-item" style="max-width: 46rem" data-reveal>
+      <span class="tag">Da faixa branca em diante</span>
+      <h3>24 treinos de cerca de 15 minutos</h3>
+      <p class="subtitle">Sem aparelho e sem parceiro</p>
+      <p>
+        Os treinos são organizados por letras e você escolhe o do dia, sem
+        ordem obrigatória. O foco é o preparo físico, e a técnica de jiu jitsu
+        continua nas aulas. Pagamento único, com um ano de acesso pela área de membros da Hotmart,
+        no celular, no computador ou no tablet. Sem renovação automática e com
+        garantia de 7 dias.
+      </p>
+      <div class="price">
+        <s>{plataformaAZ.oldPrice}</s>
+        <strong>{plataformaAZ.price}</strong>
+        <span>{plataformaAZ.installments}</span>
+      </div>
+      <div class="course-actions">
+        <a
+          class="button button--primary"
+          href={plataformaAZ.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-umami-event="comprar-plataforma-az">Quero a Plataforma AZ</a
+        >
+      </div>
+    </article>
+    <p style="color: var(--muted); font-size: .78rem; margin: 1.5rem 0 0">
+      Quem tem lesão ou alguma condição de saúde deve conversar com o médico
+      antes de começar. Dúvidas e acesso pelo e-mail
+      <a href="mailto:contato@azambujabjj.com.br">contato@azambujabjj.com.br</a>.
+    </p>
+  </div>
+</section>

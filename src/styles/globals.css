@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #0b1c3d;
-  --navy-deep: #071228;
-  --navy-soft: #14294f;
-  --yellow: #f2c230;
-  --yellow-soft: #f7d669;
+  --navy: #192f50;
+  --navy-deep: #10203a;
+  --navy-soft: #223f68;
+  --yellow: #fec60d;
+  --yellow-soft: #fed654;
   --ivory: #f6f4ee;
   --white: #fdfdfd;
   --ink: #13213a;
   --muted: #5c5a52;
-  --line: rgb(11 28 61 / 12%);
+  --line: rgb(25 47 80 / 12%);
   --line-dark: rgb(253 253 253 / 13%);
-  --shadow: 0 24px 60px rgb(7 18 40 / 12%);
+  --shadow: 0 24px 60px rgb(16 32 58 / 12%);
   --shell: 76.25rem;
 }
 
@@ -58,6 +58,7 @@ h2,
 h3,
 h4 {
   font-weight: 700;
+  line-height: 1.12;
 }
 a {
   color: inherit;
@@ -75,6 +76,7 @@ a {
 :focus-visible {
   outline: 3px solid var(--yellow);
   outline-offset: 4px;
+  box-shadow: 0 0 0 7px var(--navy);
 }
 .shell {
   width: min(100% - 4rem, var(--shell));
@@ -134,7 +136,7 @@ a {
 }
 .button--primary:hover {
   background: var(--yellow-soft);
-  box-shadow: 0 12px 28px rgb(242 194 48 / 24%);
+  box-shadow: 0 12px 28px rgb(254 198 13 / 24%);
 }
 .button--outline {
   border-color: rgb(253 253 253 / 34%);
@@ -174,7 +176,7 @@ a {
 .site-header.is-scrolled {
   padding-block: 0.65rem;
   border-color: var(--line-dark);
-  background: rgb(7 18 40 / 92%);
+  background: rgb(16 32 58 / 92%);
   box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
   backdrop-filter: blur(16px);
 }
@@ -356,7 +358,7 @@ a {
   overflow: hidden;
   padding: 8.5rem 0 5rem;
   background:
-    radial-gradient(circle at 88% 15%, rgb(242 194 48 / 15%), transparent 36%),
+    radial-gradient(circle at 88% 15%, rgb(254 198 13 / 15%), transparent 36%),
     linear-gradient(180deg, var(--navy-deep), var(--navy));
   color: var(--white);
 }
@@ -440,7 +442,7 @@ a {
   inset: 0;
   background: radial-gradient(
     circle at 50% 32%,
-    rgb(242 194 48 / 15%),
+    rgb(254 198 13 / 15%),
     transparent 60%
   );
   content: "";
@@ -510,7 +512,7 @@ a {
   position: absolute;
   top: -3.5rem;
   left: 1rem;
-  color: rgb(242 194 48 / 18%);
+  color: rgb(254 198 13 / 18%);
   content: "“";
   font-family: Georgia, serif;
   font-size: 10rem;
@@ -610,7 +612,7 @@ a {
   margin: 1.8rem 0 0;
   padding: 1rem 1.25rem;
   border-left: 3px solid var(--yellow);
-  background: rgb(242 194 48 / 6%);
+  background: rgb(254 198 13 / 6%);
   color: #c9d1e0;
   font-size: 0.86rem;
 }
@@ -653,21 +655,10 @@ a {
   border: 1px solid #e7e3d8;
   border-radius: 1.1rem;
   background: var(--white);
-  transition:
-    transform 200ms ease,
-    border-color 200ms ease,
-    box-shadow 200ms ease;
-}
-.class-item:hover,
-.course-item:hover,
-.location-item:hover,
-.instructor-item:hover {
-  border-color: var(--yellow);
-  box-shadow: var(--shadow);
-  transform: translateY(-4px);
 }
 .tag {
   display: inline-flex;
+  align-self: flex-start;
   margin-bottom: 0.9rem;
   padding: 0.25rem 0.65rem;
   border-radius: 99px;
@@ -926,7 +917,6 @@ a {
 .price-row strong {
   color: var(--white);
   text-align: right;
-  white-space: nowrap;
 }
 .benefits {
   display: flex;
@@ -1061,7 +1051,7 @@ a {
   overflow: hidden;
   padding: 10.5rem 0 5rem;
   background:
-    radial-gradient(circle at 82% 20%, rgb(242 194 48 / 16%), transparent 34%),
+    radial-gradient(circle at 82% 20%, rgb(254 198 13 / 16%), transparent 34%),
     linear-gradient(180deg, var(--navy-deep), var(--navy));
   color: var(--white);
 }
@@ -1125,6 +1115,11 @@ a {
 .prose p,
 .prose li {
   max-width: 72ch;
+}
+.prose p,
+.prose ul,
+.prose ol {
+  margin-bottom: 1.1rem;
 }
 .prose blockquote {
   margin: 2rem 0;
@@ -1214,6 +1209,7 @@ a {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  object-position: center 20%;
 }
 .portrait__copy {
   padding: 1rem;
@@ -1484,8 +1480,9 @@ a {
   box-shadow: 0 12px 30px rgb(31 184 85 / 34%);
   animation: whatsapp-pulse 2.5s ease-out infinite;
 }
-.whatsapp-float span {
-  font-size: 1.35rem;
+.whatsapp-float svg {
+  width: 1.75rem;
+  height: 1.75rem;
 }
 [data-reveal] {
   opacity: 1;
@@ -1597,7 +1594,14 @@ a {
   .three-grid,
   .locations-grid,
   .instructors-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .price-row {
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+  .price-row strong {
+    text-align: left;
   }
   .check-list {
     grid-template-columns: 1fr;
@@ -1655,7 +1659,7 @@ a {
     font-size: 0.9rem;
   }
   .brand__copy span {
-    font-size: 0.56rem;
+    font-size: 0.66rem;
   }
   .brand img {
     width: 2.6rem;
