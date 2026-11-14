@@ -191,6 +191,20 @@ export const plataformaAZ = {
   href: "https://go.hotmart.com/Q74306064E",
 } as const;
 
+// Black November da SBA: enquanto ativo for true, os cursos aparecem sem preço
+// e sem botão de compra (as vendas na Hotmart estão suspensas até a abertura).
+// Na abertura, trocar ativo para false e os cards voltam como antes.
+export const coursesBlack = {
+  ativo: true,
+  aviso: "Em novembro, A Didática e os Guias Visuais ficam fechados para venda",
+  titulo: "Black November vem aí",
+  texto:
+    "Os cursos voltam com condição especial, enquanto isso assista à aula gratuita do Sistema Progressivo de Jiu-Jitsu.",
+  cta: "Assistir à aula gratuita",
+  href: "https://aulagratuita.sbajj.com",
+  noCard: "Volta na Black November",
+} as const;
+
 export const courses: Course[] = [
   {
     tag: "Imersão completa",
