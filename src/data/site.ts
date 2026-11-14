@@ -10,6 +10,7 @@ export const navigation = [
   { label: "Faixas Pretas", href: "/faixa-preta" },
   { label: "Planos", href: "#planos" },
   { label: "Loja", href: "/loja" },
+  { label: "Plataforma AZ", href: "#plataforma-az" },
   { label: "Cursos Online", href: "#cursos" },
   { label: "Filiais", href: "#filiais" },
   { label: "Contato", href: "#contato" },
@@ -182,6 +183,13 @@ export type Course = {
   href: string;
   cta: string;
 };
+
+export const plataformaAZ = {
+  oldPrice: "R$ 197,00",
+  price: "R$ 97,00 à vista",
+  installments: "ou 12x de R$ 10,03",
+  href: "https://go.hotmart.com/Q74306064E",
+} as const;
 
 export const courses: Course[] = [
   {
