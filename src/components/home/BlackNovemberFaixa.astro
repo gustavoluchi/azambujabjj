@@ -1,0 +1,63 @@
+---
+import { blackNovemberEscola, bookingUrl } from "@/data/site";
+---
+
+{
+  blackNovemberEscola.ativo && (
+    <a
+      class="black-faixa"
+      id="black-faixa"
+      href={bookingUrl}
+      hidden
+      data-inicio={blackNovemberEscola.inicio}
+      data-fim={blackNovemberEscola.fim}
+      data-umami-event="black-november-faixa"
+    >
+      <strong>{blackNovemberEscola.titulo}</strong>
+      <span>{blackNovemberEscola.texto}</span>
+    </a>
+  )
+}
+
+<script is:inline>
+  (function () {
+    var faixa = document.getElementById("black-faixa");
+    if (!faixa) return;
+    var agora = Date.now();
+    var inicio = Date.parse(faixa.dataset.inicio);
+    var fim = Date.parse(faixa.dataset.fim);
+    if (agora >= inicio && agora <= fim) faixa.hidden = false;
+  })();
+</script>
+
+<style>
+  .black-faixa {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.15rem 0.6rem;
+    margin-bottom: 1.25rem;
+    padding: 0.6rem 1rem;
+    border-radius: 0.75rem;
+    background: var(--yellow);
+    color: var(--navy-deep);
+    font-size: 0.9rem;
+    line-height: 1.35;
+    text-decoration: none;
+  }
+  .black-faixa[hidden] {
+    display: none;
+  }
+  .black-faixa strong {
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .black-faixa span {
+    font-weight: 650;
+  }
+  .black-faixa:hover,
+  .black-faixa:focus-visible {
+    background: var(--yellow-soft);
+  }
+</style>
