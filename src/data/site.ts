@@ -194,13 +194,15 @@ export const plataformaAZ = {
 // Black November da escola (Direção, 19/11/2026): 50% na primeira mensalidade
 // do plano recorrente, para matrícula de 23 a 28/11/2026. A faixa do topo da
 // página inicial aparece sozinha entre inicio e fim (horário de Brasília) e
-// some depois. Para desligar antes, trocar ativo para false.
+// some depois. Desde 20/11 ela já aparece, avisando as datas, porque os
+// anúncios começaram antes da oferta. Para desligar antes, trocar ativo
+// para false.
 export const blackNovemberEscola = {
   ativo: true,
-  inicio: "2026-11-23T00:00:00-03:00",
+  inicio: "2026-11-20T00:00:00-03:00",
   fim: "2026-11-28T23:59:59-03:00",
   titulo: "Black November",
-  texto: "50% na primeira mensalidade, matrículas até 28/11",
+  texto: "50% na primeira mensalidade, matrículas de 23 a 28/11",
 } as const;
 
 // Black November da SBA: enquanto ativo for true, os cursos aparecem sem preço
